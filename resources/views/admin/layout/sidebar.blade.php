@@ -117,12 +117,12 @@
         </a>
     </li>
 
-    {{-- <li class="treeview">
-        <a href="/admin/online">
+    <li class="treeview">
+        <a href="/admin/online"  style="pointer-events: none;">
             <i class="fa fa-shopping-cart"></i>
             <span>Интернет магазин</span>
         </a>
-    </li> --}}
+    </li>
 
     <li class="treeview">
         <a href="/admin/online/history">
