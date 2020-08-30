@@ -79,112 +79,21 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <li>
                                 <a class="" href="/about-us">Компания жайлы</a>											
                             </li>
-                            <li class="drop">
-                                <a href="#">Өнімдер <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <!-- mt dropmenu start here -->
-                                <div class="mt-dropmenu text-left">
-                                    <!-- mt frame start here -->
-                                    <div class="mt-frame">
-                                        <!-- mt f box start here -->
-                                        <div class="mt-f-box">
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">PRODUCTS</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Product Grid View</a></li>
-                                                            <li><a href="#">Product List View</a></li>
-                                                            <li><a href="#">Product Detail</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">404 Pages</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">404 Page</a></li>
-                                                            <li><a href="#">404 Page2</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">About US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">About</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Contact US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Contact</a></li>
-                                                            <li><a href="#">Contact 2</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Coming Soon</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Coming Soon</a></li>
-                                                            <li><a href="#">Coming Soon2</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">KITCHEN FURNITURE</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Kitchen Taps</a></li>
-                                                            <li><a href="#">Breakfast time</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                            <li><a href="#">Napskins</a></li>
-                                                            <li><a href="#">Oven Gloves</a></li>
-                                                            <li><a href="#">Placemats</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3 promo">
-                                                <div class="mt-promobox">
-                                                    <a href="#"><img src="http://placehold.it/295x320" alt="promo banner" class="img-responsive"></a>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-                                        </div>
-                                        <!-- mt f box end here -->
-                                    </div>
-                                    <!-- mt frame end here -->
+                            <li>
+                                <a class="drop-link" href="#">Өнімдер <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+                                <div class="s-drop open">
+                                    <ul>
+                                        @foreach ($products as $product)
+                                            <li><a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <!-- mt dropmenu end here -->
-                                <span class="mt-mdropover"></span>
                             </li>
                             <li>
                                 <a class="" href="{{ route('opportunity') }}">Мүмкіндіктер</a>
                             </li>
                             <li>
-                                <a class="" href="#">Байланыс</a>
+                                <a class="" href="{{ route('contact.show') }}">Байланыс</a>
                             </li>
                         </ul>
                     </nav><!-- navigation end here -->

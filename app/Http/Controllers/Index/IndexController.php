@@ -52,7 +52,7 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {        
-        $products = Product::all();           
+        $products = Product::all();
         $packets = Packet::all();  
         // dd($products[0]->product_id);        
         // $popularProducts = Product::where(['is_popular' => true])->get();
@@ -146,9 +146,12 @@ class IndexController extends Controller
 
     public function contact(Request $request)
     {
-        return view('design_index.index.contact',
+        $products = Product::all();
+
+        return view('new_design.contact.index',
             [
-                'menu' => 'contact'
+                'menu' => 'contact',
+                'products' => $products
             ]
         );
     }
