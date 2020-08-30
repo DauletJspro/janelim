@@ -21,8 +21,8 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    <span class="tel active"> <i class="fa fa-phone" aria-hidden="true"></i> +1 (555) 333 22 11</span>
-                    <a class="tel" href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> info@schon.chairs</a>
+                    <span class="tel active" onclick="tel:+77019150511"> <i class="fa fa-phone" aria-hidden="true"></i> +7 (701) 915 05 11</span>
+                    <a class="tel" href="mailto:janelim.kz@mail.ru"> <i class="fa fa-envelope-o" aria-hidden="true"></i> janelim.kz@mail.ru</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <!-- mt-top-list start here -->
@@ -181,7 +181,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 <span class="mt-mdropover"></span>
                             </li>
                             <li>
-                                <a class="" href="#">Мүмкіндіктер</a>
+                                <a class="" href="{{ route('opportunity') }}">Мүмкіндіктер</a>
                             </li>
                             <li>
                                 <a class="" href="#">Байланыс</a>

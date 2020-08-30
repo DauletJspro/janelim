@@ -8,28 +8,28 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Ақпарат</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">Watches</a></li>
-                            <li><a href="#">Glasses</a></li>
-                            <li><a href="#">Bags</a></li>										
+                        <ul class="list-unstyled f-widget-nav">                            
+                            <li><a href="{{ route('favorite.showUserItem') }}">Избранные</a></li>
+                            <li><a href="{{ route('basket.show') }}">Корзина</a></li>										
                         </ul>
-                    </div><!-- Footer Nav of the Page end -->
+                    </div>
+                    <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Компанияның мүмкіндіктері</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#"> Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>										
+                            <li><a href="#">О компаний</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#"> Правила и условия</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>										
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Жеке кабинет</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#">Мой кабинет</a></li>
+                            <li><a href="#">Пакеты</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                 </nav>

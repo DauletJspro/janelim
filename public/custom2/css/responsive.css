@@ -2789,5 +2789,15 @@
 	.mt-productlisthold > li {
 		width: 100%;
 	}
+
+	.product_card {
+		width: auto;
+		margin: 0 auto;
+	}
+
+	.packet_card {
+		width: auto;
+		margin: 0 auto;
+	}
 }
 
