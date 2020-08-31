@@ -26,11 +26,13 @@ class AboutController extends Controller
     {
         $guideText = DB::table('guide')->first();  
         $administration = DB::table('administration')->first();
-        $administration_persons = DB::table('administration_persons')->get();      
+        $administration_persons = DB::table('administration_persons')->get();  
+        $products = Product::all();    
         return view('new_design.about_us.index', [
             'guide_text' => $guideText,
             'administration' => $administration,
             'administration_persons' => $administration_persons,
+            'products' => $products
         ]);
     }
 

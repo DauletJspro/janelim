@@ -78,12 +78,15 @@ class IndexController extends Controller
 
     public function opportunity(Request $request)
     {
+        $products = Product::all();
         // $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
         //     \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
         // $logo_id = $request->input('id');
         // $logo = Brand::where(['id' => $logo_id])->first();
         // $logo = $logo ? $logo->image : '';        
-        return view('new_design.opportunity.index');
+        return view('new_design.opportunity.index', [
+            'products' => $products,
+        ]);
     }
 
 
