@@ -28,21 +28,21 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $userOperation = new UserOperation();
-        $pvProfitAll = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])->sum('money');
+        $pvProfitAll = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])->sum('pv_balance');
         $pvProfitToday = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])
             ->where('created_at', '>', date("Y-m-d"))->sum('money');
         $pvProfitLastWeek = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('money');
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('pv_balance');
         $pvProfitLastMonth = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('money');
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('pv_balance');
 
-        $gvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])->sum('money');
+        $gvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])->sum('gv_balance');
         $gvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d"))->sum('money');
+            ->where('created_at', '>', date("Y-m-d"))->sum('gv_balance');
         $gvProfitLastWeek = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('money');
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('gv_balance');
         $gvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('money');
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('gv_balance');
 
         $cvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])->sum('money');
         $cvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])

@@ -282,6 +282,7 @@ class PacketController extends Controller
             $operation->author_id = Auth::user()->user_id;
             $operation->recipient_id = null;
             $operation->money = $packet->packet_price - $packet_old_price;
+            $operation->pv_balance = $packet->packet_price;
             $operation->operation_id = 2;
             $operation->operation_type_id = 30;
             $operation->operation_comment = $request->comment;
@@ -550,14 +551,14 @@ class PacketController extends Controller
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 1;
                 $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
+                $operation->gv_balance = $packet->packet_price * (Currency::PVtoKzt / Currency::GVtoKzt);
                 $operation->save();
-
                 $inviter->user_money = $inviter->user_money + $bonus;
-                $inviter->gv_balance = $inviter->gv_balance + $bonus;
+                $inviter->gv_balance = $packet->packet_price * (Currency::PVtoKzt / Currency::GVtoKzt);
                 $inviter->save();
-
                 $this->sentMoney += $bonus;
             }
+
 
 //            echo '<pre>', var_dump($inviter_order . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / ' . $inviterPacketId), '</pre>';
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
