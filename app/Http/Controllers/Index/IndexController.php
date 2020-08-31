@@ -52,7 +52,7 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {        
-        $products = Product::all();           
+        $products = Product::all();
         $packets = Packet::all();  
         // dd($products[0]->product_id);        
         // $popularProducts = Product::where(['is_popular' => true])->get();
@@ -78,12 +78,12 @@ class IndexController extends Controller
 
     public function opportunity(Request $request)
     {
-        $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
-            \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
-        $logo_id = $request->input('id');
-        $logo = Brand::where(['id' => $logo_id])->first();
-        $logo = $logo ? $logo->image : '';
-        return view('new_design.opportunity.index', ['url' => $url]);
+        // $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
+        //     \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
+        // $logo_id = $request->input('id');
+        // $logo = Brand::where(['id' => $logo_id])->first();
+        // $logo = $logo ? $logo->image : '';        
+        return view('new_design.opportunity.index');
     }
 
 
@@ -146,9 +146,12 @@ class IndexController extends Controller
 
     public function contact(Request $request)
     {
-        return view('design_index.index.contact',
+        $products = Product::all();
+
+        return view('new_design.contact.index',
             [
-                'menu' => 'contact'
+                'menu' => 'contact',
+                'products' => $products
             ]
         );
     }
