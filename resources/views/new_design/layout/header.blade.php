@@ -90,7 +90,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="" href="{{ route('opportunity') }}">Мүмкіндіктер</a> 
+                                <a class="" href="#">Мүмкіндіктер</a> 
                             </li>
                             <li>
                                 <a class="" href="{{ route('contact.show') }}">Байланыс</a>
