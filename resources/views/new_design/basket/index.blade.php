@@ -13,7 +13,7 @@ $basketIds = [];
 
     <title>Jan Elim Shop</title>
     <meta name="description"
-          content="«Jan Elim» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
+          content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="Jan Elim"/>
 
 @endsection

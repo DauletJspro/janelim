@@ -12,8 +12,8 @@ $tab = (explode('tab=', URL::current()));
 
     <title>Qpartners Shop</title>
     <meta name="description"
-          content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
-    <meta name="keywords" content="Qpartners"/>
+          content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
+    <meta name="keywords" content="JanElim"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 

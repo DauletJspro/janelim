@@ -4,8 +4,8 @@
 
     <title>JanElim.kz</title>
     <meta name="description"
-          content="«JanELim» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
-    <meta name="keywords" content="Qpartners"/>
+          content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
+    <meta name="keywords" content="JanElim"/>
 
 @endsection
 
