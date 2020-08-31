@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="/new_design/css/main.css">
     <link rel="stylesheet" href="/new_design/css/responsive.css">
-
+    <link rel="shortcut icon" href="/favicon.png?v=4" />
 
 
 </head>
