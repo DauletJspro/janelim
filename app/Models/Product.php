@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 use DB;
 
 class Product extends Model
