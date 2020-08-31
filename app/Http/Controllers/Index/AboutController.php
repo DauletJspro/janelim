@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Http\Helpers;
 use App\Models\News;
 use App\Models\About;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
