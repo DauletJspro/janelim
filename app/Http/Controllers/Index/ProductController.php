@@ -12,6 +12,7 @@ class ProductController extends Controller
 {
     public function detail($id)
     {
+        $products = Product::all();
         $product = Product::where(['product_id' => $id])->first();
         $reviews = Review::where(['item_id' => $id])->where(['review_type_id' => Review::PRODUCT_REVIEW])->get();
         $relatedProducts = Product::where(['category_id' => $product->category_id])->whereNotIn('product_id', [$product->product_id])->limit(5)->get();
@@ -19,6 +20,7 @@ class ProductController extends Controller
             \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
         return view('new_design.product.detail', [
             'product' => $product,
+            'products' => $products,
             'relatedProducts' => $relatedProducts,
             'reviews' => $reviews,
             'url' => $url

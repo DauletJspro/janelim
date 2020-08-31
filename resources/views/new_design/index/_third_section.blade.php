@@ -1,3 +1,6 @@
+@php
+    $currency = \App\Models\Currency::pvToKzt();
+@endphp
 <div class="col-xs-12">							
     <!-- mt producttabs style2 start here -->
     <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.6s">
@@ -22,7 +25,7 @@
                         <!-- txt start here -->
                         <div class="txt">
                             <strong class="title">{{ $packet->packet_name_ru }}</strong>
-                            <span class="price"> {{ $packet->packet_price }} тг</span>
+                            <span class="price"> {{ ($packet->packet_price * $currency) }} тг</span> {{ $currency }}
                             <p>{{ $packet->packet_desc_ru }}</p>
                             <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
                         </div>
