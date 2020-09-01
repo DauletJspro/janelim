@@ -48,11 +48,12 @@
                         <h4 class="f-widget-heading follow">Біз әлеуметтік желілерде</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            {{-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> --}}
+                            {{-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> --}}
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            {{-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> --}}
                             <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                         </ul><!-- Social Network of the Page end -->
                     </div>

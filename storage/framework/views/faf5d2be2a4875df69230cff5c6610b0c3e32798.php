@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\URL;
 $tab = (explode('tab=', URL::current()));
 
 ?>
-@extends('new_design.layout.app')
 
-@section('meta-tags')
+
+<?php $__env->startSection('meta-tags'); ?>
 
     <title>Jan Elim</title>
     <meta name="description"
@@ -17,11 +17,11 @@ $tab = (explode('tab=', URL::current()));
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-@endsection
-@section('content')
-@php
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php 
     $currency = \App\Models\Currency::DollarToKzt;
-@endphp
+ ?>
     <main id="mt-main">
         <!-- Mt Product Detial of the Page -->
         <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
@@ -38,7 +38,7 @@ $tab = (explode('tab=', URL::current()));
                             <div class="product-slider">
                                 <div class="slide">
                                     <div style="
-                                            background-image: url('{{$packet->packet_image}}');
+                                            background-image: url('<?php echo e($packet->packet_image); ?>');
                                             background-size: contain;
                                             background-position: center;
                                             background-repeat: no-repeat;
@@ -61,44 +61,48 @@ $tab = (explode('tab=', URL::current()));
                                 <li>Пакеты</li>
                             </ul>
                             <!-- Breadcrumbs of the Page end -->
-                            <h2>{{ $packet->packet_name_ru }}</h2>
+                            <h2><?php echo e($packet->packet_name_ru); ?></h2>
                             <!-- Rank Rating of the Page -->
                             <div class="rank-rating">                                
                             </div>                            
                             <div class="txt-wrap">
-                                <p>{{$packet->packet_desc_ru}}</p>
+                                <p><?php echo e($packet->packet_desc_ru); ?></p>
                             </div>
                             <div class="text-holder">
-                                <span class="price">Цена: &nbsp; ${{$packet->packet_price}} &nbsp; ({{ $packet->packet_price * $currency }} &#8376;)</span>
+                                <span class="price">Цена: &nbsp; $<?php echo e($packet->packet_price); ?> &nbsp; (<?php echo e($packet->packet_price * $currency); ?> &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
-                            @if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id))                            
-                                @if(\App\Models\UserPacket::isActive($packet->packet_id))
+                            <?php if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id)): ?>                            
+                                <?php if(\App\Models\UserPacket::isActive($packet->packet_id)): ?>
                                     <form action="/admin/packet/user" class="product-form" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                        <?php echo e(csrf_field()); ?>
+
+                                        <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
                                         <fieldset>
                                             <div class="row-val">
                                                 <button type="submit">Вы уже приобрели</button>
                                             </div>                                            
                                         </fieldset>
                                     </form>                                    
-                                @else
+                                <?php else: ?>
                                     <form action="/admin/packet/user" class="product-form" method="POST">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                        <?php echo e(method_field('DELETE')); ?>
+
+                                        <?php echo e(csrf_field()); ?>
+
+                                        <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
                                         <fieldset>
                                             <div class="row-val">
                                                 <button type="submit">Отменить запрос</button>
                                             </div>                                            
                                         </fieldset>
                                     </form>                                    
-                                @endif
-                            @else
+                                <?php endif; ?>
+                            <?php else: ?>
                                 <form action="/admin/packet/user" class="product-form" style="float: left;" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
                                     <input type="hidden" name="user_packet_type" value="">
                                     <fieldset>
                                         <div class="row-val">
@@ -107,8 +111,9 @@ $tab = (explode('tab=', URL::current()));
                                     </fieldset>
                                 </form>
                                 <form action="/admin/packet/user/balance" class="product-form" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
                                     <input type="hidden" name="user_packet_type" value="">
                                     <fieldset>
                                         <div class="row-val">
@@ -116,7 +121,7 @@ $tab = (explode('tab=', URL::current()));
                                         </div>                                        
                                     </fieldset>
                                 </form>                               
-                            @endif                            
+                            <?php endif; ?>                            
                         <!-- Product Form of the Page end -->
                         </div>
                         <!-- Detail Holder of the Page end -->
@@ -130,7 +135,7 @@ $tab = (explode('tab=', URL::current()));
                     <div class="col-xs-12">
                         <h2>ДРУГИЕ ПАКЕТЫ</h2>
                         <div class="row">
-                            @foreach ($relatedPacket as $packet)
+                            <?php $__currentLoopData = $relatedPacket; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $packet): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <div class="col-xs-3">                                
                                     <!-- packet_card start here -->
                                     <div class="packet_card">
@@ -138,19 +143,19 @@ $tab = (explode('tab=', URL::current()));
                                         <div class="product-3">
                                             <!-- img start here -->
                                             <div class="img">
-                                                <img alt="image description" src="{{ $packet->packet_image }}">
+                                                <img alt="image description" src="<?php echo e($packet->packet_image); ?>">
                                             </div>
                                             <!-- txt start here -->
                                             <div class="txt">
-                                                <strong class="title">{{ $packet->packet_name_ru }}</strong>
-                                                <span class="price"> {{ ($packet->packet_price * $currency) }} тг</span>
-                                                <p>{{ $packet->packet_desc_ru }}</p>
-                                                <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
+                                                <strong class="title"><?php echo e($packet->packet_name_ru); ?></strong>
+                                                <span class="price"> <?php echo e(($packet->packet_price * $currency)); ?> тг</span>
+                                                <p><?php echo e($packet->packet_desc_ru); ?></p>
+                                                <a href="<?php echo e(route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id])); ?>">Толығырақ</a>
                                             </div>                                                                                        
                                         </div><!-- mt product 3 end here -->
                                     </div><!-- packet_card end here -->                                
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                         </div>
                     </div>
                 </div>
@@ -172,7 +177,7 @@ $tab = (explode('tab=', URL::current()));
                     <div class="modal-body">
                         <ul style="list-style: none;">
                             <li>
-                                <a href="https://api.whatsapp.com/send?text={{$url}}" style="
+                                <a href="https://api.whatsapp.com/send?text=<?php echo e($url); ?>" style="
                                 padding:5px 10px 5px 10px;
                                 border: 2px solid lightgreen;
                                 border-radius: 3px;
@@ -184,7 +189,7 @@ $tab = (explode('tab=', URL::current()));
 
                             </li>
                             <li style="margin-top: 15px;">
-                                <a href="https://telegram.me/share/url?url={{$url}}" style="
+                                <a href="https://telegram.me/share/url?url=<?php echo e($url); ?>" style="
                                 padding:5px 10px 5px 10px;
                                 border: 2px solid dodgerblue;
                                 border-radius: 3px;
@@ -206,7 +211,7 @@ $tab = (explode('tab=', URL::current()));
 
                             </li>
                             <li style="margin-top: 15px;">
-                                <a href="https://www.facebook.com/sharer.php?u={{$url}}" style="
+                                <a href="https://www.facebook.com/sharer.php?u=<?php echo e($url); ?>" style="
                                 padding:5px 10px 5px 10px;
                                 border: 2px solid dodgerblue;
                                 border-radius: 3px;
@@ -218,7 +223,7 @@ $tab = (explode('tab=', URL::current()));
 
                             </li>
                             <li style="margin-top: 15px;">
-                                <a href="http://vk.com/share.php?url={{$url}}" style="
+                                <a href="http://vk.com/share.php?url=<?php echo e($url); ?>" style="
                                 padding:5px 10px 5px 10px;
                                 border: 2px solid dodgerblue;
                                 border-radius: 3px;
@@ -230,7 +235,7 @@ $tab = (explode('tab=', URL::current()));
 
                             </li>
                             <li style="margin-top: 15px;">
-                                <a href="https://twitter.com/share?url={{$url}}" style="
+                                <a href="https://twitter.com/share?url=<?php echo e($url); ?>" style="
                                 padding:5px 10px 5px 10px;
                                 border: 2px solid dodgerblue;
                                 border-radius: 3px;
@@ -250,4 +255,6 @@ $tab = (explode('tab=', URL::current()));
             </div>
         </div>
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('new_design.layout.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

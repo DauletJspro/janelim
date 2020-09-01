@@ -1,15 +1,13 @@
-@extends('new_design.layout.app')
-
-@section('meta-tags')
+<?php $__env->startSection('meta-tags'); ?>
 
     <title>Наши контакты.</title>
     <meta name="description"
           content="Наши контакты. Jan Elim - это группа единомышленников, которые уже имеют богатый опыт работы в МЛМ - индустрии, интернет-коммерции и обладают всеми необходимыми качествами для достижения поставленных целей"/>
     <meta name="keywords" content="Наши контакты, Jan Elim"/>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
@@ -19,10 +17,10 @@
                     <div class="col-xs-12 text-center">
                         <h1>Контакты</h1>
                         <nav class="breadcrumbs">
-                            {{--                            <ul class="list-unstyled">--}}
-                            {{--                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>--}}
-                            {{--                                <li><a href="#">Contact</a></li>--}}
-                            {{--                            </ul>--}}
+                            
+                            
+                            
+                            
                         </nav>
                     </div>
                 </div>
@@ -51,7 +49,7 @@
                             </li>
                             <li>
                                 <strong>E mail</strong>
-                                <a href="mailto:janelim.kz@gmail.com" style="line-height: 2.5rem; font-weight: 400;">janelim.kz@gmail.com</a>
+                                <a href="mailto:janelim.kz@mail.ru" style="line-height: 2.5rem; font-weight: 400;">janelim.kz@mail.ru</a>
                             </li>
                         </ul>
                     </div>
@@ -73,37 +71,11 @@
             </div>
         </section><!-- Mt Contact Detail of the Page end -->
         <!-- Mt Map Holder of the Page -->
-        {{-- <div id="map" style="width: 100%; min-height: 500px"></div> --}}
+        
     </main>
-@endsection
-@section('js')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
-    {{-- <script>
-        ymaps.ready(init);
-
-        function init() {
-            var myMap = new ymaps.Map("map", {
-                    center: [43.263547, 76.953172],
-                    zoom: 17,
-                }, {
-                    searchControlProvider: 'yandex#search'
-                }),
-                myGeoObject = new ymaps.GeoObject({
-                    geometry: {
-                        type: "Point",
-                        coordinates: [43.263547, 76.953172]
-                    },
-                    properties: {
-                        iconContent: 'Qyran partners',
-                    }
-                }, {
-                    preset: 'islands#redStretchyIcon',
-                    draggable: true
-                });
-
-            myMap.geoObjects
-                .add(myGeoObject);
-        }
-
-    </script> --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('new_design.layout.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

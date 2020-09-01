@@ -1,16 +1,16 @@
 <!-- footer of the Page -->
-<footer id="mt-footer" class="style4 wow fadeInUp" data-wow-delay="0.4s">
+<footer id="mt-footer" class="style5 wow fadeInUp" data-wow-delay="0.4s">
     <!-- Footer Holder of the Page -->
-    <div class="footer-holder">
-        <div class="container">
+    <div class="footer-holder black">
+        <div class="container-fluid">
             <div class="row">
                 <nav class="col-xs-12 col-sm-8 col-md-9">
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Ақпарат</h3>
                         <ul class="list-unstyled f-widget-nav">                            
-                            <li><a href="{{ route('favorite.showUserItem') }}">Избранные</a></li>
-                            <li><a href="{{ route('basket.show') }}">Корзина</a></li>										
+                            <li><a href="<?php echo e(route('favorite.showUserItem')); ?>">Избранные</a></li>
+                            <li><a href="<?php echo e(route('basket.show')); ?>">Корзина</a></li>										
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
@@ -48,12 +48,12 @@
                         <h4 class="f-widget-heading follow">Біз әлеуметтік желілерде</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon">
-                            {{-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> --}}
-                            {{-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> --}}
-                            {{-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> --}}
+                            
+                            
+                            
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            {{-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> --}}
+                            
                             <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                         </ul><!-- Social Network of the Page end -->
                     </div>
