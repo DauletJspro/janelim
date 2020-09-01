@@ -30,7 +30,7 @@
                             <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
                         </div>
                         <!-- links start here -->
-                        <ul class="links">
+                        {{-- <ul class="links">
                             <li><a href="#"
                                 data-item-id="{{$packet->packet_id}}"
                                 data-method="add"
@@ -47,7 +47,7 @@
                                 onclick="addItemToFavorites(this)"
                             ><i class="icomoon icon-heart-empty"></i></a></li>
                             <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
-                        </ul>
+                        </ul> --}}
                     </div><!-- mt product 3 end here -->
                 </div><!-- packet_card end here -->
             @endforeach

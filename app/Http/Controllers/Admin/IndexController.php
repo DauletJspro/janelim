@@ -51,29 +51,28 @@ class IndexController extends Controller
             ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('money');
         $cvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('money');
-
-
+        
         $pvData = [
-            'pvProfitAll' => $pvProfitAll,
-            'pvProfitToday' => $pvProfitToday,
-            'pvProfitLastWeek' => $pvProfitLastWeek,
-            'pvProfitLastMonth' => $pvProfitLastMonth,
+            'pvProfitAll' => $pvProfitAll ?? 0,
+            'pvProfitToday' => $pvProfitToday ?? 0,
+            'pvProfitLastWeek' => $pvProfitLastWeek ?? 0,
+            'pvProfitLastMonth' => $pvProfitLastMonth ?? 0,
         ];
         $gvData = [
-            'gvProfitAll' => $gvProfitAll,
-            'gvProfitToday' => $gvProfitToday,
-            'gvProfitLastWeek' => $gvProfitLastWeek,
-            'gvProfitLastMonth' => $gvProfitLastMonth,
+            'gvProfitAll' => $gvProfitAll ?? 0,
+            'gvProfitToday' => $gvProfitToday ?? 0,
+            'gvProfitLastWeek' => $gvProfitLastWeek ?? 0,
+            'gvProfitLastMonth' => $gvProfitLastMonth ?? 0,
         ];
         $cvData = [
-            'cvProfitAll' => $cvProfitAll,
-            'cvProfitToday' => $cvProfitToday,
-            'cvProfitLastWeek' => $cvProfitLastWeek,
-            'cvProfitLastMonth' => $cvProfitLastMonth,
+            'cvProfitAll' => $cvProfitAll ?? 0,
+            'cvProfitToday' => $cvProfitToday ?? 0,
+            'cvProfitLastWeek' => $cvProfitLastWeek ?? 0,
+            'cvProfitLastMonth' => $cvProfitLastMonth ?? 0,
         ];
 
         $userPackets = UserPacket::where(['user_id' => Auth::user()->user_id, 'is_active' => true])->get();
-
+        
         return view('admin.index.index', [
             'pvData' => $pvData,
             'gvData' => $gvData,

@@ -16,7 +16,7 @@
             <span class="logo-mini"> <img src="{{ asset('/favicon.png') }}" alt=""> </span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg">
-            <img src="/logo_text.png?v=3" style="width:140px">
+            <img src="/logo_text-removebg.png?v=3" style="width:140px">
           </span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->

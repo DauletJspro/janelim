@@ -39,15 +39,15 @@
                                 сроки. Также, с радостью ждем Вас у нас в офисе.</p>
                         </div>
                         <ul class="list-unstyled contact-txt">
-                            {{-- <li>
+                            <li>
                                 <strong>Адрес</strong>
-                                <address style="line-height: 2.5rem; font-weight: 400;">г. Алматы, ул Пушкина, 36, <br>
-                                    БЦ “Мегатау” 4-этаж, офис 408
+                                <address style="line-height: 2.5rem; font-weight: 400;">г. Алматы, пр. Достык, 111/2 <br>                                   
                                 </address>
-                            </li> --}}
+                            </li>
                             <li>
                                 <strong>Телефонный номер</strong>
-                                <a href="tel: +77019150511" style="line-height: 2.5rem; font-weight: 400;"> +7 (701) 915 05 11</a>
+                                <a href="tel: +77019150511" style="line-height: 2.5rem; font-weight: 400;"> +7 (701) 915 05 11</a> <br>
+                                <a href="tel: +77079912291" style="line-height: 2.5rem; font-weight: 400;"> +7 (707) 991 22 91</a>
                             </li>
                             <li>
                                 <strong>E mail</strong>

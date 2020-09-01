@@ -34,6 +34,25 @@
                                 data-rating = "{{\App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW)}}"
                             >Толығырақ</a>
                         </div>
+                        <!-- links start here -->
+                        <ul class="links">
+                            <li><a href="#"
+                                data-item-id="{{$product->product_id}}"
+                                data-method="add"
+                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                data-route="{{route('basket.isAjax')}}"
+                                onclick="addItemToBasket(this)"    
+                            ><i class="icon-handbag"></i></a></li>
+                            <li><a href="#"
+                                data-item-id="{{$product->product_id}}"
+                                data-method="add"
+                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                data-session-id="{{ Session::getId()}}"
+                                data-route="{{route('favorite.isAjax')}}"
+                                onclick="addItemToFavorites(this)"
+                            ><i class="icomoon icon-heart-empty"></i></a></li>
+                            <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
+                        </ul>
                     </div><!-- mt product 3 end here -->
                 </div><!-- product_card end here -->
             @endforeach
