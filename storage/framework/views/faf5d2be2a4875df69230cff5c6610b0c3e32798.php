@@ -74,53 +74,12 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Product Form of the Page -->
                             <?php if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id)): ?>                            
                                 <?php if(\App\Models\UserPacket::isActive($packet->packet_id)): ?>
-                                    <form action="/admin/packet/user" class="product-form" method="POST">
-                                        <?php echo e(csrf_field()); ?>
-
-                                        <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
-                                        <fieldset>
-                                            <div class="row-val">
-                                                <button type="submit">Вы уже приобрели</button>
-                                            </div>                                            
-                                        </fieldset>
-                                    </form>                                    
+                                    
                                 <?php else: ?>
-                                    <form action="/admin/packet/user" class="product-form" method="POST">
-                                        <?php echo e(method_field('DELETE')); ?>
-
-                                        <?php echo e(csrf_field()); ?>
-
-                                        <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
-                                        <fieldset>
-                                            <div class="row-val">
-                                                <button type="submit">Отменить запрос</button>
-                                            </div>                                            
-                                        </fieldset>
-                                    </form>                                    
+                                    
                                 <?php endif; ?>
                             <?php else: ?>
-                                <form action="/admin/packet/user" class="product-form" style="float: left;" method="POST">
-                                    <?php echo e(csrf_field()); ?>
-
-                                    <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
-                                    <input type="hidden" name="user_packet_type" value="">
-                                    <fieldset>
-                                        <div class="row-val">
-                                            <button type="submit">Отправить запрос</button>
-                                        </div>                                        
-                                    </fieldset>
-                                </form>
-                                <form action="/admin/packet/user/balance" class="product-form" method="POST">
-                                    <?php echo e(csrf_field()); ?>
-
-                                    <input type="hidden" name="packet_id" value="<?php echo e($packet->packet_id); ?>">
-                                    <input type="hidden" name="user_packet_type" value="">
-                                    <fieldset>
-                                        <div class="row-val">
-                                            <button type="submit">Снять с баланса</button>
-                                        </div>                                        
-                                    </fieldset>
-                                </form>                               
+                                
                             <?php endif; ?>                            
                         <!-- Product Form of the Page end -->
                         </div>

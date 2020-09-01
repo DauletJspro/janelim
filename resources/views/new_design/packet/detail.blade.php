@@ -74,7 +74,7 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Product Form of the Page -->
                             @if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id))                            
                                 @if(\App\Models\UserPacket::isActive($packet->packet_id))
-                                    <form action="/admin/packet/user" class="product-form" method="POST">
+                                    {{-- <form action="/admin/packet/user" class="product-form" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
                                         <fieldset>
@@ -82,9 +82,9 @@ $tab = (explode('tab=', URL::current()));
                                                 <button type="submit">Вы уже приобрели</button>
                                             </div>                                            
                                         </fieldset>
-                                    </form>                                    
+                                    </form>                                     --}}
                                 @else
-                                    <form action="/admin/packet/user" class="product-form" method="POST">
+                                    {{-- <form action="/admin/packet/user" class="product-form" method="POST">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
@@ -93,10 +93,10 @@ $tab = (explode('tab=', URL::current()));
                                                 <button type="submit">Отменить запрос</button>
                                             </div>                                            
                                         </fieldset>
-                                    </form>                                    
+                                    </form>                                     --}}
                                 @endif
                             @else
-                                <form action="/admin/packet/user" class="product-form" style="float: left;" method="POST">
+                                {{-- <form action="/admin/packet/user" class="product-form" style="float: left;" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
                                     <input type="hidden" name="user_packet_type" value="">
@@ -115,7 +115,7 @@ $tab = (explode('tab=', URL::current()));
                                             <button type="submit">Снять с баланса</button>
                                         </div>                                        
                                     </fieldset>
-                                </form>                               
+                                </form>                                --}}
                             @endif                            
                         <!-- Product Form of the Page end -->
                         </div>
