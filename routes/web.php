@@ -296,7 +296,7 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
-    Route::get('about-us', 'AboutController@showCompanyGuide')->name('about_us');
+    Route::get('about-us', 'AboutController@showCompanyGuide');
     Route::get('opportunity', 'IndexController@opportunity')->name('opportunity');
     Route::get('gallery', 'IndexController@gallery')->name('gallery.show');
     Route::get('gallery-detail/{id}', 'IndexController@galleryDetail')->name('gallery-detail.show');

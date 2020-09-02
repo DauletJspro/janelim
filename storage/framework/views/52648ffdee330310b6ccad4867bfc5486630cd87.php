@@ -7,39 +7,36 @@
                 <nav class="col-xs-12 col-sm-8 col-md-9">
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Контакты</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li>«JanElim» - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями</li>
-                            <li><i class="fa fa-map-marker"></i> <address style="display: inline-block;">г. Алматы, пр. Достык, 111/2</address></li>                            
-                            <li><i class="fa fa-phone"></i> <a href="tel:+77019150511">+7 (701) 915 05 11</a></li>
-                            <li><i class="fa fa-envelope-o"></i><a href="mailto:janelim.kz@gmail.com">janelim.kz@gmail.com</a></li>
-                        </ul>
-                    </div><!-- Footer Nav of the Page end -->
-                    <!-- Footer Nav of the Page -->
-                    <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Информация</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li><a href="<?php echo e(route('about_us')); ?>">О компаний</a></li>
+                        <h3 class="f-widget-heading">Ақпарат</h3>
+                        <ul class="list-unstyled f-widget-nav">                            
                             <li><a href="<?php echo e(route('favorite.showUserItem')); ?>">Избранные</a></li>
-                            <li><a href="<?php echo e(route('basket.show')); ?>">Корзина</a></li>
-                            <li><a href="<?php echo e(route('contact.show')); ?>">Контакты</a></li>
+                            <li><a href="<?php echo e(route('basket.show')); ?>">Корзина</a></li>										
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Возможности</h3>
-                        <ul class="list-unstyled f-widget-nav">                            
-                            <li><a href="/opportunity">Возможности</a></li>
+                        <h3 class="f-widget-heading">Компанияның мүмкіндіктері</h3>
+                        <ul class="list-unstyled f-widget-nav">
+                            <li><a href="#">О компаний</a></li>
+                            <li><a href="#">Контакты</a></li>
                             <li><a href="#"> Правила и условия</a></li>
-                            <li><a href="#">Политика конфиденциальности</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>										
                         </ul>
-                    </div><!-- Footer Nav of the Page end -->                    
+                    </div><!-- Footer Nav of the Page end -->
+                    <!-- Footer Nav of the Page -->
+                    <div class="nav-widget-1">
+                        <h3 class="f-widget-heading">Жеке кабинет</h3>
+                        <ul class="list-unstyled f-widget-nav">
+                            <li><a href="#">Мой кабинет</a></li>
+                            <li><a href="#">Пакеты</a></li>
+                        </ul>
+                    </div><!-- Footer Nav of the Page end -->
                 </nav>
                 <div class="col-xs-12 col-sm-4 col-md-3 text-right">
                     <!-- F Widget Newsletter of the Page -->
                     <div class="f-widget-newsletter">
-                        <h3 class="f-widget-heading">Подписывайтесь на нас</h3>
+                        <h3 class="f-widget-heading">Біздің жаңалықтар</h3>
                         <div class="holder">
                             <form action="#" class="newsletter-form">
                                 <fieldset>
@@ -48,7 +45,7 @@
                                 </fieldset>
                             </form>
                         </div><!-- F Widget Newsletter of the Page end -->
-                        <h4 class="f-widget-heading follow">Мы в соцсетях</h4>
+                        <h4 class="f-widget-heading follow">Біз әлеуметтік желілерде</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon">
                             
