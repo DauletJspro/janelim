@@ -8,7 +8,6 @@
     <meta name="keywords" content="JanElim"/>
 
 @endsection
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -39,8 +38,8 @@
                         <h1>Регистрация</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-{{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li>register</li>--}}
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>register</li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -79,12 +78,14 @@
                                                             data-placeholder="Выберите спонсора"
                                                             class="form-control selectpicker input"
                                                             data-live-search="true">
-                                                        <option value="">Выберите спонсора</option>
-                                                        @foreach($recommend_row as $item)
-                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
-                                                                {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
+                                                        <option value="">Ваш пригласитель</option>
+
+                                                        @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
+                                                            <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
+                                                            <option selected
+                                                                    value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
                                                             </option>
-                                                        @endforeach
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
