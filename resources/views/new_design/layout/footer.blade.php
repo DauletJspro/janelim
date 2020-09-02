@@ -19,7 +19,7 @@
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Информация</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="{{ route('about_us') }}">О компаний</a></li>
+                            <li><a href="/about-us">О компаний</a></li>
                             <li><a href="{{ route('favorite.showUserItem') }}">Избранные</a></li>
                             <li><a href="{{ route('basket.show') }}">Корзина</a></li>
                             <li><a href="{{ route('contact.show') }}">Контакты</a></li>
