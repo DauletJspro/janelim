@@ -1,15 +1,13 @@
-@extends('design_index.layout.layout')
-
-@section('meta-tags')
+<?php $__env->startSection('meta-tags'); ?>
 
     <title>JanElim.kz</title>
     <meta name="description"
           content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="JanElim"/>
 
-@endsection
+<?php $__env->stopSection(); ?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-@section('content')
+<?php $__env->startSection('content'); ?>
     <main id="mt-main">
         <section class="mt-contact-banner"
                  style="background-color: lightgrey;">
@@ -19,8 +17,8 @@
                         <h1>Войти</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-                                {{--                                <li><a href="index.html"> <i class="fa fa-angle-right"></i></a></li>--}}
-                                {{--                                <li></li>--}}
+                                
+                                
                             </ul>
                         </nav>
                     </div>
@@ -38,24 +36,24 @@
                                     <h1 style="margin: 0 0 5px;">Войти</h1>
                                     <p>Добро пожаловать!</p>
                                 </header>
-                                @if(isset($error))
+                                <?php if(isset($error)): ?>
                                     <div class="alert alert-danger" style="width: 100%;margin-bottom: -30px;">
                                         <div class="">
-                                            <p style="color:red;">{{$error}}</p>
+                                            <p style="color:red;"><?php echo e($error); ?></p>
                                         </div>
                                     </div>
-                                @elseif(isset($success))
+                                <?php elseif(isset($success)): ?>
                                     <div class="alert alert-success" style="width: 100%;margin-bottom: -30px;">
                                         <div class="">
-                                            <p style="color:green;">{{$success}}</p>
+                                            <p style="color:green;"><?php echo e($success); ?></p>
                                         </div>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                             <form method="post" action="/login">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                 <input required type="text" name="login"
-                                       value="@if(isset($login)){{$login}}@endif" class="form-control input"
+                                       value="<?php if(isset($login)): ?><?php echo e($login); ?><?php endif; ?>" class="form-control input"
                                        placeholder="ID, Email или логин"/>
                                 <input required type="password" name="password" class="form-control input"
                                        placeholder="Пароль"/>
@@ -89,4 +87,5 @@
                 </div>
             </div>
         </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('design_index.layout.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

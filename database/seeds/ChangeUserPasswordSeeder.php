@@ -11,7 +11,7 @@ class ChangeUserPasswordSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->where('user_id', '30')->update(['password' => Hash::make('qwerty123')]);
-        DB::table('users')->where('user_id', '31')->update(['password' => Hash::make('qwerty123')]);
+        // DB::table('users')->where('user_id', '30')->update(['password' => Hash::make('qwerty123')]);
+        DB::table('users')->where('user_id', '33')->update(['password' => Hash::make('qwerty123')]);
     }
 }

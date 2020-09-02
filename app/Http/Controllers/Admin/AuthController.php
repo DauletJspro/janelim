@@ -224,7 +224,7 @@ class AuthController extends Controller
             $user = Users::where('email', '=', $request->email)->first();
             $new_password = str_random(8);
             $password = Hash::make($new_password);
-            $user->password_original = $new_password;
+            // $user->password_original = $new_password;
             $user->password = $password;
             $user->save();
 
@@ -245,7 +245,7 @@ class AuthController extends Controller
             $result['status'] = false;
             return response()->json($result);
         }
-
+        dd($ok);
         $error = 'На почту отправлен новый пароль';
         return view('admin.auth.login', [
             'error' => $error
