@@ -2,7 +2,7 @@
 
     <title>Главная</title>
     <meta name="description"
-          content="«JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
+          content="«JanElim» - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="Jan Elim"/>
 
 <?php $__env->stopSection(); ?>

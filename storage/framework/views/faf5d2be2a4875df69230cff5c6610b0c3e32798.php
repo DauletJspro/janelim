@@ -74,13 +74,31 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Product Form of the Page -->
                             <?php if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id)): ?>                            
                                 <?php if(\App\Models\UserPacket::isActive($packet->packet_id)): ?>
-                                    
+                                    <a class="product-form">                                                                                
+                                        <fieldset>
+                                            <div class="row-val">
+                                                <button class="submitPacket">Вы уже приобрели</button>
+                                            </div>                                            
+                                        </fieldset>
+                                    </a>                                    
                                 <?php else: ?>
-                                    
+                                    <a class="product-form">
+                                        <fieldset>
+                                            <div class="row-val">
+                                                <button class="submitPacket" onclick="cancelResponsePacket(this,'<?php echo e($packet->packet_id); ?>')">Отменить запрос <i class="fa fa-arrow-circle-right"></i></button>
+                                            </div>                                            
+                                        </fieldset>
+                                    </a>                                    
                                 <?php endif; ?>
                             <?php else: ?>
-                                
-                            <?php endif; ?>                            
+                                <a class="product-form" style="float: left;">
+                                    <fieldset>
+                                        <div class="row-val">
+                                            <button class="submitPacket buy_btn_<?php echo e($packet->packet_id); ?>" onclick="showBuyModal(this, '<?php echo e($packet->packet_id); ?>')">Купить пакет <i class="fa fa-arrow-circle-right"></i></button>
+                                        </div>
+                                    </fieldset>
+                                </a>                                
+                            <?php endif; ?>
                         <!-- Product Form of the Page end -->
                         </div>
                         <!-- Detail Holder of the Page end -->
@@ -214,6 +232,8 @@ $tab = (explode('tab=', URL::current()));
             </div>
         </div>
     </main>
+
+    <?php echo $__env->make('new_design.packet._buy_packet_modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('new_design.layout.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

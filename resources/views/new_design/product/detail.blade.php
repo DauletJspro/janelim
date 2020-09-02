@@ -129,7 +129,7 @@ $tab = (explode('tab=', URL::current()));
                     <div class="col-xs-12">
                         <ul class="mt-tabs text-center text-uppercase">
                             <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}">Описание</a></li>
-                            <li><a href="#tab2">Применение</a></li>
+                            <li><a href="#tab2">Состав (Применение)</a></li>
                             <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы({{count($reviews)}}
                                     )</a>
                             </li>

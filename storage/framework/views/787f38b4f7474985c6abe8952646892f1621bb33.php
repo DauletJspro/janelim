@@ -60,8 +60,8 @@ $tab = (explode('tab=', URL::current()));
                         <div class="detial-holder">
                             <!-- Breadcrumbs of the Page -->
                             <ul class="list-unstyled breadcrumbs">
-                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
-                                <li>Products</li>
+                                <li><a href="/">Главная <i class="fa fa-angle-right"></i></a></li>
+                                <li>Товары</li>
                             </ul>
                             <!-- Breadcrumbs of the Page end -->
                             <h2><?php echo e($product->product_name_ru); ?></h2>
@@ -85,7 +85,7 @@ $tab = (explode('tab=', URL::current()));
                                         <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
                                                         class="fa fa-share-alt"></i>Поделиться</a></li>
                                     <?php endif; ?>
-                                    <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
+                                    
                                     <li class=""><a style="cursor: pointer;"
                                                     data-item-id="<?php echo e($product->product_id); ?>"
                                                     data-method="add"
@@ -130,7 +130,7 @@ $tab = (explode('tab=', URL::current()));
                     <div class="col-xs-12">
                         <ul class="mt-tabs text-center text-uppercase">
                             <li><a href="#tab1" class="<?php echo e(!isset($tab[1]) ? 'active' : ''); ?>">Описание</a></li>
-                            <li><a href="#tab2">Применение</a></li>
+                            <li><a href="#tab2">Состав (Применение)</a></li>
                             <li><a href="#tab3" class="<?php echo e(isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''); ?>">Отзывы(<?php echo e(count($reviews)); ?>
 
                                     )</a>

@@ -36,12 +36,12 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <?php if(!Auth::check()): ?>
                     <!-- mt top lang start from here -->  
                     <div class="mt-top-lang">
-                        <a href="/register" class="lang-opener">Тіркелу</a>
+                        <a href="/register" class="lang-opener">Регистрация</a>
                     </div>
                     <!-- mt top lang end from here -->
-                    <span class="account"><a href="/login">Кіру</a></span>
+                    <span class="account"><a href="/login">Вход</a></span>
                 <?php else: ?>                    
-                    <span class="account"><a href="/admin/index">Менің кабинетім</a></span>
+                    <span class="account"><a href="/admin/index">Мой кабинет</a></span>
                 <?php endif; ?>
             </div>
         </div>
@@ -76,10 +76,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <nav id="nav" style="float: unset;">
                 <ul>
                     <li>
-                        <a class="" href="/about-us">Компания жайлы</a>											
+                        <a class="" href="/about-us">О компаний</a>											
                     </li>
                     <li>
-                        <a class="drop-link" href="#">Өнімдер <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+                        <a class="drop-link" href="#">Продукция <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
                         <div class="s-drop open">
                             <ul>
                                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
@@ -89,10 +89,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         </div>
                     </li>
                     <li>
-                        <a class="" href="/opportunity">Мүмкіндіктер</a>
+                        <a class="" href="/opportunity">Возможности</a>
                     </li>
                     <li>
-                        <a class="" href="<?php echo e(route('contact.show')); ?>">Байланыс</a>
+                        <a class="" href="<?php echo e(route('contact.show')); ?>">Контакты</a>
                     </li>
                 </ul>
             </nav><!-- navigation end here -->

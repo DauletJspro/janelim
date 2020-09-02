@@ -74,49 +74,31 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Product Form of the Page -->
                             @if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id))                            
                                 @if(\App\Models\UserPacket::isActive($packet->packet_id))
-                                    {{-- <form action="/admin/packet/user" class="product-form" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                    <a class="product-form">                                                                                
                                         <fieldset>
                                             <div class="row-val">
-                                                <button type="submit">Вы уже приобрели</button>
+                                                <button class="submitPacket">Вы уже приобрели</button>
                                             </div>                                            
                                         </fieldset>
-                                    </form>                                     --}}
+                                    </a>                                    
                                 @else
-                                    {{-- <form action="/admin/packet/user" class="product-form" method="POST">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
+                                    <a class="product-form">
                                         <fieldset>
                                             <div class="row-val">
-                                                <button type="submit">Отменить запрос</button>
+                                                <button class="submitPacket" onclick="cancelResponsePacket(this,'{{$packet->packet_id}}')">Отменить запрос <i class="fa fa-arrow-circle-right"></i></button>
                                             </div>                                            
                                         </fieldset>
-                                    </form>                                     --}}
+                                    </a>                                    
                                 @endif
                             @else
-                                {{-- <form action="/admin/packet/user" class="product-form" style="float: left;" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
-                                    <input type="hidden" name="user_packet_type" value="">
+                                <a class="product-form" style="float: left;">
                                     <fieldset>
                                         <div class="row-val">
-                                            <button type="submit">Отправить запрос</button>
-                                        </div>                                        
+                                            <button class="submitPacket buy_btn_{{$packet->packet_id}}" onclick="showBuyModal(this, '{{ $packet->packet_id }}')">Купить пакет <i class="fa fa-arrow-circle-right"></i></button>
+                                        </div>
                                     </fieldset>
-                                </form>
-                                <form action="/admin/packet/user/balance" class="product-form" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="packet_id" value="{{ $packet->packet_id }}">
-                                    <input type="hidden" name="user_packet_type" value="">
-                                    <fieldset>
-                                        <div class="row-val">
-                                            <button type="submit">Снять с баланса</button>
-                                        </div>                                        
-                                    </fieldset>
-                                </form>                                --}}
-                            @endif                            
+                                </a>                                
+                            @endif
                         <!-- Product Form of the Page end -->
                         </div>
                         <!-- Detail Holder of the Page end -->
@@ -250,4 +232,6 @@ $tab = (explode('tab=', URL::current()));
             </div>
         </div>
     </main>
+
+    @include('new_design.packet._buy_packet_modal')
 @endsection
