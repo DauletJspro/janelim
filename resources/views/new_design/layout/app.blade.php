@@ -26,9 +26,13 @@
     <link rel="stylesheet" href="{{ asset('custom2/css/custom.css') }}">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="{{ asset('custom2/css/responsive.css') }}">
-  
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="{{ asset('custom/css/jquery.gritter.css') }}">
+      
 </head>
 <body>
+  <i class="ajax-loader" id="ajax-loader"></i>
+  <div id="blur"></div>
   <!-- main container of all the page elements -->
   <div id="wrapper">
     <!-- Page Loader -->
@@ -62,6 +66,8 @@
   <script src="{{ asset('custom2/js/jquery.main.js') }}"></script>
   <script src="{{ asset('notify/notify.js')}}"></script>
   <script src="{{ asset('notify/notify.min.js') }}"></script>
+  <script src=" {{ asset('custom/js/custom.js?v=20') }}"></script>
+  <script src=" {{ asset('custom/js/jquery.gritter.js?v=20') }}"></script>
   @yield('js')
 
   <script>

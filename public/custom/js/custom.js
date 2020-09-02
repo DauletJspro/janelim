@@ -10,6 +10,11 @@ $(function() {
     $(".iban-mask").mask("KZ** **** **** **** ****");
 });
 
+function closeModal() {
+    $('.modal-dialog').css('display', 'none');    
+    $('#blur').css('display', 'none');
+}
+
 function writeMessage() {
     $.ajax({
         url: '/contact',
@@ -72,7 +77,7 @@ function addResponseAddPacket(ob,packet_id,user_packet_type){
                     showError(data.message);
                     return;
                 }
-                else {
+                else {                    
                     $(ob).html('Отправили запрос');
                     $(ob).attr('href','#');
                     $(ob).attr('onclick','');
@@ -104,6 +109,7 @@ function buyPacketFromBalance(ob,packet_id,user_packet_type){
             success: function (data) {
                 document.getElementById('ajax-loader').style.display='none';
                 if (data.status == false) {
+                    console.log(data)
                     showError(data.message);
                     return;
                 }

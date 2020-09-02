@@ -28,10 +28,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <!-- mt-top-list start here -->
                     <ul class="mt-top-list">
                         @if(!Auth::check())                            
-                            <li><a href="/register">Тіркелу</a></li>
-                            <li class="active"><a href="/login">Кіру</a></li>                            
+                            <li><a href="/register">Регистрация</a></li>
+                            <li class="active"><a href="/login">Вход</a></li>                            
                         @else
-                            <li class="active"><a href="/admin/index">Менің кабинетім</a></li>                            
+                            <li class="active"><a href="/admin/index">Мой кабинет</a></li>                            
                         @endif                                                
                     </ul><!-- mt-top-list end here -->
                 </div>
@@ -77,10 +77,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <nav id="nav">
                         <ul>
                             <li>
-                                <a class="" href="/about-us">Компания жайлы</a>											
+                                <a class="" href="/about-us">О компаний</a>											
                             </li>
                             <li>
-                                <a class="drop-link" href="#">Өнімдер <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+                                <a class="drop-link" href="#">Продукция <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
                                 <div class="s-drop open">
                                     <ul>
                                         @foreach ($products as $product)
@@ -90,10 +90,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="" href="/opportunity">Мүмкіндіктер</a> 
+                                <a class="" href="/opportunity">Возможности</a> 
                             </li>
                             <li>
-                                <a class="" href="{{ route('contact.show') }}">Байланыс</a>
+                                <a class="" href="{{ route('contact.show') }}">Контакты</a>
                             </li>
                         </ul>
                     </nav><!-- navigation end here -->
