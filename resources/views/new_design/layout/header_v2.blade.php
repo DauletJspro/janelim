@@ -33,16 +33,25 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <span class="tel active" onclick="tel:+77019150511"> <i class="fa fa-phone" aria-hidden="true"></i> +7 (701) 915 05 11</span>
             </div>
             <div class="col-xs-12 col-sm-6 text-right">
-                @if(!Auth::check())
-                    <!-- mt top lang start from here -->  
-                    <div class="mt-top-lang">
-                        <a href="/register" class="lang-opener">Регистрация</a>
-                    </div>
-                    <!-- mt top lang end from here -->
-                    <span class="account"><a href="/login">Вход</a></span>
-                @else                    
-                    <span class="account"><a href="/admin/index">Мой кабинет</a></span>
-                @endif
+              <div class="mt-top-lang">
+                <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">ru<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <div class="drop" style="width: 25px;">
+                    <ul>
+                        <li><a href="#">kz</a></li>
+                        <li><a href="#">en</a></li>
+                    </ul>
+                </div>
+              </div>
+              @if(!Auth::check())
+                  <!-- mt top lang start from here -->  
+                  <div class="mt-top-lang">
+                      <a href="/register" class="lang-opener">Регистрация</a>
+                  </div>
+                  <!-- mt top lang end from here -->
+                  <span class="account"><a href="/login">Вход</a></span>
+              @else                    
+                  <span class="account"><a href="/admin/index">Мой кабинет</a></span>
+              @endif              
             </div>
         </div>
       </div>

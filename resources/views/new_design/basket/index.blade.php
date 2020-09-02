@@ -26,7 +26,7 @@ $basketIds = [];
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="text-center">SHOPPING CART</h1>                  
+                        <h1 class="text-center">Корзина</h1>                  
                     </div>
                 </div>
             </div>

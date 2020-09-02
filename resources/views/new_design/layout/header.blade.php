@@ -32,8 +32,17 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <li class="active"><a href="/login">Вход</a></li>                            
                         @else
                             <li class="active"><a href="/admin/index">Мой кабинет</a></li>                            
-                        @endif                                                
-                    </ul><!-- mt-top-list end here -->
+                        @endif                        
+                        <div class="mt-top-lang">
+                            <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">ru<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <div class="drop">
+                                <ul>
+                                    <li><a href="#">kz</a></li>
+                                    <li><a href="#">en</a></li>
+                                </ul>
+                            </div>
+                        </div>                        
+                    </ul><!-- mt-top-list end here -->                    
                 </div>
             </div>
         </div>
