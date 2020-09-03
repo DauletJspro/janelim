@@ -537,7 +537,7 @@ class PacketController extends Controller
                 if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
                     $bonusPercentage = (15 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif ($this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
+                } elseif ($this->hasNeedPackets($packet, $inviterPacketId, $inviter_order)) {
                     $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
                     $bonus = $packetPrice * $bonusPercentage;
                 }
@@ -551,10 +551,8 @@ class PacketController extends Controller
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 1;
                 $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
-                $operation->gv_balance = $packet->packet_price * (Currency::PVtoKzt / Currency::GVtoKzt);
                 $operation->save();
                 $inviter->user_money = $inviter->user_money + $bonus;
-                $inviter->gv_balance = $packet->packet_price * (Currency::PVtoKzt / Currency::GVtoKzt);
                 $inviter->save();
                 $this->sentMoney += $bonus;
             }
@@ -562,11 +560,33 @@ class PacketController extends Controller
 
 //            echo '<pre>', var_dump($inviter_order . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / ' . $inviterPacketId), '</pre>';
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-            if (!$inviter || $inviter_order >= $packet->packet_available_level) {
+            if (!$inviter || $inviter_order >= 10) {
                 break;
             }
 
             $inviter_order++;
+        }
+
+
+        $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+        while ($inviter) {
+            $operation = new UserOperation();
+            $operation->author_id = $user->user_id;
+            $operation->recipient_id = $inviter->user_id;
+            $operation->money = 0;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 11;
+            $operation->operation_comment = 'Групповой доход от. "' . $packet->packet_name_ru . 'в размере. ' . $packet->packet_price;
+            $operation->gv_balance = $packet->packet_price;
+            $operation->save();
+
+            $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
+            $inviter->save();
+
+            $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
+            if (!$inviter) {
+                break;
+            }
         }
 
         $this->qualificationUp($packet, $user);
@@ -782,13 +802,16 @@ class PacketController extends Controller
     }
 
     public
-    function hasNeedPackets($packetId, $inviterPacketId)
+    function hasNeedPackets($packet, $inviterPacketId, $order)
     {
         $actualPackets = [Packet::SMALL, Packet::MEDIUM, Packet::LARGE, Packet::VIP];
-        if ($packetId <= $inviterPacketId && in_array($packetId, $actualPackets)) {
-            return true;
+        $boolean = false;
+        $inviterPacket = Packet::where(['packet_id' => $inviterPacketId])->first();
+        $packet_available_level = $inviterPacket->packet_available_level;
+        if (in_array($inviterPacketId, $actualPackets) && $order <= $packet_available_level) {
+            $boolean = true;
         }
-        return false;
+        return $boolean;
     }
 
     public

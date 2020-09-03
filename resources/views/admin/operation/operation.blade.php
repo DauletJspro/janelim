@@ -92,6 +92,9 @@ use \App\Models\Currency;
                                                 <td class="arial-font">
                                                     @if($val->operation_type_id == 2)
                                                         {{ $val->money }} доля
+                                                    @elseif($val->operation_type_id == 11)
+                                                        {{$val->gv_balance}} gv
+                                                        ({{round($val->gv_balance * \App\Models\Currency::GVtoKzt,2)}} тг)
                                                     @else
                                                         {{ round($val->money,2) }} $
                                                         ({{round($val->money * Currency::DollarToKzt,2)}}
