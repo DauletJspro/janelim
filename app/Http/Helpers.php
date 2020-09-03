@@ -6,6 +6,7 @@ use Mockery\Exception;
 use Auth;
 use URL;
 use App;
+use Mail;
 
 class Helpers {
 
@@ -60,27 +61,48 @@ class Helpers {
         return $user_id;
     }
 
-    public static function send_mime_mail($name_from, // имя отправителя
-                            $email_from, // email отправителя
-                            $name_to, // имя получателя
-                            $email_to, // email получателя
-                            $data_charset, // кодировка переданных данных
-                            $send_charset, // кодировка письма
-                            $subject, // тема письма
-                            $body // текст письма
-    ) 
-    {
-        $to = Helpers::mime_header_encode($name_to, $data_charset, $send_charset)
-            . ' <' . $email_to . '>';
-        $from = Helpers::mime_header_encode($name_from, $data_charset, $send_charset)
-            .' <' . $email_from . '>';
+    // public static function send_mime_mail($name_from, // имя отправителя
+    //                         $email_from, // email отправителя
+    //                         $name_to, // имя получателя
+    //                         $email_to, // email получателя
+    //                         $data_charset, // кодировка переданных данных
+    //                         $send_charset, // кодировка письма
+    //                         $subject, // тема письма
+    //                         $body // текст письма
+    // ) 
+    // {
+    //     $to = Helpers::mime_header_encode($name_to, $data_charset, $send_charset)
+    //         . ' <' . $email_to . '>';
+    //     $from = Helpers::mime_header_encode($name_from, $data_charset, $send_charset)
+    //         .' <' . $email_from . '>';        
+    //     $headers  = 'MIME-Version: 1.0' . "\r\n";
+    //     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+    //     $headers .= "From: $from\r\n";        
+    //     return mail($to, $subject, $body, $headers);
+    // }
 
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= "From: $from\r\n";
-        
-        return mail($to, $subject, $body, $headers);
-    }
+    public static function send_mime_mail($data)
+    {
+        $success = Mail::send([], $data, function ($message) use ($data) {
+            if (isset($data['mail'])) {
+                $message->to([$data['mail']]);
+            }
+            else
+                $message->to([env('MAIL_FROM_ADDRESS')]);
+            $message->subject($data['subject']);
+            $message->setBody($data['content'], 'text/html');
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));        
+            if (isset($data['file'])) {
+                $message->attach($data['file']->getRealPath(), array(
+                    'as' => 'file.' . $data['file']->getClientOriginalExtension(),
+                    'mime' => $data['file']->getMimeType())
+                );
+            }
+            
+        });
+
+        return $success;        
+    }    
 
     public static function mime_header_encode($str, $data_charset, $send_charset) {
         if($data_charset != $send_charset) {

@@ -11,11 +11,11 @@
     <link href="/admin/css/admin.css?v=2" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="/favicon.png?v=4" />
 </head>
-<body class="bg-black admin-background">
+<body class="bg-black">
 <div class="form-box" id="login-box">
     <div style="text-align: center">
         <a href="/">
-            <img class="logo_svg" src="/logo_main.png?v=3" style="max-width: 220px; margin-bottom: 20px" />
+            <img class="logo_svg" src="/logo_text-removebg.png?v=3" style="max-width: 220px; margin-bottom: 20px" />
         </a>
     </div>
     <div class="header">Забыли пароль</div>
