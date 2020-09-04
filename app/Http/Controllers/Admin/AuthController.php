@@ -175,8 +175,8 @@ class AuthController extends Controller
 
         $email = $request->email;
         // $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
-        $ok = \App\Http\Helpers::send_mime_mail('info@qazaqturizm.org',
-            'info@qpartners.com',
+        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+            'info@roiclub.kz',
             $email,
             $email,
             'windows-1251',
@@ -228,8 +228,8 @@ class AuthController extends Controller
             $user->password = $password;
             $user->save();
             // $data = ['mail' => $email, 'subject' => 'Новый пароль', 'content' => view('mail.reset-password', ['new_password' => $new_password])];
-            $ok = \App\Http\Helpers::send_mime_mail('sadykov.r@maint.kz',
-                'sadykov.r@maint.kz',
+            $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                'info@roiclub.kz',
                 $email,
                 $email,
                 'windows-1251',
@@ -299,8 +299,8 @@ class AuthController extends Controller
         $email = $request->email;
         // $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
 
-        $ok = \App\Http\Helpers::send_mime_mail('info@qpartners.com',
-            'info@qpartners.com',
+        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+            'info@roiclub.kz',
             $email,
             $email,
             'windows-1251',
