@@ -174,17 +174,17 @@ class AuthController extends Controller
         $user_info->save();
 
         $email = $request->email;
-        $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
-        // $ok = \App\Http\Helpers::send_mime_mail('info@qazaqturizm.org',
-        //     'info@qpartners.com',
-        //     $email,
-        //     $email,
-        //     'windows-1251',
-        //     'UTF-8',
-        //     'Подтверждение электронной почты',
-        //     view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
-        //     true);
-        $ok = \App\Http\Helpers::send_mime_mail($data);
+        // $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
+        $ok = \App\Http\Helpers::send_mime_mail('info@qazaqturizm.org',
+            'info@qpartners.com',
+            $email,
+            $email,
+            'windows-1251',
+            'UTF-8',
+            'Подтверждение электронной почты',
+            view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
+            true);
+        // $ok = \App\Http\Helpers::send_mime_mail($data);
         $success = 'Поздравляю, Вы успешно зарегистрировались!';
 
         return view('admin.new_design_auth.login', [
@@ -227,20 +227,18 @@ class AuthController extends Controller
             // $user->password_original = $new_password;
             $user->password = $password;
             $user->save();
-            $data = ['mail' => $email, 'subject' => 'Новый пароль', 'content' => view('mail.reset-password', ['new_password' => $new_password])];
-            // $ok = \App\Http\Helpers::send_mime_mail('sadykov.r@maint.kz',
-            //     'sadykov.r@maint.kz',
-            //     $email,
-            //     $email,
-            //     'windows-1251',
-            //     'UTF-8',
-            //     'Новый пароль',
-            //     view('mail.reset-password', ['new_password' => $new_password]),
-            //     true);
-            $ok = \App\Http\Helpers::send_mime_mail($data);
-
-
-        } catch (Exception $ex) {
+            // $data = ['mail' => $email, 'subject' => 'Новый пароль', 'content' => view('mail.reset-password', ['new_password' => $new_password])];
+            $ok = \App\Http\Helpers::send_mime_mail('sadykov.r@maint.kz',
+                'sadykov.r@maint.kz',
+                $email,
+                $email,
+                'windows-1251',
+                'UTF-8',
+                'Новый пароль',
+                view('mail.reset-password', ['new_password' => $new_password]),
+                true);
+            // $ok = \App\Http\Helpers::send_mime_mail($data);            
+        } catch (\Swift_TransportException $ex) {
             $result['error'] = 'Ошибка базы данных';
             $result['error_code'] = 500;
             $result['status'] = false;
@@ -299,19 +297,19 @@ class AuthController extends Controller
         $user->save();
 
         $email = $request->email;
-        $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
+        // $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
 
-        // $ok = \App\Http\Helpers::send_mime_mail('info@qpartners.com',
-        //     'info@qpartners.com',
-        //     $email,
-        //     $email,
-        //     'windows-1251',
-        //     'UTF-8',
-        //     'Подтверждение электронной почты',
-        //     view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
-        //     true);
+        $ok = \App\Http\Helpers::send_mime_mail('info@qpartners.com',
+            'info@qpartners.com',
+            $email,
+            $email,
+            'windows-1251',
+            'UTF-8',
+            'Подтверждение электронной почты',
+            view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
+            true);
 
-        $ok = \App\Http\Helpers::send_mime_mail($data);
+        // $ok = \App\Http\Helpers::send_mime_mail($data);
         $error = 'На ваш почтовый ящик было отправлено письмо с просьбой подтвердить электронную почту';
         return view('admin.auth.login', [
             'error' => $error,
