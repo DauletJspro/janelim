@@ -74,39 +74,55 @@ class Helpers {
         $to = Helpers::mime_header_encode($name_to, $data_charset, $send_charset)
             . ' <' . $email_to . '>';
         $from = Helpers::mime_header_encode($name_from, $data_charset, $send_charset)
-            .' <' . $email_from . '>';        
+            .' <' . $email_from . '>';
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= "From: $from\r\n";        
+        $headers .= "From: $from\r\n";
         return mail($to, $subject, $body, $headers);
     }
 
-    // public static function send_mime_mail($data)
-    // {
-    //     $success = Mail::send([], $data, function ($message) use ($data) {
-    //         if (isset($data['mail'])) {
-    //             $message->to([$data['mail']]);
-    //         }
-    //         else
-    //             $message->to([env('MAIL_FROM_ADDRESS')]);
-    //         $message->subject($data['subject']);
-    //         $message->setBody($data['content'], 'text/html');
-    //         $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));        
-    //         if (isset($data['file'])) {
-    //             $message->attach($data['file']->getRealPath(), array(
-    //                 'as' => 'file.' . $data['file']->getClientOriginalExtension(),
-    //                 'mime' => $data['file']->getMimeType())
-    //             );
-    //         }
+    public static function send_mail($data)
+    {
+        // Backup your default mailer
+        $backup = Mail::getSwiftMailer();
+
+        // Setup your gmail mailer
+        $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
+        $transport->setUsername('sadykov.r@maint.kz');
+        $transport->setPassword('qkydeuyzrxiixdhn');
+        // Any other mailer configuration stuff needed...
+
+        $gmail = new \Swift_Mailer($transport);
+
+        // Set the mailer as gmail
+        Mail::setSwiftMailer($gmail);
+                
+        $success = Mail::send([], $data, function ($message) use ($data) {
+            if (isset($data['mail'])) {
+                $message->to([$data['mail']]);
+            }
+            else
+                $message->to(['sadykov.r@maint.kz']);
+            $message->subject($data['subject']);
+            $message->setBody($data['content'], 'text/html');
+            $message->from('sadykov.r@maint.kz', env('MAIL_FROM_NAME'));        
+            if (isset($data['file'])) {
+                $message->attach($data['file']->getRealPath(), array(
+                    'as' => 'file.' . $data['file']->getClientOriginalExtension(),
+                    'mime' => $data['file']->getMimeType())
+                );
+            }
             
-    //     });
+        });
+        
+        foreach(Mail::failures() as $email_address) {
+            echo " - $email_address <br />";
+        }
 
-    //     foreach(Mail::failures() as $email_address) {
-    //         echo " - $email_address <br />";
-    //     }
-
-    //     return $success;        
-    // }    
+        // Restore your original mailer
+        Mail::setSwiftMailer($backup);
+        return $success;
+    }
 
     public static function mime_header_encode($str, $data_charset, $send_charset) {
         if($data_charset != $send_charset) {
