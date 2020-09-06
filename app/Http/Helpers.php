@@ -80,50 +80,7 @@ class Helpers {
         $headers .= "From: $from\r\n";
         return mail($to, $subject, $body, $headers);
     }
-
-    public static function send_mail($data)
-    {
-        // Backup your default mailer
-        $backup = Mail::getSwiftMailer();
-
-        // Setup your gmail mailer
-        $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
-        $transport->setUsername('sadykov.r@maint.kz');
-        $transport->setPassword('qkydeuyzrxiixdhn');
-        // Any other mailer configuration stuff needed...
-
-        $gmail = new \Swift_Mailer($transport);
-
-        // Set the mailer as gmail
-        Mail::setSwiftMailer($gmail);
-                
-        $success = Mail::send([], $data, function ($message) use ($data) {
-            if (isset($data['mail'])) {
-                $message->to([$data['mail']]);
-            }
-            else
-                $message->to(['sadykov.r@maint.kz']);
-            $message->subject($data['subject']);
-            $message->setBody($data['content'], 'text/html');
-            $message->from('sadykov.r@maint.kz', env('MAIL_FROM_NAME'));        
-            if (isset($data['file'])) {
-                $message->attach($data['file']->getRealPath(), array(
-                    'as' => 'file.' . $data['file']->getClientOriginalExtension(),
-                    'mime' => $data['file']->getMimeType())
-                );
-            }
-            
-        });
-        
-        foreach(Mail::failures() as $email_address) {
-            echo " - $email_address <br />";
-        }
-
-        // Restore your original mailer
-        Mail::setSwiftMailer($backup);
-        return $success;
-    }
-
+    
     public static function mime_header_encode($str, $data_charset, $send_charset) {
         if($data_charset != $send_charset) {
             $str = iconv($data_charset, $send_charset, $str);
