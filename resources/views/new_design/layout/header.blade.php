@@ -38,14 +38,14 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <div class="drop">
                                 <ul>
                                     @if (App::isLocale('en'))
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/kz">kz</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'ru']) }}">ru</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'kz']) }}">kz</a></li>
                                     @elseif (App::isLocale('kz'))
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/en">en</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'ru']) }}">ru</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'en']) }}">en</a></li>
                                     @else
-                                        <li><a href="/kz">kz</a></li>
-                                        <li><a href="/en">en</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'kz']) }}">kz</a></li>
+                                        <li><a href="{{ route('lang', ['locale' => 'en']) }}">en</a></li>
                                     @endif                                    
                                 </ul>
                             </div>
