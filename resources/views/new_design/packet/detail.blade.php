@@ -226,6 +226,6 @@ $tab = (explode('tab=', URL::current()));
             </div>
         </div>
     </main>
-
-    @include('new_design.packet._buy_packet_modal')
+    
+    @include('new_design.packet._buy_packet_modal')    
 @endsection

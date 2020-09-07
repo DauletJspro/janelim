@@ -66,7 +66,7 @@
   <script src="<?php echo e(asset('custom2/js/jquery.main.js')); ?>"></script>
   <script src="<?php echo e(asset('notify/notify.js')); ?>"></script>
   <script src="<?php echo e(asset('notify/notify.min.js')); ?>"></script>
-  <script src=" <?php echo e(asset('custom/js/custom.js?v=20')); ?>"></script>
+  <script src=" <?php echo e(asset('custom2/js/packet.js?v=20')); ?>"></script>
   <script src=" <?php echo e(asset('custom/js/jquery.gritter.js?v=20')); ?>"></script>
   <?php echo $__env->yieldContent('js'); ?>
 

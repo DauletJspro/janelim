@@ -107,3 +107,31 @@
 .text_center {
     text-align: center;
 }
+
+.show_in_mob {
+    display: none;
+}
+
+.table-responsive-stack tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  
+  
+  .table-responsive-stack td,
+  .table-responsive-stack th {
+     display:block;
+  /*      
+     flex-grow | flex-shrink | flex-basis   */
+     -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+  }
+  
+  .table-responsive-stack .table-responsive-stack-thead {
+     font-weight: bold;
+  }  

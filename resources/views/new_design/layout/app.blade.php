@@ -66,7 +66,7 @@
   <script src="{{ asset('custom2/js/jquery.main.js') }}"></script>
   <script src="{{ asset('notify/notify.js')}}"></script>
   <script src="{{ asset('notify/notify.min.js') }}"></script>
-  <script src=" {{ asset('custom/js/custom.js?v=20') }}"></script>
+  <script src=" {{ asset('custom2/js/packet.js?v=20') }}"></script>
   <script src=" {{ asset('custom/js/jquery.gritter.js?v=20') }}"></script>
   @yield('js')
 

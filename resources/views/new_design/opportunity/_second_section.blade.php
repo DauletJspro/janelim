@@ -7,19 +7,19 @@
             {{-- <h2>{{ $guide_text->title }}</h2> --}}
             {{-- <p>{{ $guide_text->text_body }}</p> --}}
             <h2>О возможностях</h2>
-            <div>
+            <div class="opportunity_content">
               <!DOCTYPE html>
                 <html>
                   <head>
                   </head>
-                  <body>
+                  <body>                  
                   <p><strong>Пакеты:</strong></p>
-                  <p>Малый пакет 12&nbsp;000 тг. 20 CV Статус: Клиент, Доход: 4-ый уровень</p>
-                  <p>Средний пакет 36&nbsp;000 тг. 60 CV Статус: Консультант, Доход: 6-ой уровень</p>
-                  <p>Большой пакет 72&nbsp;000 тг. 120 CV Статус: Менеджер, Доход: 8-ой уровень</p>
-                  <p>VIP пакет 144&nbsp;000 тг. 240 CV Статус: Директор, Доход: 10-ый уровень</p>
+                  <p>Малый пакет 12&nbsp;000 тг. 20 CV, <span class="break_mob" >Статус: Клиент, Доход: 4-ый уровень</span></p>
+                  <p>Средний пакет 36&nbsp;000 тг. 60 CV, <span class="break_mob" >Статус: Консультант, Доход: 6-ой уровень</span></p>
+                  <p>Большой пакет 72&nbsp;000 тг. 120 CV, <span class="break_mob" >Статус: Менеджер, Доход: 8-ой уровень</span></p>
+                  <p>VIP пакет 144&nbsp;000 тг. 240 CV, <span class="break_mob" >Статус: Директор, Доход: 10-ый уровень</span></p>
                   
-                  <p><strong>Доходы</strong></p>
+                  <p><strong>Доходы:</strong></p>
                   <ol>
                   <li>
                   <p><strong>Реферальный доход</strong></p>
@@ -27,7 +27,7 @@
                   </ol>
                   <p>Пригласите друзей в один из пакетов и получите доход в размере 15% от стоимости пакета на который Вы пригласили друга. Также, получайте реферальный доход до 10-го уровня.</p>
                   <div class="table-responsive">
-                    <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
+                    {{-- <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
                       <tbody>
                         <tr>
                           <td style="width: 20%;" scope="col">ПАКЕТТЕР</td>
@@ -95,7 +95,88 @@
                           <td style="width: 8%;">3%</td>
                         </tr>
                       </tbody>
+                    </table> --}}
+                    <img src="/custom2/img/income_table.jpg" alt="">
+                  </div>
+
+
+
+                  <div class="container">                    
+                    <table class="table table-bordered table-striped table-responsive-stack"  id="tableOne">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>ПАКЕТТЕР</th>
+                          <th>1</th>
+                          <th>2</th>
+                          <th>3</th>
+                          <th>4</th>
+                          <th>5</th>
+                          <th>6</th>
+                          <th>7</th>
+                          <th>8</th>
+                          <th>9</th>
+                          <th>10</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>КІШІ ПАКЕТ</td>
+                          <td>15%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>ОРТА ПАКЕТ</td>
+                          <td>15%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>3%</td>                          
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>ҮЛКЕН ПАКЕТ</td>
+                          <td>15%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>VIP ПАКЕТ</td>
+                          <td>15%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>5%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                          <td>3%</td>
+                        </tr>                      
+                      </tbody>
                     </table>
+                  </div>
+                 <!-- /.container -->
+                  <div class="show_in_mob">
+
                   </div>
                   <ol start="2">
                   <li>
@@ -251,171 +332,7 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-
-                  {{-- <table width="100%" cellspacing="0" cellpadding="7"><colgroup><col width="113" /> <col width="114" /> <col width="114" /> <col width="114" /> <col width="113" /> </colgroup>
-                  <tbody>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Статус</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>Условие1</strong></p>
-                  <p><strong>Личное</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>Условие2</strong></p>
-                  <p><strong>Команда</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>Условие3</strong></p>
-                  <p><strong>Баланс</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>Подарок</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Клиент</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>20</strong><strong>PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p>&nbsp;</p>
-                  </td>
-                  <td width="114">
-                  <p>&nbsp;</p>
-                  </td>
-                  <td width="113">
-                  <p>&nbsp;</p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Консультант </strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>60PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 1&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>150&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Менеджер</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>120PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>9&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 3&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>450&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Директор</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>240PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>27&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 9&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>1&nbsp;000&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Бронзовый Директор</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>240PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>81&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 27&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>2&nbsp;500&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Серебряный Директор</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>240PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>243&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 81&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>Автомобиль</strong></p>
-                  <p><strong>6&nbsp;500&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113" height="18">
-                  <p><strong>Золотой Директор</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>240PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>729&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 243&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>Квартира</strong></p>
-                  <p><strong>20&nbsp;000&nbsp;000 </strong><strong>тг.</strong></p>
-                  </td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid;" valign="top">
-                  <td width="113">
-                  <p><strong>Бриллиант</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>240PV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>2&nbsp;187&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="114">
-                  <p><strong>3 x 729&nbsp;000 GV</strong></p>
-                  </td>
-                  <td width="113">
-                  <p><strong>Коттедж</strong></p>
-                  <p><strong>40&nbsp;000&nbsp;000 тг.</strong></p>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table> --}}                  
+                  </div>                          
                   </body>
                 </html>
             </div>
