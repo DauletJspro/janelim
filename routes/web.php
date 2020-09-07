@@ -330,11 +330,5 @@ Route::group([
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');    
 });
 
-Route::get('{locale}', function ($locale) {
-    if (! in_array($locale, ['en', 'ru', 'kz'])) {
-        abort(400);
-    }
-    App::setLocale($locale);
-    return redirect()->back();
-});
+Route::get('{locale}', 'LangController@setLocale');
 
