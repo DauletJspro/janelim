@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('locale/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'ru', 'kz'])) {
+        abort(400);
+    }
+    App::setLocale($locale);
+    return redirect()->back();
+});
+
 /******* Auth *******/
 Route::group([
     'middleware' => 'web',
@@ -325,14 +333,7 @@ Route::group([
     Route::get('education/{url}', 'IndexController@getEducationById');
     Route::get('project/{url}', 'IndexController@getProjectById');
     Route::get('news/{url}', 'NewsController@getNewsById');
-    Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');
-    Route::get('locale/{locale}', function ($locale) {
-        if (! in_array($locale, ['en', 'ru', 'kz'])) {
-            abort(400);
-        }
-        App::setLocale($locale);
-        return redirect()->back();
-    });
+    Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');   
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
 });
