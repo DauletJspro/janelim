@@ -2796,12 +2796,32 @@
 
 	.product_card {
 		width: auto;
-		margin: a auto;
+		margin: 0 auto;
 	}
 
 	.packet_card {
 		width: auto;
 		margin: 0 auto;
+	}
+
+	.product-slider .slide_image {
+		width: unset;
+	}
+
+	.mt-product-detial .detial-holder .product-form button {
+		width: unset;
+	}
+
+	.product-detail-tab .mt-tabs a:hover, .product-detail-tab .mt-tabs a.active {
+		border-bottom-color: transparent;
+	}
+
+	.related-products .mt-product1 {
+		width: unset;
+	}
+
+	.product-comment .rating label {
+		display: none;
 	}
 }
 

@@ -93,3 +93,17 @@
 .mt-detail-sec .block.cart .txt span {
     display: flex;
 }
+
+.product-slider .slide_image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 610px;
+    height: 490px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.text_center {
+    text-align: center;
+}

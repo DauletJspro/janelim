@@ -39,15 +39,8 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Product Slider of the Page -->
                             <div class="product-slider">
                                 <div class="slide">
-                                    <div style="
-                                            background-image: url('{{$product->product_image}}');
-                                            background-size: contain;
-                                            background-position: center;
-                                            background-repeat: no-repeat;
-                                            width: 610px;
-                                            height: 490px;
-                                            border: 1px solid lightgrey;
-                                            border-radius: 5px;
+                                    <div class="slide_image" style="
+                                            background-image: url('{{$product->product_image}}');                                            
                                             ">
 
                                     </div>
@@ -239,9 +232,9 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>ПОХОЖАЯ ПРДУКЦИЯ</h2>
+                        <h2>ПОХОЖАЯ ПРОДУКЦИЯ</h2>
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text_center">
                                 @foreach($relatedProducts as $product)
                                     <div class="mt-product1 mt-paddingbottom20">
                                         <div class="box">
