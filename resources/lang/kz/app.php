@@ -1,11 +1,34 @@
 <?php
 
 return [
-    'website_name' => 'qpartners',
+    
+    // Header
     'home' => 'Басты бет',
-    'news' => 'Жаңалықтар',
+    'products' => 'Өнімдер',
     'about_us' => 'Біз туралы',
+    'opportunities' => 'Мүмкіндіктер',    
     'contact' => 'Байланыс',
+    'cabinet' => 'Жеке кабинет',
+    'sign_in' => 'Кіру',
+    'sign_up' => 'Тіркелу',
+    
+    // Footer
+    'footer_address' => 'Алматы қ-сы, Достык к-сі, 111/2',
+    'footer_text' => '«JanElim» - бұл кәсіпкерліктің кең мүмкіндіктері бар бірегей табиғи өнімдерді ұсынатын жоба.',
+    'info' => 'Ақпарат',
+    'favorites' => 'Таңдаулылар',
+    'basket' => 'Корзина',
+    'rule_condition' => 'Ережелер мен шарттар',
+    'politic_conf' => 'Құпиялылық саясаты',
+    'subscribe' => 'Бізге жазылыңыздар',
+    'sc_network' => 'Біз әлеуметтік желілерде',
+
+    // Home page
+    'packets' => 'Пакеттер',
+    'company_products' => 'Компания Өнімдері',
+
+    'website_name' => 'qpartners',
+    'news' => 'Жаңалықтар',
     'services' => 'Қызметтер',
     'sectors' => 'Sectors',
     'write_us' => 'Write to us',
@@ -22,10 +45,8 @@ return [
     'send_message' => 'Send Message',
     'menu' => 'Menu',
     'location' => 'Location',
-    'last' => 'Last',
-    'cabinet' => 'Жеке кабинет',
-    'search' => 'Іздеу',
-    'sign_in' => 'Кіру',
+    'last' => 'Last',    
+    'search' => 'Іздеу',    
     'about_corporation' => 'Корпорация туралы',
     'last_news' => 'Соңғы жаңалықтар',
     'all_news' => 'Барлық жаңалықтар',
@@ -65,6 +86,4 @@ return [
     'photo' => 'Фото',
     'business_education' => 'Бизнес-оқыту',
     'reset_password' => 'Құпиясөзди жаңарту',
-    'footer_address' => 'Алматы қ-сы, Пушкин к-сі, 36, 4-қабат, 408 офис',
-    'footer_text' => '«QYRAN PARTNERS CLUB» - бұл халықтың көлік пен жылжымайтын мүлікті иеленуі бойынша ерекше шарттарды қалыптастыруға бағытталған масштабты жоба. Сонымен бірге, табыс табу мен саяхаттауға мүмкіндіктер ұсыну . ',
 ];

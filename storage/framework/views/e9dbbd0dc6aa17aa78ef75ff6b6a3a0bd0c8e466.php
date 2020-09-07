@@ -73,7 +73,7 @@
                                 <div class="form-group" style="text-align: center">
                                     <div class="col-md-6 main-page-div">
                                        <a style="font-weight: bold; text-decoration: underline; color: black;"
-                                           href="/reset-password">Забыли пароль?</a>
+                                           href="/reset-password">Забыли пароль?</a> 
                                     </div>
                                     <div class="col-md-6 main-page-div">
                                         <a style="font-weight: bold; text-decoration: underline; color: black;"

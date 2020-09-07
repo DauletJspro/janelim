@@ -1,11 +1,33 @@
 <?php
 
 return [
-    'website_name' => 'qpartners',
+    // Header
     'home' => 'Home',
-    'news' => 'News',
+    'products' => 'Products',
     'about_us' => 'About us',
-    'contact' => 'Contact',
+    'opportunities' => 'Opportunities',
+    'contact' => 'Contacts',
+    'cabinet' => 'Profile',
+    'sign_in' => 'Login',
+    'sign_up' => 'Register',
+    
+    // Footer
+    'footer_address' => 'Almaty, Dostyk st., 111/2',
+    'footer_text' => '«JanElim» is a project offering unique natural products with wide business opportunities.',
+    'info' => 'Information',
+    'favorites' => 'Favorites',
+    'basket' => 'Basket',
+    'rule_condition' => 'Terms and conditions',
+    'politic_conf' => 'Privacy policy',
+    'subscribe' => 'Follow us',
+    'sc_network' => 'We are in social networks',
+
+    // Home page
+    'packets' => 'Packets',
+    'company_products' => 'Company Products',
+    
+    'website_name' => 'qpartners',    
+    'news' => 'News',
     'services' => 'Services',
     'sectors' => 'Sector',
     'write_us' => 'Write to us',
@@ -23,9 +45,7 @@ return [
     'menu' => 'Menu',
     'location' => 'Location',
     'last' => 'Last',
-    'cabinet' => 'Profile',
     'search' => 'Search',
-    'sign_in' => 'Login',
     'about_corporation' => 'About corporation',
     'last_news' => 'Last news',
     'all_news' => 'All news',
@@ -65,7 +85,4 @@ return [
     'photo' => 'photo',
     'business_education' => 'Business-education',
     'reset_password' => 'Reset password',
-    'footer_address' => 'Almaty, Konaev st., 21 b, BC «Sat»',
-    'footer_text' => '«ROI Club» is a consumer club that allows citizens to get housing with a minimum package of documents, at
-the same time to live in it and buy it with the minimum rent.',
 ];

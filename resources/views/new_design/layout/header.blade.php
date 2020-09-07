@@ -28,17 +28,25 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <!-- mt-top-list start here -->
                     <ul class="mt-top-list">
                         @if(!Auth::check())                            
-                            <li><a href="/register">Регистрация</a></li>
-                            <li class="active"><a href="/login">Вход</a></li>                            
+                            <li><a href="/register"> @lang('app.sign_up') </a></li>
+                            <li class="active"><a href="/login"> @lang('app.sign_in') </a></li>                            
                         @else
-                            <li class="active"><a href="/admin/index">Мой кабинет</a></li>                            
+                            <li class="active"><a href="/admin/index"> @lang('app.cabinet') </a></li>                            
                         @endif                        
                         <div class="mt-top-lang">
-                            <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">ru<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a href="/{{ App::getLocale() }}" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <div class="drop">
                                 <ul>
-                                    <li><a href="#">kz</a></li>
-                                    <li><a href="#">en</a></li>
+                                    @if (App::isLocale('en'))
+                                        <li><a href="/ru">ru</a></li>
+                                        <li><a href="/kz">kz</a></li>
+                                    @elseif (App::isLocale('kz'))
+                                        <li><a href="/ru">ru</a></li>
+                                        <li><a href="/en">en</a></li>
+                                    @else
+                                        <li><a href="/kz">kz</a></li>
+                                        <li><a href="/en">en</a></li>
+                                    @endif                                    
                                 </ul>
                             </div>
                         </div>                        
@@ -86,10 +94,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <nav id="nav">
                         <ul>
                             <li>
-                                <a class="" href="/about-us">О компаний</a>											
+                                <a class="" href="/about-us"> @lang('app.about_us') </a>
                             </li>
                             <li>
-                                <a class="drop-link" href="#">Продукция <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+                                <a class="drop-link" href="#"> @lang('app.products') <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
                                 <div class="s-drop open">
                                     <ul>
                                         @foreach ($products as $product)
@@ -99,10 +107,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="" href="/opportunity">Возможности</a> 
+                                <a class="" href="/opportunity">  @lang('app.opportunities') </a> 
                             </li>
                             <li>
-                                <a class="" href="{{ route('contact.show') }}">Контакты</a>
+                                <a class="" href="{{ route('contact.show') }}"> @lang('app.contact') </a>
                             </li>
                         </ul>
                     </nav><!-- navigation end here -->

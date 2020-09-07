@@ -4,7 +4,7 @@
         <!-- producttabs start here -->
         <div class="producttabs">
             <p class="producttabs_title">
-                Компания Өнімдері
+                @lang('app.company_products')
             </p>
         </div>
         <!-- producttabs end here -->
@@ -32,7 +32,7 @@
                                 data-desc = "{{$product->product_desc_ru}}"
                                 data-price = "{{$product->product_price}}"
                                 data-rating = "{{\App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW)}}"
-                            >Толығырақ</a>
+                            >@lang('app.read_more')</a>
                         </div>
                         <!-- links start here -->
                         <ul class="links">

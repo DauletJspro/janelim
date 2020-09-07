@@ -48,8 +48,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>
-        </div>
-
+        </div>    
     </div>
     <div class="row profits">
         <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Группавой Обьем</h3></div>
@@ -92,8 +91,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>
-        </div>
-
+        </div>      
     </div>
     <div class="row profits">
         <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Текущий счет</h3></div>
@@ -111,17 +109,17 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
     </div>
     <div class="row packets">
         <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Мои пакеты</h3></div>
-        <?php $__currentLoopData = $userPackets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $packet): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+        <?php $__currentLoopData = $userPackets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $packet): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>            
             <div class="card  col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
-                <div class="card-body" style="position:relative;background-color:<?php echo e('#' . $packet->packet->packet_css_color); ?>">
-                    <h2 class="card-title"><?php echo e($packet->packet->packet_name_ru); ?></h2>
-                    <h3 style="font-weight: bold;"><?php echo e($packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)); ?> pv
+                <div class="card-body" style="position:relative;background-color:<?php echo e('#' . $packet->packet_css_color); ?>">
+                    <h2 class="card-title"><?php echo e($packet->packet_name_ru); ?></h2>
+                    <h3 style="font-weight: bold;"><?php echo e($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)); ?> pv
                         &emsp;
-                        <?php echo e(($packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)) * $currency); ?>
+                        <?php echo e(($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * 500); ?>
 
                         &#8376;</h3>
                     <p class="card-text">
-                        <?php echo e($packet->packet->packet_thing); ?>
+                        <?php echo e($packet->packet_thing); ?>
 
                     </p>
                     <div id="bag-icon">

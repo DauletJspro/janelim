@@ -7,7 +7,7 @@
         <!-- producttabs start here -->
         <div class="producttabs">
             <p class="producttabs_title">
-                Пакеттер
+                <?php echo app('translator')->get('app.packets'); ?>
             </p>
         </div>								
         <!-- producttabs end here -->								
@@ -27,7 +27,7 @@
                             <strong class="title"><?php echo e($packet->packet_name_ru); ?></strong>
                             <span class="price"> <?php echo e(($packet->packet_price * $currency)); ?> тг</span>
                             <p><?php echo e($packet->packet_desc_ru); ?></p>
-                            <a href="<?php echo e(route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id])); ?>">Толығырақ</a>
+                            <a href="<?php echo e(route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id])); ?>"><?php echo app('translator')->get('app.read_more'); ?></a>
                         </div>
                         <!-- links start here -->
                         

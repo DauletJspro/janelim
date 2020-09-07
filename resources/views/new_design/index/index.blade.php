@@ -1,7 +1,7 @@
 @extends('new_design.layout.app')
 @section('meta-tags')
 
-    <title>Главная</title>
+    <title>@lang('app.home')</title>
     <meta name="description"
           content="«JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="Jan Elim"/>

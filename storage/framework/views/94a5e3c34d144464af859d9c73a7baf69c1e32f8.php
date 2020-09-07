@@ -16,13 +16,13 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 ?>
 <?php $totalPrice = 0;?>
 <?php $total = 0;?>
-@if(Auth::user())
+<?php if(Auth::user()): ?>
     <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
     <?php foreach ($items as $item): ?>
     <?php $total = (\App\Models\Product::where(['product_id' => $item->product_id])->first()); ?>
     <?php $totalPrice += $total ? $total->product_price : 0; ?>
     <?php endforeach ?>
-@endif
+<?php endif; ?>
 <!-- mt -header style14 start from here -->
 <header class="style14" id="mt-header">
     <!-- mt top bar start from here -->
@@ -34,32 +34,32 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             </div>
             <div class="col-xs-12 col-sm-6 text-right">
               <div class="mt-top-lang">
-                <a href="/{{ App::getLocale() }}" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <a href="/<?php echo e(App::getLocale()); ?>" class="lang-opener" style="font-size: 12px; font-weight: bold;"><?php echo e(App::getLocale()); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <div class="drop" style="width: 25px;">
                   <ul>
-                    @if (App::isLocale('en'))
+                    <?php if(App::isLocale('en')): ?>
                       <li><a href="/ru">ru</a></li>
                       <li><a href="/kz">kz</a></li>
-                    @elseif (App::isLocale('kz'))
+                    <?php elseif(App::isLocale('kz')): ?>
                       <li><a href="/ru">ru</a></li>
                       <li><a href="/en">en</a></li>
-                    @else
+                    <?php else: ?>
                       <li><a href="/kz">kz</a></li>
                       <li><a href="/en">en</a></li>
-                    @endif                      
+                    <?php endif; ?>                      
                   </ul>
                 </div>
               </div>
-              @if(!Auth::check())
+              <?php if(!Auth::check()): ?>
                   <!-- mt top lang start from here -->  
                   <div class="mt-top-lang">
-                      <a href="/register" class="lang-opener"> @lang('app.sign_up')</a>
+                      <a href="/register" class="lang-opener"> <?php echo app('translator')->get('app.sign_up'); ?></a>
                   </div>
                   <!-- mt top lang end from here -->
-                  <span class="account"><a href="/login">@lang('app.sign_in')</a></span>
-              @else                    
-                  <span class="account"><a href="/admin/index"> @lang("app.cabinet")</a></span>
-              @endif              
+                  <span class="account"><a href="/login"><?php echo app('translator')->get('app.sign_in'); ?></a></span>
+              <?php else: ?>                    
+                  <span class="account"><a href="/admin/index"> <?php echo app('translator')->get("app.cabinet"); ?></a></span>
+              <?php endif; ?>              
             </div>
         </div>
       </div>
@@ -73,12 +73,12 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <div class="mt-logo"><a href="/"><img alt="schon" src="/custom2/img/logo/Logo-1.png"></a></div>
             <!-- mt icon list start from here -->
             <ul class="mt-icon-list">
-              {{-- <li><a class="icon-magnifier" href="#"></a></li> --}}
-              <li><a class="icon-heart" href="{{ route('favorite.showUserItem') }}"></a></li>
+              
+              <li><a class="icon-heart" href="<?php echo e(route('favorite.showUserItem')); ?>"></a></li>
               <li>
                 <a class="cart-opener" href="#">
                   <span class="icon-handbag"></span>
-                  <span class="num">{{isset($items) ? count($items) : 0}}</span>
+                  <span class="num"><?php echo e(isset($items) ? count($items) : 0); ?></span>
                 </a>
               </li>
               <li class="hidden-md hidden-lg">
@@ -93,23 +93,23 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <nav id="nav" style="float: unset;">
                 <ul>
                     <li>
-                        <a class="" href="/about-us">@lang('app.about_us')</a>
+                        <a class="" href="/about-us"><?php echo app('translator')->get('app.about_us'); ?></a>
                     </li>
                     <li>
-                        <a class="drop-link" href="#">@lang('app.products') <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
+                        <a class="drop-link" href="#"><?php echo app('translator')->get('app.products'); ?> <i class="fa fa-angle-down hidden-lg hidden-md" aria-hidden="true"></i></a>
                         <div class="s-drop open">
                             <ul>
-                                @foreach ($products as $product)
-                                    <li><a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></li>
-                                @endforeach
+                                <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                    <li><a href="<?php echo e(route('product.detail',$product->product_id, ['id' => $product->product_id])); ?>"><?php echo e($product->product_name_ru); ?></a></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a class="" href="/opportunity">@lang('app.opportunities')</a>
+                        <a class="" href="/opportunity"><?php echo app('translator')->get('app.opportunities'); ?></a>
                     </li>
                     <li>
-                        <a class="" href="{{ route('contact.show') }}">@lang('app.contact')</a>
+                        <a class="" href="<?php echo e(route('contact.show')); ?>"><?php echo app('translator')->get('app.contact'); ?></a>
                     </li>
                 </ul>
             </nav><!-- navigation end here -->

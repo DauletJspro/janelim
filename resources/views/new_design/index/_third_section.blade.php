@@ -7,7 +7,7 @@
         <!-- producttabs start here -->
         <div class="producttabs">
             <p class="producttabs_title">
-                Пакеттер
+                @lang('app.packets')
             </p>
         </div>								
         <!-- producttabs end here -->								
@@ -27,7 +27,7 @@
                             <strong class="title">{{ $packet->packet_name_ru }}</strong>
                             <span class="price"> {{ ($packet->packet_price * $currency) }} тг</span>
                             <p>{{ $packet->packet_desc_ru }}</p>
-                            <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
+                            <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">@lang('app.read_more')</a>
                         </div>
                         <!-- links start here -->
                         {{-- <ul class="links">

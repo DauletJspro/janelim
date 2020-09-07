@@ -294,7 +294,7 @@ Route::group([
 Route::group([
     'middleware' => 'web',
     'namespace' => 'Index',
-], function () {
+], function () {    
     Route::get('/', 'IndexController@index');
     Route::get('about-us', 'AboutController@showCompanyGuide')->name('about_us');
     Route::get('opportunity', 'IndexController@opportunity')->name('opportunity');
@@ -328,6 +328,12 @@ Route::group([
     Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
-
+    // Route::get('/{locale}', function ($locale) {
+    //     if (! in_array($locale, ['en', 'ru', 'kz'])) {
+    //         abort(400);
+    //     }
+    //     App::setLocale($locale);
+    //     return redirect()->back();
+    // });
 });
 

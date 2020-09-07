@@ -1,8 +1,8 @@
 <!-- footer of the Page -->
-<footer id="mt-footer" class="style5 wow fadeInUp" data-wow-delay="0.4s">
+<footer id="mt-footer" class="style4 wow fadeInUp" data-wow-delay="0.4s">
     <!-- Footer Holder of the Page -->
-    <div class="footer-holder black">
-        <div class="container-fluid">
+    <div class="footer-holder">
+        <div class="container">
             <div class="row">
                 <nav class="col-xs-12 col-sm-8 col-md-9">
                     <!-- Footer Nav of the Page -->
@@ -34,12 +34,12 @@
                             <li><a href="#"> <?php echo app('translator')->get('app.rule_condition'); ?></a></li>
                             <li><a href="#"><?php echo app('translator')->get('app.politic_conf'); ?></a></li>
                         </ul>
-                    </div><!-- Footer Nav of the Page end -->                     
+                    </div><!-- Footer Nav of the Page end -->                    
                 </nav>
                 <div class="col-xs-12 col-sm-4 col-md-3 text-right">
                     <!-- F Widget Newsletter of the Page -->
                     <div class="f-widget-newsletter">
-                        <h3 class="f-widget-heading"><?php echo app('translator')->get('app.subscribe'); ?></h3>
+                        <h3 class="f-widget-heading"> <?php echo app('translator')->get('app.subscribe'); ?></h3>
                         <div class="holder">
                             <form action="#" class="newsletter-form">
                                 <fieldset>
