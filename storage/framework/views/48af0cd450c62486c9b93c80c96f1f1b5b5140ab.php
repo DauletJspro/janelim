@@ -14,8 +14,6 @@
                   </head>
                   <body>                  
                   <p><strong>Пакеты:</strong></p>
-                  
-
                   <div class="packets_container">
                     <div class="packets_mob">
                       <p> Пакет: <span style="font-weight: 700">SMALL</span> </p>
@@ -49,28 +47,165 @@
 
                   <p><strong>Доходы:</strong></p>
                   <ol>
-                    <li style="font-size: 24px;">
+                    <li style="font-size: 24px; font-weight: 600;">
                       <p><strong>Реферальный доход</strong></p>
                     </li>
                   </ol>
                   <p>Пригласите друзей в один из пакетов и получите доход в размере 15% от стоимости пакета на который Вы пригласили друга. Также, получайте реферальный доход до 10-го уровня.</p>
                   <div class="table-responsive">
+                    <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
+                      <tbody>
+                        <tr>
+                          <td style="width: 20%;" scope="col">ПАКЕТТЕР</td>
+                          <td style="width: 8%;">1</td>
+                          <td style="width: 8%;">2</td>
+                          <td style="width: 8%;">3</td>
+                          <td style="width: 8%;">4</td>
+                          <td style="width: 8%;">5</td>
+                          <td style="width: 8%;">6</td>
+                          <td style="width: 8%;">7</td>
+                          <td style="width: 8%;">8</td>
+                          <td style="width: 8%;">9</td>
+                          <td style="width: 8%;">10</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;">КІШІ ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;">ОРТА ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;" scope="col">ҮЛКЕН ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;" scope="col">VIP ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                        </tr>
+                      </tbody>
+                    </table>
                     
-                    <img src="/custom2/img/income_table.jpg" alt="">
                   </div>                                    
                   <ol start="2">
-                    <li style="font-size: 24px;">
+                    <li style="font-size: 24px; font-weight: 600;">
                       <p><strong>Активационный доход</strong></p>
                     </li>
                   </ol>
                   <p>При повторной покупке Активный Партнер получает Активационный бонус в размере от 3% до 15% от покупок друзей до 10-го уровня.</p>
                   
                   <div class="table-responsive">
-                    <img src="/custom2/img/income_table.jpg" alt="">
+                    <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
+                      <tbody>
+                        <tr>
+                          <td style="width: 20%;" scope="col">ПАКЕТТЕР</td>
+                          <td style="width: 8%;">1</td>
+                          <td style="width: 8%;">2</td>
+                          <td style="width: 8%;">3</td>
+                          <td style="width: 8%;">4</td>
+                          <td style="width: 8%;">5</td>
+                          <td style="width: 8%;">6</td>
+                          <td style="width: 8%;">7</td>
+                          <td style="width: 8%;">8</td>
+                          <td style="width: 8%;">9</td>
+                          <td style="width: 8%;">10</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;">КІШІ ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;">ОРТА ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;" scope="col">ҮЛКЕН ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">-</td>
+                          <td style="width: 8%;">-</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 20%;" scope="col">VIP ПАКЕТ</td>
+                          <td style="width: 8%;">15%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">5%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                          <td style="width: 8%;">3%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
                   </div>
 
                   <ol start="3">
-                    <li style="font-size: 24px;">
+                    <li style="font-size: 24px; font-weight: 600;">
                       <p><strong>Подарочный доход</strong></p>
                     </li>
                   </ol>
