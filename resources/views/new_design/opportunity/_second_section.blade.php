@@ -212,7 +212,74 @@
                   <p>Создавая свою команду, Вы растете по карьерной лестнице и получаете нижеперечисленные подарки:</p>
 
                   <div class="table-responsive">
-                    <img src="/custom2/img/gift_table.jpg" alt="">
+                    <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
+                      <tbody>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Статус</td>
+                          <td style="width: 10%;">Условие-1 <br> ЛО </td>
+                          <td style="width: 10%;">Условие-2 <br> ГО </td>
+                          <td style="width: 10%;">Условие-3 <br> Баланс </td>
+                          <td style="width: 30%;">Подарок</td>                          
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;">Клиент</td>
+                          <td style="width: 10%;">20PV</td>
+                          <td style="width: 10%;"></td>
+                          <td style="width: 10%;"></td>
+                          <td style="width: 30%;"></td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;">Консультант</td>
+                          <td style="width: 10%;">60PV</td>
+                          <td style="width: 10%;">3 000GV</td>
+                          <td style="width: 10%;">3 x 1 000GV</td>
+                          <td style="width: 30%;">150 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Менеджер</td>
+                          <td style="width: 10%;">120PV</td>
+                          <td style="width: 10%;">9 000GV</td>
+                          <td style="width: 10%;">3 x 3 000GV</td>
+                          <td style="width: 30%;">450 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Директор</td>
+                          <td style="width: 10%;">240PV</td>
+                          <td style="width: 10%;">27 000GV</td>
+                          <td style="width: 10%;">3 x 9 000GV</td>
+                          <td style="width: 30%;">1 000 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Бронзовый Директор</td>
+                          <td style="width: 10%;">240PV</td>
+                          <td style="width: 10%;">81 000GV</td>
+                          <td style="width: 10%;">3 x 27 000GV</td>
+                          <td style="width: 30%;">2 500 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Серебряный Директор</td>
+                          <td style="width: 10%;">240PV</td>
+                          <td style="width: 10%;">243 000GV</td>
+                          <td style="width: 10%;">3 x 81 000GV</td>
+                          <td style="width: 30%;">Автомобиль <br> 6 500 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Золотой Директор</td>
+                          <td style="width: 10%;">240PV</td>
+                          <td style="width: 10%;">729 000GV</td>
+                          <td style="width: 10%;">3 x 243 000GV</td>
+                          <td style="width: 30%;">Квартира <br> 20 000 000 тг</td>
+                        </tr>
+                        <tr>
+                          <td style="width: 40%;" scope="col">Бриллиант</td>
+                          <td style="width: 10%;">240PV</td>
+                          <td style="width: 10%;">2 187 000GV</td>
+                          <td style="width: 10%;">3 x 729 000GV</td>
+                          <td style="width: 30%;">Коттедж <br> 40 000 000 тг</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    {{-- <img src="/custom2/img/gift_table.jpg" alt=""> --}}
                   </div>                          
                   </body>
                 </html>
