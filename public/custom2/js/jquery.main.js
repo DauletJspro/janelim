@@ -200,7 +200,7 @@ function initSlickSlider() {
 		]
 	});
 	jQuery(".centerslider-1").slick({
-		dots: false,
+		dots: true,
 		arrows: false,
 		infinite: true,
 		slidesToShow: 1,

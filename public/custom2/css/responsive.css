@@ -2850,5 +2850,14 @@
 		margin: 0px;
 		padding: 0px;
 	}
+
+	.packets_mob {
+		padding-bottom: 10px;
+		border-bottom: 1px solid #00a65a;
+	}
+	
+	.packets_container {		
+		display: block;
+	}
 }
 

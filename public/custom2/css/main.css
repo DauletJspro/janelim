@@ -4409,6 +4409,8 @@ a:hover {
 	display: block;
 	width: 100%;
 	height: auto;
+	background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .slider-3 .caption {
@@ -11267,7 +11269,7 @@ a:hover {
 }
 
 .mt-about-sec .txt p {
-	margin: 0 0 37px;
+	margin: 0 0 8px;
 }
 
 .mt-about-sec .txt strong {

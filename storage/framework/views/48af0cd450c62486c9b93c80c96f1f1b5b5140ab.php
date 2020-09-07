@@ -14,16 +14,44 @@
                   </head>
                   <body>                  
                   <p><strong>Пакеты:</strong></p>
-                  <p>Малый пакет 12&nbsp;000 тг. 20 CV, <span class="break_mob" >Статус: Клиент, Доход: 4-ый уровень</span></p>
-                  <p>Средний пакет 36&nbsp;000 тг. 60 CV, <span class="break_mob" >Статус: Консультант, Доход: 6-ой уровень</span></p>
-                  <p>Большой пакет 72&nbsp;000 тг. 120 CV, <span class="break_mob" >Статус: Менеджер, Доход: 8-ой уровень</span></p>
-                  <p>VIP пакет 144&nbsp;000 тг. 240 CV, <span class="break_mob" >Статус: Директор, Доход: 10-ый уровень</span></p>
                   
+
+                  <div class="packets_container">
+                    <div class="packets_mob">
+                      <p> Пакет: <span style="font-weight: 700">SMALL</span> </p>
+                      <p> Стоимость: <span style="font-weight: 700">12&nbsp;000 тг</span>. </p> 
+                      <p> Объем: <span style="font-weight: 700">20  PV</span>. </p>
+                      <p> Статус: <span style="font-weight: 700">Клиент</span>. </p>
+                      <p> Доход: <span style="font-weight: 700">4-ый уровень</span>.</p>
+                    </div>
+                    <div class="packets_mob">
+                      <p> Пакет: <span style="font-weight: 700">MEDIUM</span> </p>
+                      <p> Стоимость: <span style="font-weight: 700">36&nbsp;000 тг</span>. </p> 
+                      <p> Объем: <span style="font-weight: 700">60  PV</span>. </p>
+                      <p> Статус: <span style="font-weight: 700">Консультант</span>. </p>
+                      <p> Доход: <span style="font-weight: 700">6-ой уровень</span>.</p>
+                    </div>
+                    <div class="packets_mob">
+                      <p> Пакет: <span style="font-weight: 700">LARGE</span> </p>
+                      <p> Стоимость: <span style="font-weight: 700">72&nbsp;000 тг</span>. </p> 
+                      <p> Объем: <span style="font-weight: 700">120  PV</span>. </p>
+                      <p> Статус: <span style="font-weight: 700">Менеджер</span>. </p>
+                      <p> Доход: <span style="font-weight: 700">8-ой уровень</span>.</p>
+                    </div>
+                    <div class="packets_mob">
+                      <p> Пакет: <span style="font-weight: 700">VIP</span> </p>
+                      <p> Стоимость: <span style="font-weight: 700">144&nbsp;000 тг</span>. </p> 
+                      <p> Объем: <span style="font-weight: 700">240  PV</span>. </p>
+                      <p> Статус: <span style="font-weight: 700">Директор</span>. </p>
+                      <p> Доход: <span style="font-weight: 700">10-ый уровень</span>.</p>
+                    </div>
+                  </div>                  
+
                   <p><strong>Доходы:</strong></p>
                   <ol>
-                  <li>
-                  <p><strong>Реферальный доход</strong></p>
-                  </li>
+                    <li style="font-size: 24px;">
+                      <p><strong>Реферальный доход</strong></p>
+                    </li>
                   </ol>
                   <p>Пригласите друзей в один из пакетов и получите доход в размере 15% от стоимости пакета на который Вы пригласили друга. Также, получайте реферальный доход до 10-го уровня.</p>
                   <div class="table-responsive">
@@ -31,9 +59,9 @@
                     <img src="/custom2/img/income_table.jpg" alt="">
                   </div>                                    
                   <ol start="2">
-                  <li>
-                  <p><strong>Активационный доход</strong></p>
-                  </li>
+                    <li style="font-size: 24px;">
+                      <p><strong>Активационный доход</strong></p>
+                    </li>
                   </ol>
                   <p>При повторной покупке Активный Партнер получает Активационный бонус в размере от 3% до 15% от покупок друзей до 10-го уровня.</p>
                   
@@ -42,14 +70,14 @@
                   </div>
 
                   <ol start="3">
-                  <li>
-                  <p><strong>Подарочный доход</strong></p>
-                  </li>
+                    <li style="font-size: 24px;">
+                      <p><strong>Подарочный доход</strong></p>
+                    </li>
                   </ol>
                   <p>Создавая свою команду, Вы растете по карьерной лестнице и получаете нижеперечисленные подарки:</p>
 
                   <div class="table-responsive">
-                    <img src="/custom2/img/income_table.jpg" alt="">
+                    <img src="/custom2/img/gift_table.jpg" alt="">
                   </div>                          
                   </body>
                 </html>
