@@ -34,18 +34,18 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             </div>
             <div class="col-xs-12 col-sm-6 text-right">
               <div class="mt-top-lang">
-                <a href="/{{ App::getLocale() }}" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <div class="drop" style="width: 25px;">
                   <ul>
                     @if (App::isLocale('en'))
-                      <li><a href="/ru">ru</a></li>
-                      <li><a href="/kz">kz</a></li>
+                      <li><a href="/locale/ru">ru</a></li>
+                      <li><a href="/locale/kz">kz</a></li>
                     @elseif (App::isLocale('kz'))
-                      <li><a href="/ru">ru</a></li>
-                      <li><a href="/en">en</a></li>
+                      <li><a href="/locale/ru">ru</a></li>
+                      <li><a href="/locale/en">en</a></li>
                     @else
-                      <li><a href="/kz">kz</a></li>
-                      <li><a href="/en">en</a></li>
+                      <li><a href="/locale/kz">kz</a></li>
+                      <li><a href="/locale/en">en</a></li>
                     @endif                      
                   </ul>
                 </div>

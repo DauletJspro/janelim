@@ -34,18 +34,18 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <li class="active"><a href="/admin/index"> <?php echo app('translator')->get('app.cabinet'); ?> </a></li>                            
                         <?php endif; ?>                        
                         <div class="mt-top-lang">
-                            <a href="/<?php echo e(App::getLocale()); ?>" class="lang-opener" style="font-size: 12px; font-weight: bold;"><?php echo e(App::getLocale()); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;"><?php echo e(App::getLocale()); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <div class="drop">
                                 <ul>
                                     <?php if(App::isLocale('en')): ?>
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/kz">kz</a></li>
+                                        <li><a href="/locale/ru">ru</a></li>
+                                        <li><a href="/locale/kz">kz</a></li>
                                     <?php elseif(App::isLocale('kz')): ?>
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/en">en</a></li>
+                                        <li><a href="/locale/ru">ru</a></li>
+                                        <li><a href="/locale/en">en</a></li>
                                     <?php else: ?>
-                                        <li><a href="/kz">kz</a></li>
-                                        <li><a href="/en">en</a></li>
+                                        <li><a href="/locale/kz">kz</a></li>
+                                        <li><a href="/locale/en">en</a></li>
                                     <?php endif; ?>                                    
                                 </ul>
                             </div>

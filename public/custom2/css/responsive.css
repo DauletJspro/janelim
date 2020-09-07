@@ -2845,5 +2845,10 @@
 	.show_in_mob {
 		display: block;
 	}
+
+	.mt-top-bar .mt-top-lang {
+		margin: 0px;
+		padding: 0px;
+	}
 }
 
