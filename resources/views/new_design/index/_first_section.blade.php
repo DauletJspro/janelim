@@ -31,7 +31,7 @@
                 <img src="custom2/img/jantynyshtygy_banner.jpg" alt="image description">
             </div>
             <div class="caption">
-                <div class="c1">
+                <div class="c1 padding_right">
                     <div class="c2">
                         <h1>Jan Tynyshtygy</h1>
                         <h2> @lang('app.jan_tynyshtygy_text') </h2>                        

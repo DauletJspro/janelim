@@ -2866,6 +2866,10 @@
 		position: relative;
 	}
 
+	.slider-3 .caption .padding_right {
+		margin-right: 20px;
+	}
+
 	.slider-3 .text-reverse {
 		margin: 0 0 20px;
 	}
