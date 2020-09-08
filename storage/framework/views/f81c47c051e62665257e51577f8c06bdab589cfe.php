@@ -1,5 +1,5 @@
 <?php $__env->startSection('meta-tags'); ?>
-    <title>Мүмкіндіктер</title>
+    <title> <?php echo app('translator')->get('app.opportunities'); ?></title>
     <meta name="description" content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="Jan Elim"/>
 <?php $__env->stopSection(); ?>

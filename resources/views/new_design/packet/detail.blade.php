@@ -49,8 +49,8 @@ $tab = (explode('tab=', URL::current()));
                         <div class="detial-holder">
                             <!-- Breadcrumbs of the Page -->
                             <ul class="list-unstyled breadcrumbs">
-                                <li><a href="/">Главная <i class="fa fa-angle-right"></i></a></li>
-                                <li>Пакеты</li>
+                                <li><a href="/">@lang('app.home') <i class="fa fa-angle-right"></i></a></li>
+                                <li>@lang('app.products')</li>
                             </ul>
                             <!-- Breadcrumbs of the Page end -->
                             <h2>{{ $packet->packet_name_ru }}</h2>
@@ -61,7 +61,7 @@ $tab = (explode('tab=', URL::current()));
                                 <p>{{$packet->packet_desc_ru}}</p>
                             </div>
                             <div class="text-holder">
-                                <span class="price">Цена: &nbsp; ${{$packet->packet_price}} &nbsp; ({{ $packet->packet_price * $currency }} &#8376;)</span>
+                                <span class="price"> @lang('app.price'): &nbsp; ${{$packet->packet_price}} &nbsp; ({{ $packet->packet_price * $currency }} &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
                             @if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id))                            
@@ -69,7 +69,7 @@ $tab = (explode('tab=', URL::current()));
                                     <a class="product-form">                                                                                
                                         <fieldset>
                                             <div class="row-val">
-                                                <button class="submitPacket">Вы уже приобрели</button>
+                                                <button class="submitPacket"> @lang('app.purchased') </button>
                                             </div>                                            
                                         </fieldset>
                                     </a>                                    
@@ -77,7 +77,7 @@ $tab = (explode('tab=', URL::current()));
                                     <a class="product-form">
                                         <fieldset>
                                             <div class="row-val">
-                                                <button class="submitPacket" onclick="cancelResponsePacket(this,'{{$packet->packet_id}}')">Отменить запрос <i class="fa fa-arrow-circle-right"></i></button>
+                                                <button class="submitPacket" onclick="cancelResponsePacket(this,'{{$packet->packet_id}}')"> @lang('app.cancel_request') <i class="fa fa-arrow-circle-right"></i></button>
                                             </div>                                            
                                         </fieldset>
                                     </a>                                    
@@ -86,7 +86,7 @@ $tab = (explode('tab=', URL::current()));
                                 <a class="product-form" style="float: left;">
                                     <fieldset>
                                         <div class="row-val">
-                                            <button class="submitPacket buy_btn_{{$packet->packet_id}}" onclick="showBuyModal(this, '{{ $packet->packet_id }}')">Купить пакет <i class="fa fa-arrow-circle-right"></i></button>
+                                            <button class="submitPacket buy_btn_{{$packet->packet_id}}" onclick="showBuyModal(this, '{{ $packet->packet_id }}')"> @lang('app.buy_packet') <i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
                                     </fieldset>
                                 </a>                                
@@ -102,7 +102,7 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>ДРУГИЕ ПАКЕТЫ</h2>
+                        <h2> @lang('app.simple_packets') </h2>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="tabs-sliderlg">
@@ -120,7 +120,7 @@ $tab = (explode('tab=', URL::current()));
                                                     <strong class="title">{{ $packet->packet_name_ru }}</strong>
                                                     <span class="price"> {{ ($packet->packet_price * $currency) }} тг</span>
                                                     <p>{{ $packet->packet_desc_ru }}</p>
-                                                    <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
+                                                    <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}"> @lang('app.read_more') </a>
                                                 </div>
                                             </div><!-- mt product 3 end here -->
                                         </div><!-- packet_card end here -->
@@ -142,7 +142,7 @@ $tab = (explode('tab=', URL::current()));
                              style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
                             <h4 class="modal-title">Пригласить друга</h4>
                             <h5 class="modal-title">Вы можете поделиться со своими друзьями в социальной сети</h5>
-                            <h5 class="modal-title">http://local.qpartners.club/1/admin</h5>
+                            <h5 class="modal-title">https://janelim.kz/</h5>
                         </div>
                     </div>
                     <div class="modal-body">

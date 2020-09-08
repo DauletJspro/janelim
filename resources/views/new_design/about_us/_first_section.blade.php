@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 text-center">
-          <h1>Компания жайлы</h1>          
+          <h1>@lang('app.about_us')</h1>
         </div>
       </div>
     </div>

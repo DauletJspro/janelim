@@ -6,57 +6,57 @@
           <div class="txt">
             {{-- <h2>{{ $guide_text->title }}</h2> --}}
             {{-- <p>{{ $guide_text->text_body }}</p> --}}
-            <h2>О возможностях</h2>
+            <h2> @lang('app.title_opportunity')</h2>
             <div class="opportunity_content">
               <!DOCTYPE html>
                 <html>
                   <head>
                   </head>
                   <body>                  
-                  <p><strong>Пакеты:</strong></p>
+                  <p><strong> @lang('app.packets'):</strong></p>
                   <div class="packets_container">
                     <div class="packets_mob">
-                      <p> Пакет: <span style="font-weight: 700">SMALL</span> </p>
-                      <p> Стоимость: <span style="font-weight: 700">12&nbsp;000 тг</span>. </p> 
-                      <p> Объем: <span style="font-weight: 700">20  PV</span>. </p>
-                      <p> Статус: <span style="font-weight: 700">Клиент</span>. </p>
-                      <p> Доход: <span style="font-weight: 700">4-ый уровень</span>.</p>
+                      <p> @lang('app.packet'): <span style="font-weight: 700">SMALL</span> </p>
+                      <p> @lang('app.cost'): <span style="font-weight: 700">12&nbsp;000 тг</span>. </p> 
+                      <p> @lang('app.volume'): <span style="font-weight: 700">20  PV</span>. </p>
+                      <p> @lang('app.status'): <span style="font-weight: 700"> @lang('app.status_client') </span>. </p>
+                      <p> @lang('app.income'): <span style="font-weight: 700"> @lang('app.income_level_4')</span>.</p>
                     </div>
                     <div class="packets_mob">
-                      <p> Пакет: <span style="font-weight: 700">MEDIUM</span> </p>
-                      <p> Стоимость: <span style="font-weight: 700">36&nbsp;000 тг</span>. </p> 
-                      <p> Объем: <span style="font-weight: 700">60  PV</span>. </p>
-                      <p> Статус: <span style="font-weight: 700">Консультант</span>. </p>
-                      <p> Доход: <span style="font-weight: 700">6-ой уровень</span>.</p>
+                      <p> @lang('app.packet'): <span style="font-weight: 700">MEDIUM</span> </p>
+                      <p> @lang('app.cost'): <span style="font-weight: 700">36&nbsp;000 тг</span>. </p> 
+                      <p> @lang('app.volume'): <span style="font-weight: 700">60  PV</span>. </p>
+                      <p> @lang('app.status'): <span style="font-weight: 700"> @lang('app.status_consultant')</span>. </p>
+                      <p> @lang('app.income'): <span style="font-weight: 700">@lang('app.income_level_6')</span>.</p>
                     </div>
                     <div class="packets_mob">
-                      <p> Пакет: <span style="font-weight: 700">LARGE</span> </p>
-                      <p> Стоимость: <span style="font-weight: 700">72&nbsp;000 тг</span>. </p> 
-                      <p> Объем: <span style="font-weight: 700">120  PV</span>. </p>
-                      <p> Статус: <span style="font-weight: 700">Менеджер</span>. </p>
-                      <p> Доход: <span style="font-weight: 700">8-ой уровень</span>.</p>
+                      <p> @lang('app.packet'): <span style="font-weight: 700">LARGE</span> </p>
+                      <p> @lang('app.cost'): <span style="font-weight: 700">72&nbsp;000 тг</span>. </p> 
+                      <p> @lang('app.volume'): <span style="font-weight: 700">120  PV</span>. </p>
+                      <p> @lang('app.status'): <span style="font-weight: 700">@lang('app.status_manager')</span>. </p>
+                      <p> @lang('app.income'): <span style="font-weight: 700">@lang('app.income_level_8')</span>.</p>
                     </div>
                     <div class="packets_mob">
-                      <p> Пакет: <span style="font-weight: 700">VIP</span> </p>
-                      <p> Стоимость: <span style="font-weight: 700">144&nbsp;000 тг</span>. </p> 
-                      <p> Объем: <span style="font-weight: 700">240  PV</span>. </p>
-                      <p> Статус: <span style="font-weight: 700">Директор</span>. </p>
-                      <p> Доход: <span style="font-weight: 700">10-ый уровень</span>.</p>
+                      <p> @lang('app.packet'): <span style="font-weight: 700">VIP</span> </p>
+                      <p> @lang('app.cost'): <span style="font-weight: 700">144&nbsp;000 тг</span>. </p> 
+                      <p> @lang('app.volume'): <span style="font-weight: 700">240  PV</span>. </p>
+                      <p> @lang('app.status'): <span style="font-weight: 700">@lang('app.status_director')</span>. </p>
+                      <p> @lang('app.income'): <span style="font-weight: 700">@lang('app.income_level_10')</span>.</p>
                     </div>
                   </div>                  
 
-                  <p><strong>Доходы:</strong></p>
+                  <p><strong> @lang('app.incomes')</strong></p>
                   <ol>
                     <li style="font-size: 24px; font-weight: 600;">
-                      <p><strong>Реферальный доход</strong></p>
+                      <p><strong> @lang('app.referral_income')</strong></p>
                     </li>
                   </ol>
-                  <p>Пригласите друзей в один из пакетов и получите доход в размере 15% от стоимости пакета на который Вы пригласили друга. Также, получайте реферальный доход до 10-го уровня.</p>
+                  <p> @lang('messages.referral_income_text')</p>
                   <div class="table-responsive">
                     <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
                       <tbody>
                         <tr>
-                          <td style="width: 20%;" scope="col">ПАКЕТТЕР</td>
+                          <td style="width: 20%;" scope="col"> @lang('app.packets')</td>
                           <td style="width: 8%;">1</td>
                           <td style="width: 8%;">2</td>
                           <td style="width: 8%;">3</td>
@@ -69,7 +69,7 @@
                           <td style="width: 8%;">10</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;">КІШІ ПАКЕТ</td>
+                          <td style="width: 20%;"> @lang('app.small_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -82,7 +82,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;">ОРТА ПАКЕТ</td>
+                          <td style="width: 20%;"> @lang('app.medium_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -95,7 +95,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;" scope="col">ҮЛКЕН ПАКЕТ</td>
+                          <td style="width: 20%;" scope="col"> @lang('app.large_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -108,7 +108,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;" scope="col">VIP ПАКЕТ</td>
+                          <td style="width: 20%;" scope="col"> @lang('app.vip_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -126,16 +126,16 @@
                   </div>                                    
                   <ol start="2">
                     <li style="font-size: 24px; font-weight: 600;">
-                      <p><strong>Активационный доход</strong></p>
+                      <p><strong> @lang('app.activation_income')</strong></p>
                     </li>
                   </ol>
-                  <p>При повторной покупке Активный Партнер получает Активационный бонус в размере от 3% до 15% от покупок друзей до 10-го уровня.</p>
+                  <p> @lang('app.activation_income_text') </p>
                   
                   <div class="table-responsive">
                     <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
                       <tbody>
                         <tr>
-                          <td style="width: 20%;" scope="col">ПАКЕТТЕР</td>
+                          <td style="width: 20%;" scope="col"> @lang('app.packets')</td>
                           <td style="width: 8%;">1</td>
                           <td style="width: 8%;">2</td>
                           <td style="width: 8%;">3</td>
@@ -148,7 +148,7 @@
                           <td style="width: 8%;">10</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;">КІШІ ПАКЕТ</td>
+                          <td style="width: 20%;">@lang('app.small_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -161,7 +161,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;">ОРТА ПАКЕТ</td>
+                          <td style="width: 20%;">@lang('app.medium_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -174,7 +174,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;" scope="col">ҮЛКЕН ПАКЕТ</td>
+                          <td style="width: 20%;" scope="col">@lang('app.large_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -187,7 +187,7 @@
                           <td style="width: 8%;">-</td>
                         </tr>
                         <tr>
-                          <td style="width: 20%;" scope="col">VIP ПАКЕТ</td>
+                          <td style="width: 20%;" scope="col">@lang('app.vip_packet')</td>
                           <td style="width: 8%;">15%</td>
                           <td style="width: 8%;">5%</td>
                           <td style="width: 8%;">5%</td>
@@ -206,76 +206,76 @@
 
                   <ol start="3">
                     <li style="font-size: 24px; font-weight: 600;">
-                      <p><strong>Подарочный доход</strong></p>
+                      <p><strong> @lang('app.gift_income') </strong></p>
                     </li>
                   </ol>
-                  <p>Создавая свою команду, Вы растете по карьерной лестнице и получаете нижеперечисленные подарки:</p>
+                  <p> @lang('app.gift_income_text') </p>
 
                   <div class="table-responsive">
                     <table class="table" style="border-collapse: collapse; width: 100%; text-align:center; font-weight: 700;" border="1">
                       <tbody>
                         <tr>
-                          <td style="width: 40%;" scope="col">Статус</td>
-                          <td style="width: 10%;">Условие-1 <br> ЛО </td>
-                          <td style="width: 10%;">Условие-2 <br> ГО </td>
-                          <td style="width: 10%;">Условие-3 <br> Баланс </td>
-                          <td style="width: 30%;">Подарок</td>                          
+                          <td style="width: 40%;" scope="col"> @lang('app.status') </td>
+                          <td style="width: 10%;"> @lang('app.condition_1') <br> ЛО </td>
+                          <td style="width: 10%;"> @lang('app.condition_2') <br> ГО </td>
+                          <td style="width: 10%;"> @lang('app.condition_3') <br>  @lang('app.balance') </td>
+                          <td style="width: 30%;"> @lang('app.gift') </td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;">Клиент</td>
+                          <td style="width: 40%;"> @lang('app.status_client') </td>
                           <td style="width: 10%;">20PV</td>
                           <td style="width: 10%;"></td>
                           <td style="width: 10%;"></td>
                           <td style="width: 30%;"></td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;">Консультант</td>
+                          <td style="width: 40%;"> @lang('app.status_consultant') </td>
                           <td style="width: 10%;">60PV</td>
                           <td style="width: 10%;">3 000GV</td>
                           <td style="width: 10%;">3 x 1 000GV</td>
                           <td style="width: 30%;">150 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Менеджер</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_manager') </td>
                           <td style="width: 10%;">120PV</td>
                           <td style="width: 10%;">9 000GV</td>
                           <td style="width: 10%;">3 x 3 000GV</td>
                           <td style="width: 30%;">450 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Директор</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_director') </td>
                           <td style="width: 10%;">240PV</td>
                           <td style="width: 10%;">27 000GV</td>
                           <td style="width: 10%;">3 x 9 000GV</td>
                           <td style="width: 30%;">1 000 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Бронзовый Директор</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_bronze_director')</td>
                           <td style="width: 10%;">240PV</td>
                           <td style="width: 10%;">81 000GV</td>
                           <td style="width: 10%;">3 x 27 000GV</td>
                           <td style="width: 30%;">2 500 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Серебряный Директор</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_silver_director')</td>
                           <td style="width: 10%;">240PV</td>
                           <td style="width: 10%;">243 000GV</td>
                           <td style="width: 10%;">3 x 81 000GV</td>
-                          <td style="width: 30%;">Автомобиль <br> 6 500 000 тг</td>
+                          <td style="width: 30%;"> @lang('app.car') <br> 6 500 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Золотой Директор</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_gold_director')</td>
                           <td style="width: 10%;">240PV</td>
                           <td style="width: 10%;">729 000GV</td>
                           <td style="width: 10%;">3 x 243 000GV</td>
-                          <td style="width: 30%;">Квартира <br> 20 000 000 тг</td>
+                          <td style="width: 30%;"> @lang('app.flat') <br> 20 000 000 тг</td>
                         </tr>
                         <tr>
-                          <td style="width: 40%;" scope="col">Бриллиант</td>
+                          <td style="width: 40%;" scope="col"> @lang('app.status_brilliant')</td>
                           <td style="width: 10%;">240PV</td>
                           <td style="width: 10%;">2 187 000GV</td>
                           <td style="width: 10%;">3 x 729 000GV</td>
-                          <td style="width: 30%;">Коттедж <br> 40 000 000 тг</td>
+                          <td style="width: 30%;"> @lang('app.cottage') <br> 40 000 000 тг</td>
                         </tr>
                       </tbody>
                     </table>
@@ -287,13 +287,13 @@
           </div>
           <p style="white-space: pre-line;">
             <strong style="white-space: pre-line;">
-              В светлое будущее вместе с компанией Jan Elim!
+              @lang('app.future_with_company')
               {{-- {{ $guide_text->author_full_name }} --}}
             </strong>
             {{-- {{ $guide_text->author_responsibility }} --}}
           </p>
           <div class="mt-follow-holder">
-            <span class="title">Следите за нами</span>
+            <span class="title">@lang('app.subscribe')</span>
             <!-- Social Network of the Page -->
             <ul class="list-unstyled social-network">
               {{-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> --}}

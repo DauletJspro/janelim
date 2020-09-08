@@ -52,8 +52,8 @@ $tab = (explode('tab=', URL::current()));
                         <div class="detial-holder">
                             <!-- Breadcrumbs of the Page -->
                             <ul class="list-unstyled breadcrumbs">
-                                <li><a href="/">Главная <i class="fa fa-angle-right"></i></a></li>
-                                <li>Товары</li>
+                                <li><a href="/"> @lang('app.home') <i class="fa fa-angle-right"></i></a></li>
+                                <li> @lang('app.products') </li>
                             </ul>
                             <!-- Breadcrumbs of the Page end -->
                             <h2>{{ $product->product_name_ru }}</h2>
@@ -68,14 +68,14 @@ $tab = (explode('tab=', URL::current()));
                                         @endif
                                     @endfor
                                 </ul>
-                                <span class="total-price">Отзывы ({{count($reviews)}})</span>
+                                <span class="total-price"> @lang('app.reviews') ({{count($reviews)}})</span>
                             </div>
                             <!-- Rank Rating of the Page end -->
                             <div id="reload-heart">
                                 <ul class="list-unstyled list">
                                     @if(Auth::user())
                                         <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
-                                                        class="fa fa-share-alt"></i>Поделиться</a></li>
+                                                        class="fa fa-share-alt"></i> @lang('app.share') </a></li>
                                     @endif
                                     {{-- <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li> --}}
                                     <li class=""><a style="cursor: pointer;"
@@ -86,8 +86,8 @@ $tab = (explode('tab=', URL::current()));
                                                     data-route="{{route('favorite.isAjax')}}"
                                                     onclick="addItemToFavorites(this)"
                                         ><i class="fa fa-heart"
-                                            style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"></i>Добавить
-                                            в избранные</a></li>
+                                            style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"></i>
+                                            @lang('app.add_favorite') </a></li>
                                 </ul>
                             </div>
 
@@ -95,7 +95,7 @@ $tab = (explode('tab=', URL::current()));
                                 <p>{{$product->product_desc_ru}}</p>
                             </div>
                             <div class="text-holder">
-                                <span class="price">Цена: &nbsp; ${{$product->product_price}} &nbsp; ({{$product->product_price * \App\Models\Currency::DollarToKzt}} &#8376;)</span>
+                                <span class="price"> @lang('app.price'): &nbsp; ${{$product->product_price}} &nbsp; ({{$product->product_price * \App\Models\Currency::DollarToKzt}} &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
                             <form action="#" class="product-form">
@@ -105,7 +105,7 @@ $tab = (explode('tab=', URL::current()));
                                         <input type="number" id="qty" placeholder="1">
                                     </div>
                                     <div class="row-val">
-                                        <button type="submit">Добавить в корзину</button>
+                                        <button type="submit"> @lang('app.add_basket') </button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -121,9 +121,9 @@ $tab = (explode('tab=', URL::current()));
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="mt-tabs text-center text-uppercase">
-                            <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}">Описание</a></li>
-                            <li><a href="#tab2">Состав (Применение)</a></li>
-                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы({{count($reviews)}}
+                            <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}"> @lang('app.description') </a></li>
+                            <li><a href="#tab2"> @lang('app.consist') </a></li>
+                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}"> @lang('app.reviews') ({{count($reviews)}}
                                     )</a>
                             </li>
                         </ul>
@@ -180,10 +180,10 @@ $tab = (explode('tab=', URL::current()));
                                             </div>
                                         @endif
 
-                                        <h2>Добавить комментарий</h2>
+                                        <h2> @lang('app.add_comment') </h2>
 
                                         <div class="mt-row">
-                                            <label style="color: black;">Рейтинг</label>
+                                            <label style="color: black;"> @lang('app.rating') </label>
                                             <div class="rating">
                                                 <input id="demo-1" type="radio" name="rating" value="1">
                                                 <label for="demo-1">1 star</label>
@@ -232,7 +232,7 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>ПОХОЖАЯ ПРОДУКЦИЯ</h2>
+                        <h2> @lang('app.simple_products') </h2>
                         <div class="row">
                             <div class="col-xs-12 text_center">
                                 @foreach($relatedProducts as $product)
@@ -271,7 +271,7 @@ $tab = (explode('tab=', URL::current()));
                                                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                data-method="add"
                                                                onclick="addItemToBasket(this)">
-                                                                <i class="icon-handbag"></i><span>Добавить</span>
+                                                                <i class="icon-handbag"></i><span> @lang('app.add') </span>
                                                             </a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
@@ -312,7 +312,7 @@ $tab = (explode('tab=', URL::current()));
                              style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
                             <h4 class="modal-title">Пригласить друга</h4>
                             <h5 class="modal-title">Вы можете поделиться со своими друзьями в социальной сети</h5>
-                            <h5 class="modal-title">http://local.qpartners.club/1/admin</h5>
+                            <h5 class="modal-title">https://janelim.kz/</h5>
                         </div>
                     </div>
                     <div class="modal-body">

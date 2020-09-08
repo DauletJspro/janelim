@@ -34,7 +34,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             </div>
             <div class="col-xs-12 col-sm-6 text-right">
               <div class="mt-top-lang">
-                <a href="/<?php echo e(App::getLocale()); ?>" class="lang-opener" style="font-size: 12px; font-weight: bold;"><?php echo e(App::getLocale()); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;"><?php echo e(App::getLocale()); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <div class="drop" style="width: 25px;">
                   <ul>
                     <?php if(App::isLocale('en')): ?>

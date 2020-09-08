@@ -11,7 +11,7 @@ $basketIds = [];
 
 <?php $__env->startSection('meta-tags'); ?>
 
-    <title>Jan Elim Shop</title>
+    <title>  <?php echo app('translator')->get('app.shop_title'); ?></title>
     <meta name="description"
           content="JanElim - это проект предлагающий уникальную натуральную продукцию с широкими бизнес возможностями"/>
     <meta name="keywords" content="Jan Elim"/>
@@ -26,7 +26,7 @@ $basketIds = [];
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="text-center">Корзина</h1>                  
+                        <h1 class="text-center"> <?php echo app('translator')->get('app.shop'); ?> </h1>                  
                     </div>
                 </div>
             </div>
@@ -35,19 +35,19 @@ $basketIds = [];
             <div class="container">
                 <div class="row border">
                     <div class="col-xs-12 col-sm-4">
-                        <strong class="title">Продукт</strong>
+                        <strong class="title"> <?php echo app('translator')->get('app.product'); ?> </strong>
                     </div>
                     <div class="col-xs-12 col-sm-2">
-                        <strong class="title">Цена</strong>
+                        <strong class="title"> <?php echo app('translator')->get('app.price'); ?> </strong>
                     </div>
                     <div class="col-xs-12 col-sm-2">
-                        <strong class="title">Кол-во</strong>
+                        <strong class="title"> <?php echo app('translator')->get('app.count'); ?> </strong>
                     </div>
                     <div class="col-xs-12 col-sm-2">
-                        <strong class="title">Балл</strong>
+                        <strong class="title"> <?php echo app('translator')->get('app.ball'); ?> </strong>
                     </div>
                     <div class="col-xs-12 col-sm-2">
-                        <strong class="title">Итог</strong>
+                        <strong class="title"> <?php echo app('translator')->get('app.total'); ?> </strong>
                     </div>
                 </div>
                 <?php foreach ($basketItems as $item): ?>
@@ -125,11 +125,11 @@ $basketIds = [];
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <h2>Итог</h2>
+                        <h2> <?php echo app('translator')->get('app.total'); ?> </h2>
                         <ul class="list-unstyled block cart">
                             <li style="border-bottom: none;">
                                 <div class="txt-holder">
-                                    <strong class="title sub-title pull-left">Итоговая сумма:</strong>
+                                    <strong class="title sub-title pull-left"> <?php echo app('translator')->get('app.total_sum'); ?>:</strong>
                                     <div class="txt pull-right" id="total-price-div">
                                         <span><i class="fa fa-dollar"></i>
                                             <span id="total_price">
@@ -146,7 +146,7 @@ $basketIds = [];
                                 </div>
                             </li>
                         </ul>
-                        <a href="#" class="process-btn">Подтвердить заказ <i class="fa fa-check"></i></a>
+                        <a href="#" class="process-btn"> <?php echo app('translator')->get('app.confirm_order'); ?> <i class="fa fa-check"></i></a>
                     </div>
                 </div>
             </div>

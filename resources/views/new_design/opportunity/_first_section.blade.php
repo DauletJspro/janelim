@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 text-center">
-          <h1>Мүмкіндіктер</h1>          
+          <h1>@lang('app.opportunities')</h1>          
         </div>
       </div>
     </div>
