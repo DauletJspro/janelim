@@ -201,6 +201,8 @@ function initSlickSlider() {
 	});
 	jQuery(".centerslider-1").slick({
 		dots: true,
+		autoplay:true,
+  		autoplaySpeed:2000,
 		arrows: false,
 		infinite: true,
 		slidesToShow: 1,

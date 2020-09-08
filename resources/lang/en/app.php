@@ -23,6 +23,10 @@ return [
     'sc_network' => 'We are in social networks',
 
     // Home page
+    'jan_quaty_text' => 'A natural product that energizes the body. Strengthens the body`s defenses. Stimulates the active work of the body.' ,
+    'jan_tazalygy_text' => 'Cleans the body of parasites, toxins and toxins. Helps the human body to effectively and quickly remove excess substances.',
+    'jan_tynyshtygy_text' => 'Restores the nervous system. Prevents stress and depression. Improves mood and sleep.',
+
     'packets' => 'Packets',
     'company_products' => 'Company Products',
 
