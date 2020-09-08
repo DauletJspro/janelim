@@ -2,9 +2,43 @@
     /* height: 700px; */
  }
 
- .slider-3 h2 {
-     font: revert;
- }
+.slider-3 h2 {
+     /* font: revert; */
+}
+
+.slider-3 h2 {
+    font-size: 25px;
+    margin: 0 0 20px;
+    line-height: 45px;
+    padding: 20px 0px 0px 20px;
+    margin-right: 400px;
+    text-align: left;
+    color: #fff;
+    background-color: #067040;
+    opacity: 0.8;
+}
+
+.slider-3 .text-reverse {
+    padding: 20px 20px 0px 0px;
+    text-align: right;
+    margin-left: 400px; 
+    margin-right: 0px
+}
+
+.slider-3 .c2 {
+    padding: 10px 20px 40px;
+}
+
+
+.slider-3 .caption {
+    background: transparent;
+}
+
+.slider-3 h1 {
+    color: #2e2e2e;
+    font-weight: 500;
+}
+
 /*------------------------------------------------------------------
 5. Mt Bottom Bar / .mt-bottom-bar
 -------------------------------------------------------------------*/

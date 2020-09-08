@@ -579,7 +579,7 @@
 	}
 
 	.slider-3 h2 {
-		font-size: 40px;
+		font-size: 30px;
 		margin: 0 0 20px;
 		line-height: 45px;
 	}
@@ -1499,11 +1499,14 @@
 	.slider-3 h1 {
 		font-size: 40px;
 		line-height: 42px;
+		text-align: center;
 	}
 
 	.slider-3 h2 {
-		font-size: 30px;
+		font-size: 20px;
 		line-height: 32px;
+		padding: 20px !important;
+		text-align: center !important;
 	}
 
 	.slider-3 .img img {
@@ -2803,11 +2806,6 @@
 	.mt-productlisthold > li {
 		width: 100%;
 	}
-
-	.slider-3 .slick-slide {
-		height: 250px;
-	}
-
 	.product_card {
 		width: auto;
 		margin: 0 auto;
@@ -2858,6 +2856,18 @@
 	
 	.packets_container {		
 		display: block;
+	}
+
+	.slider-3 .slick-list {
+		height: auto;
+	}
+
+	.slider-3 .caption {
+		position: relative;
+	}
+
+	.slider-3 .text-reverse {
+		margin: 0 0 20px;
 	}
 }
 
