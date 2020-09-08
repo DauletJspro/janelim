@@ -328,7 +328,16 @@ Route::group([
     Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');   
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');    
-    Route::get('{locale}', 'LangController@setLocale');
+    Route::get('kz', function () {
+        App::setLocale('kz');
+        return redirect()->back();
+    });
+    Route::get('ru', function () {        
+        App::setLocale('ru');
+        return redirect()->back();
+    });
+    Route::get('en', function () {
+        App::setLocale('en');
+        return redirect()->back();
+    });
 });
-
-
