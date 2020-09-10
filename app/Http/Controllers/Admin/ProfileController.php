@@ -296,8 +296,7 @@ class ProfileController extends Controller
     
     public function editPassword(Request $request){
         $user = Users::find($request->user_id);
-        $user->password = Hash::make($request->password_new);
-        $user->password_original = $request->password_new;
+        $user->password = Hash::make($request->password_new);        
         $user->save();
         $url = '/admin/profile/'.$request->user_id.'?tab=password';
         return redirect($url);
