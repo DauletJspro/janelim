@@ -130,12 +130,12 @@ $tab = (explode('tab=', URL::current()));
                         <div class="tab-content">
                             <div id="tab1">
                                 <p style="white-space: pre-line;font-weight: 400;font-size: 110%;">
-                                    {{$product->full_description_ru}}
+                                    {!! $product->full_description_ru !!}
                                 </p>
                             </div>
                             <div id="tab2">
                                 <p style="white-space: pre-line;font-weight: 400;font-size: 110%;">
-                                    {{$product->information}}
+                                    {!! $product->information !!}
                                 </p>
                             </div>
                             <div id="tab3">
