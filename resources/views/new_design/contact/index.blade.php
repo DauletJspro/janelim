@@ -13,7 +13,7 @@
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-color: lightgrey;">
+                 style="background-color: #1b4514;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">

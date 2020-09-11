@@ -2811,7 +2811,7 @@ a:hover {
 
 #mt-footer.style5 {
 	margin: 0 auto;
-	max-width: 1200px;
+	/* max-width: 1200px; */
 }
 
 #mt-footer.style5 .footer-holder {
@@ -3046,10 +3046,10 @@ a:hover {
 }
 
 #mt-footer .footer-holder.black {
-	background: #000;
+	background: #1b4514;
 	position: relative;
 	border-bottom: none;
-	color: #666;
+	color: #fff;
 }
 
 #mt-footer .footer-holder.black .nav-widget-1 .f-widget-nav li a {
@@ -3071,7 +3071,7 @@ a:hover {
 }
 
 #mt-footer .footer-holder.black a {
-	color: #666;
+	color: #fff;
 }
 
 #mt-footer .footer-holder.black .f-widget-heading {
@@ -11168,6 +11168,7 @@ a:hover {
 	background-size: cover;
 	text-transform: capitalize;
 	background-position: 50% 50%;
+	background: #1b4514;
 }
 
 .mt-contact-banner.style4 {
@@ -11207,7 +11208,7 @@ a:hover {
 	margin: 0 0 15px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	color: #383838;
+	color: #fff;
 }
 
 .mt-contact-banner .breadcrumbs {
