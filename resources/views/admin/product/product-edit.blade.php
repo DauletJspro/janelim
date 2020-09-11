@@ -71,19 +71,19 @@ $items = \App\Models\Product::ITEM;
 
                                             <div class="form-group">
                                                 <label>Полное описание</label>
-                                                <textarea rows="10" class="form-control"
+                                                <textarea rows="10" class="form-control tinyeditor"
                                                           name="full_description_ru">{{ $row->full_description_ru }}</textarea>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Информация</label>
-                                                <textarea rows="5" class="form-control"
+                                                <textarea rows="5" class="form-control tinyeditor"
                                                           name="information">{{ $row->information }}</textarea>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Состав</label>
-                                                <textarea rows="5" class="form-control"
+                                                <textarea rows="5" class="form-control tinyeditor"
                                                           name="composition">{{ $row->composition }}</textarea>
                                             </div>
 
@@ -135,4 +135,13 @@ $items = \App\Models\Product::ITEM;
     </section>
 
 @endsection
+
+@section('js')
+<script>
+    tinymce.init({
+        selector: '.tinyeditor'
+    });
+</script>
+@endsection
+
 

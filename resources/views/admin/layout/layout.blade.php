@@ -166,6 +166,7 @@
 <script src="/custom/js/admin.js?v=11"></script>
 <script src="/admin/js/bootstrap-select.js?v=1"></script>
 <script type="text/javascript" src="{{URL('/')}}/share42/share42.js"></script>
+<script src="/custom2/tinymce/tinymce.min.js?v=11"></script>
 
 @if(isset($_GET['error']) && $_GET['error'] != '')
     <script>
