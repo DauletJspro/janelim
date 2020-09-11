@@ -30,12 +30,12 @@
     <main id="mt-main">
         <section class="mt-contact-banner"
                  {{--                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;"--}}
-                 style="background-color: #1b4514" ;
+                 style="background-color: #e2eb38" ;
         >
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1 style="color: #fff;" >Регистрация</h1>
+                        <h1 style="color: #1b4514;" >Регистрация</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}

@@ -12,11 +12,11 @@
 @section('content')
     <main id="mt-main">
         <section class="mt-contact-banner"
-                 style="background-color: #1b4514;">
+                 style="background-color: #e2eb38;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center" >
-                        <h1 style="color: #fff;">Войти</h1>
+                        <h1 style="color: #1b4514;">Войти</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 {{--                                <li><a href="index.html"> <i class="fa fa-angle-right"></i></a></li>--}}

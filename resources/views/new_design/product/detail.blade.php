@@ -286,7 +286,8 @@ $tab = (explode('tab=', URL::current()));
                                                 <a href="{{route('product.detail', ['id' => $product->product_id])}}">
                                                     {{$product->product_name_ru}}
                                                 </a>
-                                            </strong>
+                                                <p> {{ $product->product_desc_ru }} </p>
+                                            </strong>                                            
                                             <span class="price"><i class="fa fa-dollar"></i>
                                                 <span>
                                                     {{$product->product_price}} &nbsp;

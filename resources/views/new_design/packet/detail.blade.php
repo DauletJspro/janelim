@@ -119,7 +119,7 @@ $tab = (explode('tab=', URL::current()));
                                                 <div class="txt">
                                                     <strong class="title">{{ $packet->packet_name_ru }}</strong>
                                                     <span class="price"> {{ ($packet->packet_price * $currency) }} тг</span>
-                                                    <p>{{ $packet->packet_desc_ru }}</p>
+                                                    <p>{{ $packet->packet_thing }}</p>
                                                     <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}"> @lang('app.read_more') </a>
                                                 </div>
                                             </div><!-- mt product 3 end here -->

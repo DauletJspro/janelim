@@ -2688,7 +2688,7 @@ a:hover {
 	outline: none;
 	color: #fff;
 	padding: 9px 20px;
-	background: #000;
+	background: #1b4514;
 	border-radius: 21px;
 	vertical-align: top;
 	display: inline-block;
@@ -7314,7 +7314,7 @@ a:hover {
 	line-height: 21px;
 	border-width: 0 0 1px;
 	border-style: solid;
-	color: #b6b6b6;
+	color: #000;
 	border-color: #e1e1e1;
 }
 
@@ -7905,7 +7905,7 @@ a:hover {
 -------------------------------------------------------------------*/
 
 .product-detail-tab {
-	color: #aaa;
+	color: #000;
 	overflow: hidden;
 	padding: 74px 0 85px;
 	font: 300 16px/21px "Source Sans Pro", sans-serif;

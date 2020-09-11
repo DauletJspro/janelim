@@ -105,6 +105,8 @@
     width: 80%;
     border-radius: 10px;
     border: 1px solid #2e2e2e;
+    background-color: #1b4514;
+    color: #fff;
 }
 
 .product-3 .price {
