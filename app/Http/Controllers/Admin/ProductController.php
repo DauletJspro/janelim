@@ -19,6 +19,9 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $row = Product::paginate(20);
 
         return view('admin.product.product', [
@@ -80,6 +83,9 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $row = Product::where(['product_id' => $id])->first();
 
 
