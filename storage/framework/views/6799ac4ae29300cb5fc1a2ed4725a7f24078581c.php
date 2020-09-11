@@ -73,15 +73,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <!-- mt-icon-list start here -->
                     <ul class="mt-icon-list">
                         
-                        <li>
-                            <a href="<?php echo e(route('favorite.showUserItem')); ?>" class="icon-heart">											
-                                <span style="margin-bottom: -3px;" class="num"><?php echo e(count($favorites)); ?></span></a>
-                        </li>									
-                        <li>
-                            <a href="<?php echo e(route('basket.show')); ?>" class="icon-handbag">											
-                                <span class="num"><?php echo e(isset($items) ? count($items) : 0); ?></span>
-                            </a>									
-                        </li>
+                        
                         <li class="hidden-lg hidden-md">
                             <a class="bar-opener mobile-toggle" href="#">
                                 <span class="bar"></span>

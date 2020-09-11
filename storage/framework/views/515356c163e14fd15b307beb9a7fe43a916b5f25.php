@@ -11,13 +11,13 @@
           </div>
           <p style="white-space: pre-line;">
             <strong style="white-space: pre-line;">
-              В светлое будущее вместе с компанией Jan Elim!
+              <?php echo app('translator')->get('app.future_with_company'); ?>              
               
             </strong>
             
           </p>
           <div class="mt-follow-holder">
-            <span class="title">Follow Us</span>
+            <span class="title"><?php echo app('translator')->get('app.subscribe'); ?></span>
             <!-- Social Network of the Page -->
             <ul class="list-unstyled social-network">
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>

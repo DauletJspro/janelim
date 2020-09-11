@@ -35,7 +35,7 @@
                             >@lang('app.read_more')</a>
                         </div>
                         <!-- links start here -->
-                        <ul class="links">
+                        {{-- <ul class="links">
                             <li><a href="#"
                                 data-item-id="{{$product->product_id}}"
                                 data-method="add"
@@ -52,7 +52,7 @@
                                 onclick="addItemToFavorites(this)"
                             ><i class="icomoon icon-heart-empty"></i></a></li>
                             <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
-                        </ul>
+                        </ul> --}}
                     </div><!-- mt product 3 end here -->
                 </div><!-- product_card end here -->
             @endforeach

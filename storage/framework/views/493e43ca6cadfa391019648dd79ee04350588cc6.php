@@ -35,24 +35,7 @@
                             ><?php echo app('translator')->get('app.read_more'); ?></a>
                         </div>
                         <!-- links start here -->
-                        <ul class="links">
-                            <li><a href="#"
-                                data-item-id="<?php echo e($product->product_id); ?>"
-                                data-method="add"
-                                data-user-id="<?php echo e(Auth::user() ? Auth::user()->user_id : NULL); ?>"
-                                data-route="<?php echo e(route('basket.isAjax')); ?>"
-                                onclick="addItemToBasket(this)"    
-                            ><i class="icon-handbag"></i></a></li>
-                            <li><a href="#"
-                                data-item-id="<?php echo e($product->product_id); ?>"
-                                data-method="add"
-                                data-user-id="<?php echo e(Auth::user() ? Auth::user()->user_id : NULL); ?>"
-                                data-session-id="<?php echo e(Session::getId()); ?>"
-                                data-route="<?php echo e(route('favorite.isAjax')); ?>"
-                                onclick="addItemToFavorites(this)"
-                            ><i class="icomoon icon-heart-empty"></i></a></li>
-                            <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
-                        </ul>
+                        
                     </div><!-- mt product 3 end here -->
                 </div><!-- product_card end here -->
             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

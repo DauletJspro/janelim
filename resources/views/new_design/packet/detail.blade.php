@@ -20,7 +20,7 @@ $tab = (explode('tab=', URL::current()));
 @endsection
 @section('content')
 @php
-    $currency = \App\Models\Currency::DollarToKzt;
+    $currency = \App\Models\Currency::pvToKzt();
 @endphp
     <main id="mt-main">
         <!-- Mt Product Detial of the Page -->

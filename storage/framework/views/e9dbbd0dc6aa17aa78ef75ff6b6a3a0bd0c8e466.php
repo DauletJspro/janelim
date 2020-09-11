@@ -10,11 +10,11 @@
 <?php $__env->startSection('content'); ?>
     <main id="mt-main">
         <section class="mt-contact-banner"
-                 style="background-color: lightgrey;">
+                 style="background-color: #1b4514;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center" >
-                        <h1>Войти</h1>
+                        <h1 style="color: #fff;">Войти</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 

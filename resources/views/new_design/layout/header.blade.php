@@ -73,7 +73,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <!-- mt-icon-list start here -->
                     <ul class="mt-icon-list">
                         {{-- <li><a href="#" class="icon-user"></a></li> --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('favorite.showUserItem') }}" class="icon-heart">											
                                 <span style="margin-bottom: -3px;" class="num">{{count($favorites)}}</span></a>
                         </li>									
@@ -81,7 +81,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <a href="{{ route('basket.show') }}" class="icon-handbag">											
                                 <span class="num">{{isset($items) ? count($items) : 0}}</span>
                             </a>									
-                        </li>
+                        </li> --}}
                         <li class="hidden-lg hidden-md">
                             <a class="bar-opener mobile-toggle" href="#">
                                 <span class="bar"></span>

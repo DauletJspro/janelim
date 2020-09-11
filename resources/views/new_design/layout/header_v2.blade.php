@@ -74,13 +74,13 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <!-- mt icon list start from here -->
             <ul class="mt-icon-list">
               {{-- <li><a class="icon-magnifier" href="#"></a></li> --}}
-              <li><a class="icon-heart" href="{{ route('favorite.showUserItem') }}"></a></li>
+              {{-- <li><a class="icon-heart" href="{{ route('favorite.showUserItem') }}"></a></li>
               <li>
                 <a class="cart-opener" href="#">
                   <span class="icon-handbag"></span>
                   <span class="num">{{isset($items) ? count($items) : 0}}</span>
                 </a>
-              </li>
+              </li> --}}
               <li class="hidden-md hidden-lg">
                 <a href="#" class="bar-opener big mobile-toggle">
                   <span class="bar"></span>

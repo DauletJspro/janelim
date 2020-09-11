@@ -52,6 +52,9 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {        
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $products = Product::all();
         $packets = Packet::all();  
         // dd($products[0]->product_id);        
@@ -78,6 +81,9 @@ class IndexController extends Controller
 
     public function opportunity(Request $request)
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $products = Product::all();
         // $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
         //     \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
@@ -149,6 +155,9 @@ class IndexController extends Controller
 
     public function contact(Request $request)
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $products = Product::all();
 
         return view('new_design.contact.index',
