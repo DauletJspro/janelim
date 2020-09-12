@@ -51,13 +51,13 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
         </div>    
     </div>
     <div class="row profits">
-        <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Группавой Обьем</h3></div>
+        <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Групповой Объем</h3></div>
         <div class="col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title">На сегодня</h5>
                     <p class="card-text"><?php echo e(round($gvData['gvProfitToday'],2)); ?> gv</p>
-                    <p class="card-text"><?php echo e(round($gvData['gvProfitToday'] * \App\Models\Currency::GVtoKzt,2)); ?> &#8376; </p>
+                    
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>
@@ -67,7 +67,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                 <div class="card-body text-center">
                     <h5 class="card-title">За последнюю неделю</h5>
                     <p class="card-text"><?php echo e(round($gvData['gvProfitLastWeek'],2)); ?> gv</p>
-                    <p class="card-text"><?php echo e(round($gvData['gvProfitLastWeek'] * \App\Models\Currency::GVtoKzt,2)); ?> &#8376; </p>
+                    
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>
@@ -77,7 +77,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                 <div class="card-body text-center">
                     <h5 class="card-title">За последний месяц</h5>
                     <p class="card-text"><?php echo e(round($gvData['gvProfitLastMonth'],2)); ?> gv</p>
-                    <p class="card-text"><?php echo e(round($gvData['gvProfitLastMonth'] * \App\Models\Currency::GVtoKzt,2)); ?> &#8376; </p>
+                    
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>
@@ -87,7 +87,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                 <div class="card-body text-center">
                     <h5 class="card-title">За весь период</h5>
                     <p class="card-text"><?php echo e(round($gvData['gvProfitAll'],2)); ?> gv</p>
-                    <p class="card-text"><?php echo e(round($gvData['gvProfitAll'] * \App\Models\Currency::GVtoKzt,2)); ?> &#8376; </p>
+                    
                     <a href="#" class="btn btn-primary">Доход</a>
                 </div>
             </div>

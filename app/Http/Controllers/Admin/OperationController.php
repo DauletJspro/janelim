@@ -24,6 +24,7 @@ class OperationController extends Controller
     public function index(Request $request)
     {
         $row = UserOperation::leftJoin('users', 'users.user_id', '=', 'user_operation.author_id')
+            // ->leftJoin('user_operation as user_operation_2', 'user_operation_2.user_id', '=', 'user_operation.user_id')
             ->leftJoin('users as recipient_user', 'recipient_user.user_id', '=', 'user_operation.recipient_id')
             ->leftJoin('operation', 'operation.operation_id', '=', 'user_operation.operation_id')
             ->leftJoin('operation_type', 'operation_type.operation_type_id', '=', 'user_operation.operation_type_id')
@@ -31,6 +32,7 @@ class OperationController extends Controller
             ->where('operation.operation_name_ru', 'like', '%' . $request->operation . '%')
             ->where('operation_type.operation_type_name_ru', 'like', '%' . $request->operation_type . '%')
             ->orderBy('user_operation_id', 'desc')
+            // ->groupBy('recipient_user.user_id', 'users.user_id', 'user_operation.created_at')
             ->select('users.*',
                 'user_operation.money',
                 'user_operation.operation_type_id',

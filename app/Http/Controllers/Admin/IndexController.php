@@ -25,6 +25,17 @@ class IndexController extends Controller
         $this->middleware('profile', ['only' => ['index', 'callFriend']]);
     }
 
+    public function reCalcPvBalance()
+    {
+        $users = Users::all();
+        foreach ($users as $user) {
+            if ($user->pv_balance) {
+                $user->pv_balance = $user->pv_balance * (Currency::DollarToKzt / Currency::PVtoKzt);
+                $user->save();
+            }
+        }
+    }
+
     public function index(Request $request)
     {
         $userOperation = new UserOperation();
