@@ -36,7 +36,7 @@ Route::group([
 ], function () {
 
     Route::get('index', 'IndexController@index');
-    Route::get('pv_balanceCalc', 'IndexController@reCalcPvBalance');
+    // Route::get('pv_balanceCalc', 'IndexController@reCalcPvBalance');
 
     Route::get('world/{packet_url}', 'WorldController@clientList');
     Route::get('standart', 'WorldController@standart');
