@@ -293,7 +293,7 @@ class PacketController extends Controller
             $pvPrice = ($packet->packet_price - $packet_old_price) * (Currency::PVtoKzt / Currency::DollarToKzt);
             $rest_mooney = $user->user_money - $pvPrice;
             $user->user_money = $rest_mooney;
-            $user->pv_balance = $user->pv_balance + $pvPrice;
+            $user->pv_balance = $user->pv_balance + ($packet->packet_price - $packet_old_price);
             $user->save();
 
 
