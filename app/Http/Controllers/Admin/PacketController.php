@@ -340,7 +340,10 @@ class PacketController extends Controller
     {
 
         $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
-
+        $userPacket = UserPacket::find($request->packet_id);
+        $user = Users::where(['user_id' => $userPacket->user_id])->first();
+        $user->pv_balance = $user->pv_balance + $userPacket->packet_price;
+        $user->save();
         $result['message'] = 'Вы успешно приняли запрос';
         $result['status'] = true;
         return response()->json($result);
