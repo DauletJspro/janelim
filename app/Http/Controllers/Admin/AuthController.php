@@ -110,15 +110,13 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $messages = $validator->errors();
-            $error = $messages->all();
-            dd($messages);
+            $error = $messages->all();            
             return view('admin.new_design_auth.register', [
                 'title' => '',
                 'row' => (object)$request->all(),
                 'error' => $error[0]
             ]);
-        }
-        dd('sss');
+        }        
         $user = new Users();
         $user->name = $request->name;
         $user->last_name = $request->last_name;
