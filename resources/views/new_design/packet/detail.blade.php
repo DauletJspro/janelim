@@ -61,7 +61,7 @@ $tab = (explode('tab=', URL::current()));
                                 <p>{{$packet->packet_desc_ru}}</p>
                             </div>
                             <div class="text-holder">
-                                <span class="price"> @lang('app.price'): &nbsp; ${{$packet->packet_price}} &nbsp; ({{ $packet->packet_price * $currency }} &#8376;)</span>
+                                <span class="price"> @lang('app.price'): &nbsp; {{$packet->packet_price}} PV &nbsp; ({{ $packet->packet_price * $currency }} &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
                             @if(Auth::user() && \App\Models\UserPacket::hasPacket($packet->packet_id))                            

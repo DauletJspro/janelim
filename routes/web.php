@@ -289,8 +289,8 @@ Route::group([
     Route::post('image/upload/doc', 'ImageController@uploadDocument');
     Route::post('images/upload', 'ImageController@uploadMultipleImages');
     Route::get('media/{file_name}', 'ImageController@getImage')->where('file_name', '.*');
-    Route::get('makeZeroGV', 'ReCalcController@makeZeroGV');
-    Route::get('reCalc', 'ReCalcController@reCalc');    
+    // Route::get('makeZeroGV', 'ReCalcController@makeZeroGV');
+    // Route::get('reCalc', 'ReCalcController@reCalc');    
 });
 
 /******* Index *******/
