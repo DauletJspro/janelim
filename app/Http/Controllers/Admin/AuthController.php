@@ -103,21 +103,22 @@ class AuthController extends Controller
             'password' => 'required|min:5',
             'recommend_user_id' => 'required',
             'confirm_password' => 'required|same:password',
-            'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
-            'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
-            'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
+            'email' => 'required|email|unique:users',
+            'login' => 'required|unique:users',
+            'phone' => 'required|unique:users',
         ]);
 
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();
+            dd($messages);
             return view('admin.new_design_auth.register', [
                 'title' => '',
                 'row' => (object)$request->all(),
                 'error' => $error[0]
             ]);
         }
-
+        dd('sss');
         $user = new Users();
         $user->name = $request->name;
         $user->last_name = $request->last_name;
