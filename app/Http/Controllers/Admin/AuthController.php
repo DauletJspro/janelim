@@ -173,16 +173,18 @@ class AuthController extends Controller
 
         $user_info->save();
 
-        $email = $request->email;        
-        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
-            'info@roiclub.kz',
-            $email,
-            $email,
-            'windows-1251',
-            'UTF-8',
-            'Подтверждение электронной почты',
-            view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
-            true);    
+        $email = $request->email;
+        $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
+        $ok = \App\Http\Helpers::send_mail($data);
+        // $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+        //     'info@roiclub.kz',
+        //     $email,
+        //     $email,
+        //     'windows-1251',
+        //     'UTF-8',
+        //     'Подтверждение электронной почты',
+        //     view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email]),
+        //     true);
         $success = 'Поздравляю, Вы успешно зарегистрировались!';
 
         return view('admin.new_design_auth.login', [

@@ -115,7 +115,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                     <h2 class="card-title"><?php echo e($packet->packet_name_ru); ?></h2>
                     <h3 style="font-weight: bold;"><?php echo e($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)); ?> pv
                         &emsp;
-                        <?php echo e(($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * 500); ?>
+                        <?php echo e(($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * 600); ?>
 
                         &#8376;</h3>
                     <p class="card-text">
