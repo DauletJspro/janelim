@@ -225,7 +225,7 @@ class AuthController extends Controller
             // $user->password_original = $new_password;
             $user->password = $password;
             $user->save();
-            $data = ['mail' => $email, 'subject' => 'Подтверждение электронной почты', 'content' => view('mail.confirm-email', ['hash' => $hash_email, 'email' => $request->email])];
+            $data = ['mail' => $email, 'subject' => 'Новый пароль', 'content' => view('mail.reset-password', ['new_password' => $new_password])];
             $ok = \App\Http\Helpers::send_mail($data);
             // $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
             //     'info@roiclub.kz',
