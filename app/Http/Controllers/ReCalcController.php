@@ -52,7 +52,7 @@ class ReCalcController extends Controller
 
     public function  banRepeatedUser() {
         // $users = Users::select('login', 'email', 'phone')->distinct()->get();
-        $users = Users::select('user_id', 'login', 'email', 'phone', 'created_at')->get();
+        $users = Users::all();
         $usersUnique = $users->unique('login')->unique('email')->unique('phone');
         $usersDupes = $users->diff($usersUnique);
 
