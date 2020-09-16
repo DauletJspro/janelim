@@ -52,15 +52,15 @@ class ReCalcController extends Controller
 
     public function  banRepeatedUser() {
         // $users = Users::select('login', 'email', 'phone')->distinct()->get();
-        $users = Users::all();
+        $users = Users::select('user_id', 'login', 'email', 'phone')->get();
         $usersUnique = $users->unique('login')->unique('email')->unique('phone');
         $usersDupes = $users->diff($usersUnique);
 
         foreach ($usersDupes as $userDup) {
             $user_packet = UserPacket::where('user_id', $userDup->user_id)->where('is_active', 1)->first();
             $user_follower = Users::where('recommend_user_id', $userDup->user_id)->first();
-            if (!$user_packet && !$user_follower) {
-                return $userDup->delete();
+            if (!$user_packet && !$user_follower) {                
+                $userDup->delete();
             }
         }
         
