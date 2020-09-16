@@ -38,15 +38,15 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <div class="drop">
                                 <ul>
                                     <?php if(App::isLocale('en')): ?>
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/kz">kz</a></li>
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('ru',$request)); ?>">ru</a></li>
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('kz',$request)); ?>">kz</a></li>
                                     <?php elseif(App::isLocale('kz')): ?>
-                                        <li><a href="/ru">ru</a></li>
-                                        <li><a href="/en">en</a></li>
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('ru',$request)); ?>">ru</a></li>
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('en',$request)); ?>">en</a></li>
                                     <?php else: ?>
-                                        <li><a href="/kz">kz</a></li>
-                                        <li><a href="/en">en</a></li>
-                                    <?php endif; ?>                                    
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('kz',$request)); ?>">kz</a></li>
+                                        <li><a href="<?php echo e(\App\Http\Helpers::setSessionLang('en',$request)); ?>">en</a></li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>                        

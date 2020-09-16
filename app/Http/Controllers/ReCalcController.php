@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Helpers;
-use App\Models\News;
-use App\Models\About;
-use App\Models\Product;
 use App\Models\Users;
+use App\Models\UserPacket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -44,23 +42,29 @@ class ReCalcController extends Controller
         dd($userRank);
     }
 
-    // public function recursive($arr = [])
-    // {
-    //     for ($i=0; $i < count($arr); $i++) { 
-    //         $user_follower = Users::where('recommend_user_id', $arr[$i])->get();
-
-    //         for ($i=0; $i < count($user_follower); $i++) { 
-                
-    //         }
-    //     }
-    // }
-
-    public static function makeZeroGV()
+    public function makeZeroGV()
     {
         Users::where('gv_balance', '>', 0)->update(['gv_balance' => 0]);
 
         
         return 'success';
-    }    
+    }
+
+    public function  banRepeatedUser() {
+        // $users = Users::select('login', 'email', 'phone')->distinct()->get();
+        $users = Users::select('user_id', 'login', 'email', 'phone', 'created_at')->get();
+        $usersUnique = $users->unique('login')->unique('email')->unique('phone');
+        $usersDupes = $users->diff($usersUnique);
+
+        foreach ($usersDupes as $userDup) {
+            $user_packet = UserPacket::where('user_id', $userDup->user_id)->where('is_active', 1)->get();
+            $user_follower = Users::where('recommend_user_id', $userDup->user_id)->get();            
+            if (!$user_packet && !$user_follower) {                
+                return $userDup->delete();
+            }
+        }
+        
+        return $usersDupes;
+    }
     
 }
