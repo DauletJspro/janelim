@@ -33,7 +33,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         @else
                             <li class="active"><a href="/admin/index"> @lang('app.cabinet') </a></li>                            
                         @endif                        
-                        <div class="mt-top-lang">
+                        <div class="mt-top-lang" style="display: none">
                             <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <div class="drop">
                                 <ul>

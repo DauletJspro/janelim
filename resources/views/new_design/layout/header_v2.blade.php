@@ -33,7 +33,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <span class="tel active" onclick="tel:+77019150511"> <i class="fa fa-phone" aria-hidden="true"></i> +7 (701) 915 05 11</span>
             </div>
             <div class="col-xs-12 col-sm-6 text-right">
-              <div class="mt-top-lang">
+              <div class="mt-top-lang" style="display: none">
                 <a href="#" class="lang-opener" style="font-size: 12px; font-weight: bold;">{{ App::getLocale() }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <div class="drop" style="width: 25px;">
                   <ul>
