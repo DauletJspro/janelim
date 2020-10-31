@@ -338,7 +338,6 @@ class PacketController extends Controller
 
     public function acceptInactiveUserPacket(Request $request)
     {
-
         $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
         $userPacket = UserPacket::find($request->packet_id);
         $user = Users::where(['user_id' => $userPacket->user_id])->first();
@@ -580,10 +579,10 @@ class PacketController extends Controller
             $operation->operation_id = 1;
             $operation->operation_type_id = 11;
             $operation->operation_comment = 'Групповой доход от. "' . $packet->packet_name_ru . 'в размере. ' . $packet->packet_price;
-            $operation->gv_balance = $packet->packet_price;
+            $operation->gv_balance = $userPacket->packet_price;
             $operation->save();
 
-            $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
+            $inviter->gv_balance = $inviter->gv_balance + $userPacket->packet_price;
             $inviter->save();
 
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
@@ -685,28 +684,7 @@ class PacketController extends Controller
                 } elseif ($inviterOrder == 7 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::GOLD_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 8 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::RUBIN_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 9 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SAPPHIRE_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::EMERALD_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
+                }  elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::BRILLIANT_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
                 }
