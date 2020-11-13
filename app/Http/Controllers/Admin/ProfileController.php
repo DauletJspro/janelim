@@ -29,14 +29,14 @@ class ProfileController extends Controller
 
     public function profile($id)
     {
-        $row = Users::leftJoin('city','city.city_id','=','users.city_id')
-            ->leftJoin('country','country.country_id','=','city.country_id')
-            ->leftJoin('user_status','user_status.user_status_id','=','users.status_id')
-            ->leftJoin('users as recommend','recommend.user_id','=','users.recommend_user_id')
-            ->leftJoin('user_info','user_info.user_id','=','users.user_id')
-            ->leftJoin('city as fact_city','fact_city.city_id','=','user_info.fact_city_id')
-            ->leftJoin('country as fact_country','fact_country.country_id','=','fact_city.country_id')
-            ->where('users.user_id',$id)
+        $row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
+            ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
+            ->leftJoin('user_status', 'user_status.user_status_id', '=', 'users.status_id')
+            ->leftJoin('users as recommend', 'recommend.user_id', '=', 'users.recommend_user_id')
+            ->leftJoin('user_info', 'user_info.user_id', '=', 'users.user_id')
+            ->leftJoin('city as fact_city', 'fact_city.city_id', '=', 'user_info.fact_city_id')
+            ->leftJoin('country as fact_country', 'fact_country.country_id', '=', 'fact_city.country_id')
+            ->where('users.user_id', $id)
             ->select('users.*',
                 'city.*',
                 'country.*',
@@ -52,65 +52,65 @@ class ProfileController extends Controller
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y") as date'))
             ->first();
 
-        if($row == null) abort(404);
+        if ($row == null) abort(404);
 
-        $row->packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')
-            ->leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
-            ->where('user_packet.user_id',$id)
+        $row->packet = UserPacket::leftJoin('users', 'users.user_id', '=', 'user_packet.user_id')
+            ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->where('user_packet.user_id', $id)
             ->orderBy('packet.sort_num')
             ->get();
 
-        $row->profit_all = UserOperation::where('recipient_id',$id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+        $row->profit_all = UserOperation::where('recipient_id', $id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
             ->sum('money');
 
-        $row->profit_today = UserOperation::where('recipient_id',$id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d"))
+        $row->profit_today = UserOperation::where('recipient_id', $id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $row->profit_last_week = UserOperation::where('recipient_id',$id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
+        $row->profit_last_week = UserOperation::where('recipient_id', $id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-        $row->profit_last_month = UserOperation::where('recipient_id',$id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $row->profit_last_month = UserOperation::where('recipient_id', $id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
-        $row->shareholder_profit_today = UserOperation::where('operation_type_id',5)
-            ->where('created_at','>',date("Y-m-d"))
+        $row->shareholder_profit_today = UserOperation::where('operation_type_id', 5)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
 
-        $row->currency = Currency::where('currency_name','тенге')->first();
+        $row->currency = Currency::where('currency_name', 'тенге')->first();
 
         $row->password_new = 123456;
 
-        $row->statuses = UserStatus::orderBy('sort_num','asc')
-            ->where('is_show',1)
+        $row->statuses = UserStatus::orderBy('sort_num', 'asc')
+            ->where('is_show', 1)
             ->get();
 
-        return  view('admin.profile.profile', [
+        return view('admin.profile.profile', [
             'row' => $row
         ]);
     }
 
     public function myProfile()
     {
-        $row = Users::leftJoin('city','city.city_id','=','users.city_id')
-            ->leftJoin('country','country.country_id','=','city.country_id')
-            ->leftJoin('user_status','user_status.user_status_id','=','users.status_id')
-            ->leftJoin('users as recommend','recommend.user_id','=','users.recommend_user_id')
-            ->leftJoin('user_info','user_info.user_id','=','users.user_id')
-            ->leftJoin('city as fact_city','fact_city.city_id','=','user_info.fact_city_id')
-            ->leftJoin('country as fact_country','fact_country.country_id','=','fact_city.country_id')
-            ->where('users.user_id',Auth::user()->user_id)
+        $row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
+            ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
+            ->leftJoin('user_status', 'user_status.user_status_id', '=', 'users.status_id')
+            ->leftJoin('users as recommend', 'recommend.user_id', '=', 'users.recommend_user_id')
+            ->leftJoin('user_info', 'user_info.user_id', '=', 'users.user_id')
+            ->leftJoin('city as fact_city', 'fact_city.city_id', '=', 'user_info.fact_city_id')
+            ->leftJoin('country as fact_country', 'fact_country.country_id', '=', 'fact_city.country_id')
+            ->where('users.user_id', Auth::user()->user_id)
             ->select('users.*',
                 'city.*',
                 'country.*',
@@ -123,53 +123,53 @@ class ProfileController extends Controller
                 'recommend.user_id as recommend_user_id',
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y") as date'))
             ->first();
-        
-        if($row == null) abort(404);
 
-        $row->packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')
-                        ->leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
-                        ->where('user_packet.user_id',Auth::user()->user_id)
-                        ->orderBy('packet.sort_num')
-                        ->get();
+        if ($row == null) abort(404);
 
-        $row->profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+        $row->packet = UserPacket::leftJoin('users', 'users.user_id', '=', 'user_packet.user_id')
+            ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->where('user_packet.user_id', Auth::user()->user_id)
+            ->orderBy('packet.sort_num')
+            ->get();
+
+        $row->profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
             ->sum('money');
 
-        $row->profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d"))
+        $row->profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $row->profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
+        $row->profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-        $row->profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $row->profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_id', 1)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
-        $row->shareholder_profit_today = UserOperation::where('operation_type_id',5)
-            ->where('operation_type_id','!=',2)
-            ->where('created_at','>',date("Y-m-d"))
+        $row->shareholder_profit_today = UserOperation::where('operation_type_id', 5)
+            ->where('operation_type_id', '!=', 2)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
 
-        $row->currency = Currency::where('currency_name','тенге')->first();
+        $row->currency = Currency::where('currency_name', 'тенге')->first();
 
         $row->password_new = 123456;
 
-        $row->statuses = UserStatus::orderBy('sort_num','asc')
-            ->where('is_show',1)
+        $row->statuses = UserStatus::orderBy('sort_num', 'asc')
+            ->where('is_show', 1)
             ->get();
 
-        return  view('admin.profile.profile', [
+        return view('admin.profile.profile', [
             'row' => $row,
             'is_own' => 1
         ]);
@@ -177,25 +177,25 @@ class ProfileController extends Controller
 
     public function edit()
     {
-        $row = Users::leftJoin('user_info','user_info.user_id','=','users.user_id')
-            ->where('users.user_id',Auth::user()->user_id)
+        $row = Users::leftJoin('user_info', 'user_info.user_id', '=', 'users.user_id')
+            ->where('users.user_id', Auth::user()->user_id)
             ->first();
 
-        $country_row = Country::orderBy('sort_num','asc')
-            ->orderBy('country_name_ru','asc')
-            ->where('is_show',1)
+        $country_row = Country::orderBy('sort_num', 'asc')
+            ->orderBy('country_name_ru', 'asc')
+            ->where('is_show', 1)
             ->get();
 
-        $city_row = City::orderBy('city_name_ru','asc')
-            ->where('is_show',1)
-            ->where('country_id',1)
+        $city_row = City::orderBy('city_name_ru', 'asc')
+            ->where('is_show', 1)
+            ->where('country_id', 1)
             ->get();
 
-        $statuses = UserStatus::orderBy('sort_num','asc')
-            ->where('is_show',1)
+        $statuses = UserStatus::orderBy('sort_num', 'asc')
+            ->where('is_show', 1)
             ->get();
 
-        return  view('admin.profile.profile-edit', [
+        return view('admin.profile.profile-edit', [
             'title' => 'Редактировать данные',
             'country_row' => $country_row,
             'statuses' => $statuses,
@@ -216,32 +216,32 @@ class ProfileController extends Controller
             'card_number' => 'required',
             'bank_name' => 'required',
             'document_number' => 'required',
-            'email' => 'required|email|unique:users,email,' .Auth::user()->user_id .',user_id,deleted_at,NULL',
-            'login' => 'required|unique:users,login,' .Auth::user()->user_id .',user_id,deleted_at,NULL',
-            'phone' => 'required|unique:users,phone,' .Auth::user()->user_id .',user_id,deleted_at,NULL'
+            'email' => 'required|email|unique:users,email,' . Auth::user()->user_id . ',user_id,deleted_at,NULL',
+            'login' => 'required|unique:users,login,' . Auth::user()->user_id . ',user_id,deleted_at,NULL',
+            'phone' => 'required|unique:users,phone,' . Auth::user()->user_id . ',user_id,deleted_at,NULL'
         ]);
 
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();
 
-            $country_row = Country::orderBy('sort_num','asc')
-                ->orderBy('country_name_ru','asc')
-                ->where('is_show',1)
+            $country_row = Country::orderBy('sort_num', 'asc')
+                ->orderBy('country_name_ru', 'asc')
+                ->where('is_show', 1)
                 ->get();
 
-            $city_row = City::orderBy('city_name_ru','asc')
-                ->where('is_show',1)
-                ->where('country_id',1)
+            $city_row = City::orderBy('city_name_ru', 'asc')
+                ->where('is_show', 1)
+                ->where('country_id', 1)
                 ->get();
 
-            $statuses = UserStatus::orderBy('sort_num','asc')
-                ->where('is_show',1)
+            $statuses = UserStatus::orderBy('sort_num', 'asc')
+                ->where('is_show', 1)
                 ->get();
 
-            return  view('admin.profile.profile-edit', [
+            return view('admin.profile.profile-edit', [
                 'title' => 'Редактировать данные',
-                'row' => (object) $request->all(),
+                'row' => (object)$request->all(),
                 'error' => $error[0],
                 'country_row' => $country_row,
                 'statuses' => $statuses,
@@ -254,14 +254,14 @@ class ProfileController extends Controller
         $user->last_name = $request->last_name;
         $user->middle_name = $request->middle_name;
 
-        if(Auth::user()->role_id == 1){
-            $user->status_id = $request->status_id?$request->status_id:null;
+        if (Auth::user()->role_id == 1) {
+            $user->status_id = $request->status_id ? $request->status_id : null;
         }
 
-        $request->instagram = str_replace('http://www.instagram.com/','',$request->instagram);
-        $request->instagram = str_replace('https://www.instagram.com/','',$request->instagram);
-        $request->instagram = str_replace('https://instagram.com/','',$request->instagram);
-        $request->instagram = str_replace('http://instagram.com/','',$request->instagram);
+        $request->instagram = str_replace('http://www.instagram.com/', '', $request->instagram);
+        $request->instagram = str_replace('https://www.instagram.com/', '', $request->instagram);
+        $request->instagram = str_replace('https://instagram.com/', '', $request->instagram);
+        $request->instagram = str_replace('http://instagram.com/', '', $request->instagram);
 
         $user->instagram = $request->instagram;
         $user->email = $request->email;
@@ -271,8 +271,8 @@ class ProfileController extends Controller
         $user->city_id = $request->city_id;
         $user->save();
 
-        $user_info = UserInfo::where('user_id',$user->user_id)->first();
-        if($user_info == null) $user_info = new UserInfo();
+        $user_info = UserInfo::where('user_id', $user->user_id)->first();
+        if ($user_info == null) $user_info = new UserInfo();
         $user_info->user_id = $user->user_id;
         $user_info->iin = $request->iin;
         $user_info->fact_city_id = $request->fact_city_id;
@@ -293,28 +293,31 @@ class ProfileController extends Controller
 
     }
 
-    
-    public function editPassword(Request $request){
+
+    public function editPassword(Request $request)
+    {
         $user = Users::find($request->user_id);
         $user->password = Hash::make($request->password_new);
         $user->password_original = $request->password_new;
         $user->save();
-        $url = '/admin/profile/'.$request->user_id.'?tab=password';
+        $url = '/admin/profile/' . $request->user_id . '?tab=password';
         return redirect($url);
     }
 
-    public function activateUser(Request $request){
+    public function activateUser(Request $request)
+    {
         $user = Users::find($request->user_id);
         $user->is_activated = 1;
         $user->activated_date = date("Y-m-d");
         $user->save();
-        $url = '/admin/profile/'.$request->user_id;
+        $url = '/admin/profile/' . $request->user_id;
         return redirect($url);
     }
 
-    public function editMoney(Request $request){
+    public function editMoney(Request $request)
+    {
         $user = Users::find($request->user_id);
-        if($request->minus_money <= $user->user_money){
+        if ($request->minus_money <= $user->user_money) {
             $user->user_money = $user->user_money - $request->minus_money;
             $user->save();
 
@@ -325,36 +328,37 @@ class ProfileController extends Controller
             $operation->operation_id = 2;
             $operation->operation_type_id = 12;
 
-            if($request->minus_money > 0){
+            if ($request->minus_money > 0) {
                 $operation->operation_comment = 'Администратор снял';
-            }
-            else{
+            } else {
                 $operation->operation_comment = 'Администратор добавил';
             }
 
             $operation->save();
         }
-        
-        $url = '/admin/profile/'.$request->user_id.'?tab=money';
+
+        $url = '/admin/profile/' . $request->user_id . '?tab=money';
         return redirect($url);
     }
 
-    public function editStatus(Request $request){
+    public function editStatus(Request $request)
+    {
         $user = Users::find($request->user_id);
 
-        $user->status_id = $request->status_id?$request->status_id:null;
+        $user->status_id = $request->status_id ? $request->status_id : null;
         $user->save();
 
-        $url = '/admin/profile/'.$request->user_id.'?tab=status';
+        $url = '/admin/profile/' . $request->user_id . '?tab=status';
         return redirect($url);
     }
 
-    public function editProfit(Request $request){
+    public function editProfit(Request $request)
+    {
         $user = Users::find($request->user_id);
 
-        $comment = 'Администратор поменял командный объем; ЛКО: '.$user->left_child_profit .' на '.$request->left_child_profit;
-        $comment .= ', ПКО: '.$user->right_child_profit .' на '.$request->right_child_profit;
-        $comment .= ', КВО: '.$user->qualification_profit .' на '.$request->qualification_profit;
+        $comment = 'Администратор поменял командный объем; ЛКО: ' . $user->left_child_profit . ' на ' . $request->left_child_profit;
+        $comment .= ', ПКО: ' . $user->right_child_profit . ' на ' . $request->right_child_profit;
+        $comment .= ', КВО: ' . $user->qualification_profit . ' на ' . $request->qualification_profit;
 
         $operation = new UserOperation();
         $operation->author_id = 1;
@@ -371,7 +375,7 @@ class ProfileController extends Controller
         $user->save();
 
 
-        $url = '/admin/profile/'.$request->user_id.'?tab=profit';
+        $url = '/admin/profile/' . $request->user_id . '?tab=profit';
         return redirect($url);
     }
 }

@@ -133,7 +133,6 @@
                         <li @if(isset($_GET['tab']) && $_GET['tab'] == 'password') class="active" @endif><a style="font-size: 13px"  href="#password" data-toggle="tab">Изменить пароль</a></li>
                     @endif
 
-
                     @if(Auth::user()->role_id == 1)
                         <li @if(isset($_GET['tab']) && $_GET['tab'] == 'money') class="active" @endif>
                             <a style="font-size: 13px"  href="#money" data-toggle="tab">Изменить баланс</a>

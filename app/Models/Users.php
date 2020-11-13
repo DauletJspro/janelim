@@ -32,7 +32,7 @@ class Users extends Model implements AuthenticatableContract
 
     public static function getUserStatus($user_status)
     {
-        $status =  UserStatus::where('user_status_id',$user_status )->first();
+        $status = UserStatus::where('user_status_id', $user_status)->first();
         return $status->user_status_name;
     }
 
@@ -48,6 +48,19 @@ class Users extends Model implements AuthenticatableContract
         }
         $followerStatusIds = array_filter($followerStatusIds);
         if (count($followerStatusIds) >= 5) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function user_has_packet($user_id, $packet_id)
+    {
+        $user_packet = UserPacket::where(['user_id' => $user_id])
+            ->where(['packet_id' => $packet_id])
+            ->where(['is_active' => true])
+            ->first();
+
+        if (isset($user_packet)) {
             return true;
         }
         return false;

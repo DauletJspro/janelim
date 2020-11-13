@@ -338,8 +338,11 @@ class PacketController extends Controller
 
     public function acceptInactiveUserPacket(Request $request)
     {
-
-        $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
+        try {
+            $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
+        } catch (\Exception $exception) {
+            var_dump($exception->getMessage() . ' / ' . $exception->getLine());
+        }
 
         $result['message'] = 'Вы успешно приняли запрос';
         $result['status'] = true;
@@ -517,8 +520,12 @@ class PacketController extends Controller
 
         $this->activatePackage($userPacket);
 
+        if ($packet->packet_id == Packet::LUX) {
+            app(LuxPacketController::class)->implement_bonuses($userPacketId);
+        }
 
-        while ($inviter) {
+
+        while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
             $bonus = 0;
             $packetPrice = $userPacket->packet_price;
             $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
@@ -569,7 +576,7 @@ class PacketController extends Controller
 
 
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
-        while ($inviter) {
+        while ($inviter && in_array($packet->id, Packet::actualPacket())) {
             $operation = new UserOperation();
             $operation->author_id = $user->user_id;
             $operation->recipient_id = $inviter->user_id;
@@ -832,11 +839,6 @@ class PacketController extends Controller
         } else {
             $packet_old_price = 0;
             if ($packet->is_upgrade_packet == 1) {
-//                $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
-//                    ->where('user_id', $user_packet->user_id)
-//                    ->where('user_packet.is_active', 1)
-//                    ->where('upgrade_type', '=', $packet->upgrade_type)
-//                    ->sum('user_packet.packet_price');
                 $packet_old_price = UserPacket::beforePurchaseSum(Auth::user()->user_id);
 
                 $share_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')

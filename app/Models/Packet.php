@@ -22,6 +22,7 @@ class Packet extends Model
     const MEDIUM = 2;
     const LARGE = 3;
     const VIP = 4;
+    const LUX = 5;
 
     public static function actualPacket()
     {
