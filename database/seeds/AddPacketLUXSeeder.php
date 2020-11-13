@@ -12,6 +12,10 @@ class AddPacketLUXSeeder extends Seeder
      */
     public function run()
     {
+
+        $packet = \App\Models\Packet::where(['packet_id' => 5])->first();
+        $packet->delete();
+
         DB::table('packet')->insert(
             [
                 'packet_id' => 5,
