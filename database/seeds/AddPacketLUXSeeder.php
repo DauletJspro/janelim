@@ -16,7 +16,7 @@ class AddPacketLUXSeeder extends Seeder
             [
                 'packet_id' => 5,
                 'packet_name_ru' => 'LUX',
-                'packet_price' => 600,
+                'packet_price' => 260,
                 'currency_id' => 2,
                 'is_show' => true,
                 'sort_num' => 5,
