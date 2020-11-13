@@ -30,7 +30,6 @@ class AddPacketLUXSeeder extends Seeder
                 'packet_lection' => '',
                 'packet_status_id' => '',
                 'is_upgrade_packet' => true,
-                'packet_share' => false,
                 'packet_image' => '',
 
             ]
