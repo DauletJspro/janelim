@@ -15,7 +15,7 @@ class Check extends Seeder
 
         $user_packet = \App\Models\UserPacket::where('user_packet_id', '<', 100)
             ->where('packet_id', '=', 5)
-//            ->where('is_active', '=', true)
+            ->where('is_active', '=', false)
             ->get();
 
         foreach ($user_packet as $item) {
