@@ -104,20 +104,21 @@ class LuxPacketController extends Controller
         $operation->recipient_id = $recipient_id;
         $operation->lv_balance = $operation->lv_balance + $bonus;
         $operation->operation_id = 1;
-        $operation->operation_type_id = 11;
-        $operation->operation_comment = sprintf('Коммандный доход от пакета LUX в размере. %s LV ', $bonus);
+        $operation->operation_type_id = 35;
+        $operation->operation_comment = sprintf('Цикличный доход от пакета LUX в размере. %s LV ', $bonus);
         $operation->save();
     }
 
     public function record_get_bonus_from_lux_packet($recipient_id, $bonus)
     {
+        $bonus = $bonus * (Currency::PVtoKzt / Currency::DollarToKzt);
         $operation = new UserOperation();
         $operation->author_id = null;
         $operation->recipient_id = $recipient_id;
         $operation->money = $bonus;
         $operation->operation_id = 1;
-        $operation->operation_type_id = 11;
-        $operation->operation_comment = sprintf('Поздравляем, вы получили коммандный доход в размере. %s pv (%s тенге)', $bonus, $bonus * Currency::DollarToKzt);
+        $operation->operation_type_id = 1;
+        $operation->operation_comment = sprintf('Поздравляем, вы получили активный доход в размере. %s pv (%s тенге)', $bonus, $bonus * Currency::DollarToKzt);
         $operation->save();
     }
 }

@@ -44,7 +44,8 @@
                                                 ({{$user->name}} {{$user->last_name}}
                                                 ) @endif @include('admin.structure.user_packet_list_loop')
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
-                                                <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name ?: 'Нету'}}</p>
+                                                <p style="color: #009551; margin: 0px">
+                                                    Квалификация: {{$user->user_status_name ?: 'Нету'}}</p>
                                                 @if($user->pv_balance)
                                                     <span class="badge">PV:</span> {{$user->pv_balance}} pv<br>
                                                 @endif
@@ -53,6 +54,12 @@
                                                 @endif
                                                 @if($user->cv_balance)
                                                     <span class="badge">CV:</span> {{$user->cv_balance}} cv<br>
+                                                @endif
+                                                @if(\App\Models\Users::user_has_packet($user->user_id, \App\Models\Packet::LUX))
+                                                    <span class="badge">Л-LV:</span> 1 lv<br>
+                                                @endif
+                                                @if($user->lv_balance)
+                                                    <span class="badge">Г-LV:</span> {{$user->lv_balance}} lv<br>
                                                 @endif
                                             </div>
                                         </div>
@@ -72,7 +79,8 @@
                                         <div class="left-float client-name">
                                             {{$user->login}}  @if(Auth::user()->user_id == 1) {{$user->name}} {{$user->last_name}} @endif @include('admin.structure.user_packet_list_loop')
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
-                                                <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name ?: 'Нету'}}</p>
+                                                <p style="color: #009551; margin: 0px">
+                                                    Квалификация: {{$user->user_status_name ?: 'Нету'}}</p>
                                                 @if($user->pv_balance)
                                                     <span class="badge">PV:</span> {{$user->pv_balance}} pv<br>
                                                 @endif
@@ -81,6 +89,12 @@
                                                 @endif
                                                 @if($user->cv_balance)
                                                     <span class="badge">CV:</span> {{$user->cv_balance}} cv<br>
+                                                @endif
+                                                @if(\App\Models\Users::user_has_packet($user->user_id, \App\Models\Packet::LUX))
+                                                    <span class="badge">Л-LV:</span> 1 lv<br>
+                                                @endif
+                                                @if($user->lv_balance)
+                                                    <span class="badge">Г-LV:</span> {{$user->lv_balance}} lv<br>
                                                 @endif
                                             </div>
                                         </div>

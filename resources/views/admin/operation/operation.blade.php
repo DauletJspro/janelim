@@ -93,10 +93,17 @@ use \App\Models\Currency;
                                                     @if($val->operation_type_id == 2)
                                                         {{ $val->money }} доля
                                                     @elseif($val->operation_type_id == 11)
-                                                        {{$val->gv_balance}} gv
-                                                        ({{round($val->gv_balance * \App\Models\Currency::GVtoKzt,2)}} тг)
+                                                        @if(isset($val->gv_balance))
+                                                            {{$val->gv_balance}} gv
+                                                            ({{round($val->gv_balance * \App\Models\Currency::GVtoKzt,2)}}
+                                                            тг)
+                                                        @endif
+                                                    @elseif($val->operation_type_id == 35)
+                                                        @if(isset($val->lv_balance))
+                                                            {{'1 lv (0 тг)'}}
+                                                        @endif
                                                     @else
-                                                        {{ round($val->money,2) }} $
+                                                        {{ round($val->money, 2) }} $
                                                         ({{round($val->money * Currency::DollarToKzt,2)}}
                                                         тг)
                                                     @endif

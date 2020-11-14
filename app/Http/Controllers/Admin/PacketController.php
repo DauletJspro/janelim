@@ -598,7 +598,7 @@ class PacketController extends Controller
 
         $this->qualificationUp($packet, $user);
 
-        if ($user->status_id >= UserStatus::CONSULTANT) {
+        if ($user->status_id >= UserStatus::CONSULTANT && $packet->packet_id != Packet::LUX) {
             $this->implementQualificationBonuses($packet, $user, $userPacket);
         }
 
@@ -618,7 +618,7 @@ class PacketController extends Controller
 
         $packet = Packet::find($userPacket->packet_id);
 
-        if ($packet->is_upgrade_packet) {
+        if ($packet->is_upgrade_packet && $packet->packet_id != Packet::LUX) {
             $packet_old_price = UserPacket::beforePurchaseSum($userPacket->user_id);
         }
 
@@ -654,6 +654,9 @@ class PacketController extends Controller
 
         //пополнение фонда компании
         $company_money = $userPacket->packet_price - $this->sentMoney;
+        if ($packet->packet_id == Packet::LUX) {
+            $company_money = $company_money * (Currency::PVtoKzt / Currency::DollarToKzt);
+        }
         $operation = new UserOperation();
         $operation->author_id = $userPacket->user_id;
         $operation->recipient_id = 1;

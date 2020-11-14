@@ -96,6 +96,50 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
 
     </div>
     <div class="row profits">
+        <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">LUX Обьем</h3></div>
+        <div class="col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">На сегодня</h5>
+                    <p class="card-text">{{round($lvData['lvProfitToday'],2)}} lv</p>
+                    <p class="card-text">{{round($lvData['lvProfitToday'] * \App\Models\Currency::GVtoKzt,2)}} &#8376; </p>
+                    <a href="#" class="btn btn-primary">Доход</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">За последнюю неделю</h5>
+                    <p class="card-text">{{round($lvData['lvProfitLastWeek'],2)}} lv</p>
+                    <p class="card-text">{{round($lvData['lvProfitLastWeek'] * \App\Models\Currency::GVtoKzt,2)}} &#8376; </p>
+                    <a href="#" class="btn btn-primary">Доход</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">За последний месяц</h5>
+                    <p class="card-text">{{round($lvData['lvProfitLastMonth'],2)}} lv</p>
+                    <p class="card-text">{{round($lvData['lvProfitLastMonth'] * \App\Models\Currency::GVtoKzt,2)}} &#8376; </p>
+                    <a href="#" class="btn btn-primary">Доход</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6  col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">За весь период</h5>
+                    <p class="card-text">{{round($lvData['lvProfitAll'],2)}} lv</p>
+                    <p class="card-text">{{round($lvData['lvProfitAll'] * \App\Models\Currency::GVtoKzt,2)}} &#8376; </p>
+                    <a href="#" class="btn btn-primary">Доход</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row profits">
         <div style="padding-left: 2rem;"><h3 style="font-size: 3rem;">Текущий счет</h3></div>
         <div class="col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
             <div class="card">

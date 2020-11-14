@@ -14,13 +14,14 @@ class Check extends Seeder
     {
 
         $user_packet = \App\Models\UserPacket::where('user_packet_id', '<', 100)
-            ->where('packet_id', '!=', 5)
-            ->where('is_active', '=', true)
+            ->where('packet_id', '=', 5)
+//            ->where('is_active', '=', true)
             ->get();
 
         foreach ($user_packet as $item) {
-            $item->is_active = false;
-            $item->packet_id = 5;
+//            $item->is_active = false;
+//            $item->packet_id = 5;
+            $item->packet_price = 260;
             $item->save();
         }
 //        try {

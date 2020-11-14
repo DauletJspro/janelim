@@ -47,6 +47,12 @@
                         @if($user->cv_balance)
                             <span class="badge">CV:</span> {{$user->cv_balance}} cv<br>
                         @endif
+                        @if(\App\Models\Users::user_has_packet($user->user_id, \App\Models\Packet::LUX))
+                            <span class="badge">Л-LV:</span> 1 lv<br>
+                        @endif
+                        @if($user->lv_balance)
+                            <span class="badge">Г-LV:</span> {{$user->lv_balance}} lv<br>
+                        @endif
                     </div>
                 </div>
                 <div class="clear-float"></div>

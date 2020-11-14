@@ -52,6 +52,23 @@ class IndexController extends Controller
         $cvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('money');
 
+        $lvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('lv_balance');
+        $lvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->where('created_at', '>', date("Y-m-d"))
+            ->sum('lv_balance');
+        $lvProfitLastWeek = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('lv_balance');
+        $lvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('lv_balance');
+
+
 
         $pvData = [
             'pvProfitAll' => $pvProfitAll,
@@ -72,12 +89,20 @@ class IndexController extends Controller
             'cvProfitLastMonth' => $cvProfitLastMonth,
         ];
 
+        $lvData = [
+            'lvProfitAll' => $lvProfitAll,
+            'lvProfitToday' => $lvProfitToday,
+            'lvProfitLastWeek' => $lvProfitLastWeek,
+            'lvProfitLastMonth' => $lvProfitLastMonth,
+        ];
+
         $userPackets = UserPacket::where(['user_id' => Auth::user()->user_id, 'is_active' => true])->get();
 
         return view('admin.index.index', [
             'pvData' => $pvData,
             'gvData' => $gvData,
             'cvData' => $cvData,
+            'lvData' => $lvData,
             'userPackets' => $userPackets,
         ]);
 

@@ -38,6 +38,7 @@ class OperationController extends Controller
                 'user_operation.operation_id',
                 'operation.operation_name_ru',
                 'user_operation.gv_balance',
+                'user_operation.lv_balance',
                 'fond.fond_name_ru',
                 'operation_type.operation_type_name_ru',
                 'recipient_user.name as recipient_name',
