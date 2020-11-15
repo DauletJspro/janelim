@@ -37,7 +37,7 @@ class LuxPacketController extends Controller
             if (Users::user_has_packet($parentUser->user_id, Packet::LUX)) {
                 $parentUser->lv_balance = $parentUser->lv_balance + $balance;
                 if ($parentUser->save()) {
-                    $this->record_lux_packet_user_operation($user_id, $parentUser->user_id, $balance);
+                    $this->record_lux_packet_user_operation($user_id, $parentUser->user_id, $balance, $counter);
                 }
                 $parent_lv_balance = $parentUser->lv_balance;
                 if ($parent_lv_balance % 10 == 0 && $parent_lv_balance <= 50) {
@@ -97,15 +97,16 @@ class LuxPacketController extends Controller
 
     }
 
-    public function record_lux_packet_user_operation($author_id, $recipient_id, $bonus)
+    public function record_lux_packet_user_operation($author_id, $recipient_id, $bonus, $counter)
     {
+        $counter++;
         $operation = new UserOperation();
         $operation->author_id = $author_id;
         $operation->recipient_id = $recipient_id;
         $operation->lv_balance = $operation->lv_balance + $bonus;
         $operation->operation_id = 1;
         $operation->operation_type_id = 35;
-        $operation->operation_comment = sprintf('Цикличный доход от пакета LUX в размере. %s LV ', $bonus);
+        $operation->operation_comment = sprintf('Цикличный доход %s -уровень от пакета LUX в размере %s LV ', $counter, $bonus);
         $operation->save();
     }
 
