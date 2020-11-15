@@ -338,6 +338,7 @@ class PacketController extends Controller
 
     public function acceptInactiveUserPacket(Request $request)
     {
+        $result= [];
         try {
             $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
         } catch (\Exception $exception) {
