@@ -6,10 +6,17 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
     <div class="card col col-sm-6 col-md-4 col-xl-3 col-xs-12">
         <div class="card-body" style="position:relative;background-color:{{'#' . $packet->packet_css_color}}">
             <h2 class="card-title">{{$packet->packet_name_ru}}</h2>
+            @if($packet->packet_id != \App\Models\Packet::LUX)
             <h3 style="font-weight: bold;">{{$packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)}} pv
                 &emsp;
                 {{($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * $currency}}
                 &#8376;</h3>
+            @else
+                <h3 style="font-weight: bold;">{{$packet->packet_price}} pv
+                    &emsp;
+                    {{($packet->packet_price) * $currency}}
+                    &#8376;</h3>
+            @endif
             <p class="card-text">
                 {{$packet->packet_thing}}
             </p>
