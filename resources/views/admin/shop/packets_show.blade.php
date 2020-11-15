@@ -12,8 +12,7 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
                 {{($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * $currency}}
                 &#8376;</h3>
             @else
-                <h3 style="font-weight: bold;">{{$packet->packet_price}} pv
-                    &emsp;
+                <h3 style="font-weight: bold;">
                     {{($packet->packet_price) * $currency}}
                     &#8376;</h3>
             @endif
