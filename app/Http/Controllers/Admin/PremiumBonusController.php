@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
+use App\Models\UserOperation;
 use App\Models\Users;
 use App\Models\UserStatus;
 use Illuminate\Support\Facades\DB;
@@ -117,8 +118,19 @@ class PremiumBonusController extends Controller
             $user->user_money = $user->user_money + $money;
             $user->last_premium_by_status = $status;
             $user->save();
+            $this->record_operation_premium_balance($user_id, $money, $status);
         }
+    }
 
-
+    public function record_operation_premium_balance($user_id, $money, $status)
+    {
+        $operation = new UserOperation();
+        $operation->author_id = null;
+        $operation->recipient_id = $user_id;
+        $operation->money = $money;
+        $operation->operation_id = 1;
+        $operation->operation_type_id = 20;
+        $operation->operation_comment = sprintf("Выдача премии в размере %s$ (%s тенге), на статусе %s", $money, ($money * Currency::DollarToKzt), UserStatus::getStatusName($status));
+        $operation->save();
     }
 }
