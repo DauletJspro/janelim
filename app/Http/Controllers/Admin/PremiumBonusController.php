@@ -89,9 +89,11 @@ class PremiumBonusController extends Controller
         $user_pv_balance = $user->pv_balance;
         $user_gv_balance = $user->gv_balance;
 
-        var_dump($user_id);
+        if($user_id  == 5){
+            var_dump($user_pv_balance >= $individualBalance);
+            var_dump($user_gv_balance >= $groupBalance);
+        }
         if ($user_pv_balance >= $individualBalance && $user_gv_balance >= $groupBalance && $this->enough_child($user_id, $tripleChildBalance)) {
-            var_dump($user->user_id);
             $bonusDollar = $bonusKzt / Currency::DollarToKzt;
             $this->give_bonus($user->user_id, $bonusDollar, $status);
         }
@@ -106,6 +108,7 @@ class PremiumBonusController extends Controller
             ->get();
 
 
+        var_dump(count($users));
         if (count($users) >= 3) {
             return true;
         }
