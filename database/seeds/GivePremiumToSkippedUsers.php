@@ -16,6 +16,10 @@ class GivePremiumToSkippedUsers extends Seeder
      */
     public function run()
     {
-        app(PremiumBonusController::class)->run(null, true);
+        try {
+            app(PremiumBonusController::class)->run(null, true);
+        } catch (Exception $exception) {
+            var_dump($exception->getFile() . ' / ' . $exception->getLine() . ' / ' . $exception->getMessage());
+        }
     }
 }
