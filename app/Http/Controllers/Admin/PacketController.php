@@ -577,7 +577,7 @@ class PacketController extends Controller
 
 
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
-        while ($inviter && in_array($packet->id, Packet::actualPacket())) {
+        while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
             $operation = new UserOperation();
             $operation->author_id = $user->user_id;
             $operation->recipient_id = $inviter->user_id;
@@ -590,7 +590,6 @@ class PacketController extends Controller
 
             $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
             $inviter->save();
-
 
             if (in_array($inviter->status_id, [2,3,4,5,6,7,8])) {
                 app(PremiumBonusController::class)->run($inviter->user_id);
