@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\GlobalBonusBeginOfMonth',
+
         FixBug::class
     ];
 
