@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\FixBug;
 use App\Models\Fond;
 use App\Models\Operation;
 use App\Models\UserOperation;
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\GlobalBonusBeginOfMonth',
+        FixBug::class
     ];
 
     /**

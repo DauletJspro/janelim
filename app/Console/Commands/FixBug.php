@@ -12,14 +12,14 @@ class FixBug extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'gv:fix_bug';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'fix_bug:gv';
 
     /**
      * Create a new command instance.
@@ -43,9 +43,9 @@ class FixBug extends Command
         $item = Users::all();
         $fixResultGv = [
             'Zeinel' => '640',
-            'vip' => '140',
+            'Vip' => '140',
             'Magnit777' => '140',
-            'Daniar' => '888',
+            'Daniar888' => '888',
             'Zeinel73' => '160',
             'Million$$$' => '100',
             'Fatima74' => '60',
@@ -80,23 +80,30 @@ class FixBug extends Command
         $fixResultMoney = [
             'Zeinel' => '15.8',
             'Magnit777' => '3.6',
-            ];
+        ];
 
 
         foreach ($item as $value) {
-            if (array_key_exists($fixResultGv, $value->user_login)) {
-               $value->gv_balance  = $value->gv_balance + $fixResultGv[$item->user_login];
-               $value->save();
-        }
-        }
-
-        foreach ($item as $value){
-            if(array_key_exists($fixResultMoney, $value->user_login)){
-                $value->user_money = $value->user_money +$fixResultMoney[$value->user_login];
+            if (array_key_exists(preg_replace('/\s+/', '', $value->login), $fixResultGv)) {
+                $gv_balance = ((int)$fixResultGv[$value->login]);
+                $value->gv_balance = $value->gv_balance + $gv_balance;
+                $value->save();
+            }
+            if (array_key_exists(preg_replace('/\s+/', '', $value->login), $fixResultMoney)) {
+                $user_money = ((int)$fixResultMoney[$value->login]);
+                $value->user_money = $value->user_money + $user_money;
                 $value->save();
             }
 
+
         }
+//
+//        foreach ($item as $value){
+//            if(array_key_exists($fixResultMoney, $value->user_login)){
+//                $value->user_money = $value->user_money + $fixResultMoney[$value->user_login];
+//                $value->save();
+//            }
+//        }
 
     }
 }
