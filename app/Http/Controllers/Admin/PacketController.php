@@ -338,7 +338,7 @@ class PacketController extends Controller
 
     public function acceptInactiveUserPacket(Request $request)
     {
-        $result= [];
+        $result = [];
         try {
             $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
         } catch (\Exception $exception) {
@@ -525,8 +525,8 @@ class PacketController extends Controller
             app(LuxPacketController::class)->implement_bonuses($userPacketId);
         }
 
-
-        while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
+        $packets_with_lux = [1, 2, 3, 4, 5];
+        while ($inviter && in_array($packet->packet_id, $packets_with_lux)) {
             $bonus = 0;
             $packetPrice = $userPacket->packet_price;
             $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
@@ -591,7 +591,7 @@ class PacketController extends Controller
             $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
             $inviter->save();
 
-            if (in_array($inviter->status_id, [2,3,4,5,6,7,8])) {
+            if (in_array($inviter->status_id, [2, 3, 4, 5, 6, 7, 8])) {
                 app(PremiumBonusController::class)->run($inviter->user_id);
             }
 
