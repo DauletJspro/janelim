@@ -20,8 +20,8 @@ class Check extends Seeder
 
         foreach ($user_packet as $item) {
 //            $item->is_active = false;
-//            $item->packet_id = 5;
-            $item->packet_price = 260;
+            $item->packet_id = 3;
+            $item->packet_price = 120;
             $item->save();
         }
 //        try {
