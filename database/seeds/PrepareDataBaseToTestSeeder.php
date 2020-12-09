@@ -20,9 +20,8 @@ class PrepareDataBaseToTestSeeder extends Seeder
             $user->pv_balance = 0;
             $user->gv_balance = 0;
             $user->cv_balance = 0;
-            $user->lv_balane = 0;
+            $user->lv_balance = 0;
             $user->lux_bonus_limit = 1;
-            $user->product_balance = 0;
             $user->last_premium_by_status = 0;
             $user->save();
         }
