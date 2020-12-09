@@ -28,47 +28,101 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $userOperation = new UserOperation();
-        $pvProfitAll = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])->where(['author_id' => Auth::user()->user_id])->sum('pv_balance');
-        $pvProfitToday = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])->where(['author_id' => Auth::user()->user_id])
-            ->where('created_at', '>', date("Y-m-d"))->sum('money');
-        $pvProfitLastWeek = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->where(['author_id' => Auth::user()->user_id])->sum('pv_balance');
-        $pvProfitLastMonth = $userOperation->where(['operation_id' => 2, 'operation_type_id' => 30])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->where(['author_id' => Auth::user()->user_id])->sum('pv_balance');
 
-        $gvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])->where(['recipient_id' => Auth::user()->user_id])->sum('gv_balance');
-        $gvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d"))->where(['recipient_id' => Auth::user()->user_id])->sum('gv_balance');
-        $gvProfitLastWeek = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->where(['recipient_id' => Auth::user()->user_id])->sum('gv_balance');
-        $gvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 1])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->where(['recipient_id' => Auth::user()->user_id])->sum('gv_balance');
+        //PV
 
-        $cvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])->sum('money');
-        $cvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])
-            ->where('created_at', '>', date("Y-m-d"))->sum('money');
-        $cvProfitLastWeek = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))->sum('money');
-        $cvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 21])
-            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))->sum('money');
+        $pvProfitAll = $userOperation
+            ->where(['operation_id' => 1])
+            ->whereIn('operation_type_id', [1, 20])
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('money');
 
-        $lvProfitAll = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+
+        $pvProfitToday = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->whereIn('operation_type_id', [1, 20])
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->where('created_at', '>', date("Y-m-d"))
+            ->sum('money');
+
+        $pvProfitLastWeek = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->whereIn('operation_type_id', [1, 20])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('pv_balance');
+
+        $pvProfitLastMonth = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->whereIn('operation_type_id', [1, 20])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('pv_balance');
+
+        //GV
+
+        $gvProfitAll = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 11])
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('gv_balance');
+
+        $gvProfitToday = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 11])
+            ->where('created_at', '>', date("Y-m-d"))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('gv_balance');
+
+        $gvProfitLastWeek = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 11])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('gv_balance');
+
+        $gvProfitLastMonth = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 11])
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
+            ->where(['recipient_id' => Auth::user()->user_id])
+            ->sum('gv_balance');
+
+        // Текущий счет
+
+        $cvWithdrawMoney = $userOperation
+            ->where(['operation_id' => 2, 'operation_type_id' => 12])
+            ->where(['author_id' => Auth::user()->user_id])
+            ->sum('money');
+        $cvSendMoney = $userOperation
+            ->where(['operation_id' => 2, 'operation_type_id' => 28])
+            ->where(['author_id' => Auth::user()->user_id])
+            ->sum('money');
+        $cvProfitAll = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 3])
+            ->where(['author_id' => Auth::user()->user_id])
+            ->sum('money');
+
+        //lv
+
+        $lvProfitAll = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 35])
             ->where(['recipient_id' => Auth::user()->user_id])
             ->sum('lv_balance');
-        $lvProfitToday = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+
+        $lvProfitToday = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 35])
             ->where(['recipient_id' => Auth::user()->user_id])
             ->where('created_at', '>', date("Y-m-d"))
             ->sum('lv_balance');
-        $lvProfitLastWeek = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+
+        $lvProfitLastWeek = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 35])
             ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->where(['recipient_id' => Auth::user()->user_id])
             ->sum('lv_balance');
-        $lvProfitLastMonth = $userOperation->where(['operation_id' => 1, 'operation_type_id' => 35])
+
+        $lvProfitLastMonth = $userOperation
+            ->where(['operation_id' => 1, 'operation_type_id' => 35])
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->where(['recipient_id' => Auth::user()->user_id])
             ->sum('lv_balance');
-
-
 
         $pvData = [
             'pvProfitAll' => $pvProfitAll,
@@ -84,9 +138,8 @@ class IndexController extends Controller
         ];
         $cvData = [
             'cvProfitAll' => $cvProfitAll,
-            'cvProfitToday' => $cvProfitToday,
-            'cvProfitLastWeek' => $cvProfitLastWeek,
-            'cvProfitLastMonth' => $cvProfitLastMonth,
+            'cvWithdrawMoney' => $cvWithdrawMoney,
+            'cvSendMoney' => $cvSendMoney,
         ];
 
         $lvData = [
