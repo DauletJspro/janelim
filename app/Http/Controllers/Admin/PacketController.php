@@ -253,6 +253,11 @@ class PacketController extends Controller
 
             }
 
+            $total_packet_price_in_pv = $packet->packet_price - $packet_old_price;
+            if ($packet->packet_id == Packet::LUX) {
+                $total_packet_price_in_pv = $packet->packet_price;
+            }
+            $dollar_price = $total_packet_price_in_pv * (Currency::PVtoKzt / Currency::DollarToKzt);
 
             $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
             if ($is_check > 0) {
@@ -260,19 +265,18 @@ class PacketController extends Controller
                 $result['status'] = false;
                 return response()->json($result);
             }
-            if (Auth::user()->user_money < $packet->packet_price - $packet_old_price) {
+            if (Auth::user()->user_money < $dollar_price) {
                 $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
                 $result['status'] = false;
                 return response()->json($result);
             }
 
-            $packet = Packet::where('packet_id', $request->packet_id)->first();
 
             $user_packet = new UserPacket();
             $user_packet->user_id = Auth::user()->user_id;
             $user_packet->packet_id = $request->packet_id;
             $user_packet->user_packet_type = $request->user_packet_type;
-            $user_packet->packet_price = $packet->packet_price;
+            $user_packet->packet_price = $dollar_price;
             $user_packet->is_active = 0;
             $user_packet->is_portfolio = '';
             $user_packet->is_portfolio = '';
@@ -281,8 +285,8 @@ class PacketController extends Controller
             $operation = new UserOperation();
             $operation->author_id = Auth::user()->user_id;
             $operation->recipient_id = null;
-            $operation->money = $packet->packet_price - $packet_old_price;
-            $operation->pv_balance = $packet->packet_price;
+            $operation->money = $dollar_price;
+            $operation->pv_balance = $total_packet_price_in_pv;
             $operation->operation_id = 2;
             $operation->operation_type_id = 30;
             $operation->operation_comment = $request->comment;
@@ -290,12 +294,10 @@ class PacketController extends Controller
 
 
             $user = Users::find(Auth::user()->user_id);
-            $pvPrice = ($packet->packet_price - $packet_old_price) * (Currency::PVtoKzt / Currency::DollarToKzt);
-            $rest_mooney = $user->user_money - $pvPrice;
+            $rest_mooney = $user->user_money - $dollar_price;
             $user->user_money = $rest_mooney;
-            $user->pv_balance = $user->pv_balance + $pvPrice;
+            $user->pv_balance = $user->pv_balance + $total_packet_price_in_pv;
             $user->save();
-
 
             $isImplementPacketBonus = $this->implementPacketBonuses($user_packet->user_packet_id);
 
@@ -304,7 +306,11 @@ class PacketController extends Controller
             $result['result'] = $isImplementPacketBonus;
             $result['status'] = true;
         } catch (\Exception $e) {
-            var_dump($e->getMessage() . ' / ' . $e->getLine());
+            $message = ($e->getMessage() . ' / ' . $e->getFile() . '/' . $e->getLine());
+            $result = [
+                'message' => $message,
+                'status' => false,
+            ];
         }
 
         return response()->json($result);
@@ -340,7 +346,7 @@ class PacketController extends Controller
     {
         $result = [];
         try {
-            $isImplementPacketBonus = $this->implementPacketBonuses($request->packet_id);
+            $this->implementPacketBonuses($request->packet_id);
         } catch (\Exception $exception) {
             var_dump($exception->getMessage() . ' / ' . $exception->getLine());
         }
@@ -401,7 +407,6 @@ class PacketController extends Controller
                     return response()->json($result);
                 }
             }
-
             $packet_old_price = UserPacket::beforePurchaseSum(Auth::user()->user_id);
         }
 
@@ -523,91 +528,81 @@ class PacketController extends Controller
 
         if ($packet->packet_id == Packet::LUX) {
             app(LuxPacketController::class)->implement_bonuses($userPacketId);
-        }
+        } else {
+            while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
+                $bonus = 0;
+                $packetPrice = $userPacket->packet_price;
+                $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
+                $inviterCount = (count($inviterPacketId));
 
-        $packets_with_lux = [1, 2, 3, 4, 5];
-        while ($inviter && in_array($packet->packet_id, $packets_with_lux)) {
-            $bonus = 0;
-            $packetPrice = $userPacket->packet_price;
-            $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
-            $inviterCount = (count($inviterPacketId));
+                $packetPercentage = $packet->level_percentage;
+                $packetPercentage = explode('-', $packetPercentage);
 
-            $packetPercentage = $packet->level_percentage;
-            $packetPercentage = explode('-', $packetPercentage);
-
-            if ($inviterCount) {
-                $inviterPacketId = collect($inviterPacketId);
-                $inviterPacketId = $inviterPacketId->map(function ($item) {
-                    return $item->packet_id;
-                });
-                $inviterPacketId = max($inviterPacketId->all());
-                $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-                if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
-                    $bonusPercentage = (15 / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
-                } elseif ($this->hasNeedPackets($packet, $inviterPacketId, $inviter_order)) {
-                    $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
+                if ($inviterCount) {
+                    $inviterPacketId = collect($inviterPacketId);
+                    $inviterPacketId = $inviterPacketId->map(function ($item) {
+                        return $item->packet_id;
+                    });
+                    $inviterPacketId = max($inviterPacketId->all());
+                    $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
+                    if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
+                        $bonusPercentage = (15 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    } elseif ($this->hasNeedPackets($packet, $inviterPacketId, $inviter_order)) {
+                        $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
                 }
+
+                if ($bonus) {
+                    $operation = new UserOperation();
+                    $operation->author_id = $user->user_id;
+                    $operation->recipient_id = $inviter->user_id;
+                    $operation->money = $bonus;
+                    $operation->operation_id = 1;
+                    $operation->operation_type_id = 1;
+                    $operation->operation_comment = 'Реферальный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
+                    $operation->save();
+                    $inviter->user_money = $inviter->user_money + $bonus;
+                    $inviter->save();
+                    $this->sentMoney += $bonus;
+                }
+
+                $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
+                if (!$inviter || $packet->packet_available_level < $inviter_order) {
+                    break;
+                }
+                $inviter_order++;
             }
 
-            if ($bonus) {
+
+            $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+            while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
                 $operation = new UserOperation();
                 $operation->author_id = $user->user_id;
                 $operation->recipient_id = $inviter->user_id;
-                $operation->money = $bonus;
+                $operation->money = 0;
                 $operation->operation_id = 1;
-                $operation->operation_type_id = 1;
-                $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
+                $operation->operation_type_id = 11;
+                $operation->operation_comment = 'Групповой объем от. "' . $packet->packet_name_ru . ' в размере. ' . $packet->packet_price;
+                $operation->gv_balance = $packet->packet_price;
                 $operation->save();
-                $inviter->user_money = $inviter->user_money + $bonus;
+
+                $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
                 $inviter->save();
-                $this->sentMoney += $bonus;
-            }
 
+                if (in_array($inviter->status_id, [2, 3, 4, 5, 6, 7, 8])) {
+                    app(PremiumBonusController::class)->run($inviter->user_id);
+                }
 
-//            echo '<pre>', var_dump($inviter_order . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / ' . $inviterPacketId), '</pre>';
-            $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-            if (!$inviter || $inviter_order >= 10) {
-                break;
-            }
-
-            $inviter_order++;
-        }
-
-
-        $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
-        while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
-            $operation = new UserOperation();
-            $operation->author_id = $user->user_id;
-            $operation->recipient_id = $inviter->user_id;
-            $operation->money = 0;
-            $operation->operation_id = 1;
-            $operation->operation_type_id = 11;
-            $operation->operation_comment = 'Групповой доход от. "' . $packet->packet_name_ru . 'в размере. ' . $packet->packet_price;
-            $operation->gv_balance = $packet->packet_price;
-            $operation->save();
-
-            $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
-            $inviter->save();
-
-            if (in_array($inviter->status_id, [2, 3, 4, 5, 6, 7, 8])) {
-                app(PremiumBonusController::class)->run($inviter->user_id);
-            }
-
-
-            $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-            if (!$inviter) {
-                break;
+                $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
+                if (!$inviter) {
+                    break;
+                }
             }
         }
 
         $this->qualificationUp($packet, $user);
-
-        if ($user->status_id >= UserStatus::CONSULTANT && $packet->packet_id != Packet::LUX) {
-            $this->implementQualificationBonuses($packet, $user, $userPacket);
-        }
-
         $this->implementPacketThings($packet, $user, $userPacket);
 
     }
@@ -623,13 +618,14 @@ class PacketController extends Controller
         }
 
         $packet = Packet::find($userPacket->packet_id);
-
-        if ($packet->is_upgrade_packet && $packet->packet_id != Packet::LUX) {
-            $packet_old_price = UserPacket::beforePurchaseSum($userPacket->user_id);
+        $total_packet_price_in_pv = $packet->packet_price - $packet_old_price;
+        if ($packet->packet_id == Packet::LUX) {
+            $total_packet_price_in_pv = $packet->packet_price;
         }
+        $dollar_price = $total_packet_price_in_pv * (Currency::PVtoKzt / Currency::DollarToKzt);
 
         $userPacket->is_active = true;
-        $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
+        $userPacket->packet_price = $dollar_price;
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
         $userPacket->save();
@@ -638,27 +634,6 @@ class PacketController extends Controller
     private
     function implementPacketThings($packet, $user, $userPacket)
     {
-        if ($userPacket->user_packet_type == 'item' && $packet->packet_type == 1) {
-            $operation = new UserOperation();
-            $operation->author_id = null;
-            $operation->recipient_id = $user->user_id;
-            $operation->money = null;
-            $operation->operation_id = 1;
-            $operation->operation_type_id = 15;
-            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '" Вы получаете ' . $packet->packet_thing;
-            $operation->save();
-        } elseif ($userPacket->user_packet_type == 'service' && $packet->packet_type == 1) {
-            $operation = new UserOperation();
-            $operation->author_id = null;
-            $operation->recipient_id = $user->user_id;
-            $operation->money = null;
-            $operation->operation_id = 1;
-            $operation->operation_type_id = 16;
-            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '" Вы получаете ' . $packet->packet_lection;
-            $operation->save();
-        }
-
-        //пополнение фонда компании
         $company_money = $userPacket->packet_price - $this->sentMoney;
         if ($packet->packet_id == Packet::LUX) {
             $company_money = $company_money * (Currency::PVtoKzt / Currency::DollarToKzt);
@@ -675,7 +650,6 @@ class PacketController extends Controller
         $company = Users::where('user_id', 1)->first();
         $company->user_money = $company->user_money + $company_money;
         $company->save();
-
     }
 
     private
@@ -710,34 +684,23 @@ class PacketController extends Controller
                 } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
-                    $bonusPercentage = (1 / 100);
-                    $bonus = $userPacketPrice * $bonusPercentage;
                 }
+                $bonusPercentage = (1 / 100);
+                $bonus = $userPacketPrice * $bonusPercentage;
+            }
 
-                if ($bonus) {
-                    $operation = new UserOperation();
-                    $operation->author_id = $user->user_id;
-                    $operation->recipient_id = $inviter->user_id;
-                    $operation->money = $bonus;
-                    $operation->operation_id = 1;
-                    $operation->operation_type_id = 1;
-                    $operation->operation_comment = 'КВАЛИФИКАЦИОННЫЙ БОНУС. "' . $packet->packet_name_ru . '". Уровень - ' . $inviterOrder;
-                    $operation->save();
-                    $inviter->user_money = $inviter->user_money + $bonus;
-                    $inviter->save();
-                    $this->sentMoney += $bonus;
-                }
-//                echo '<pre>', var_dump($inviterOrder . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / статус' . $inviter->status_id), '</pre>';
+            if ($bonus) {
+                $operation = new UserOperation();
+                $operation->author_id = $user->user_id;
+                $operation->recipient_id = $inviter->user_id;
+                $operation->money = $bonus;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 1;
+                $operation->operation_comment = 'КВАЛИФИКАЦИОННЫЙ БОНУС. "' . $packet->packet_name_ru . '". Уровень - ' . $inviterOrder;
+                $operation->save();
+                $inviter->user_money = $inviter->user_money + $bonus;
+                $inviter->save();
+                $this->sentMoney += $bonus;
             }
 
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
@@ -751,7 +714,6 @@ class PacketController extends Controller
     private
     function qualificationUp($packet, $user)
     {
-        $willUpdate = false;
         $actualPackets = [Packet::SMALL, Packet::MEDIUM, Packet::LARGE, Packet::VIP];
         if (in_array($packet->packet_id, $actualPackets)) {
 
@@ -770,50 +732,11 @@ class PacketController extends Controller
                 $operation->operation_comment = 'Ваш статус Манаджер';
             elseif ($packet->packet_status_id == UserStatus::DIRECTOR)
                 $operation->operation_comment = 'Ваш статус Директор';
-            elseif ($packet->packet_status_id == UserStatus::BRONZE_DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Бронзовый Директор';
-            elseif ($packet->packet_status_id == UserStatus::SLIVER_DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Серябренный Директор';
-            elseif ($packet->packet_status_id == UserStatus::GOLD_DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Золотой Директор';
-            elseif ($packet->packet_status_id == UserStatus::BRILLIANT_DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Брилиантовый Директор';
 
 
             $operation->save();
             $user->status_id = $packet->packet_status_id;
             $user->save();
-
-
-            $parentFollowers = Users::parentFollowers($user->recommend_user_id);
-            $parent = Users::where('user_id', $user->recommend_user_id)->first();
-            $needNumber = 5; // Necessary number of followers for update parent status
-            if (count($parentFollowers) >= $needNumber) {
-                $operation = new UserOperation();
-                if ($parent->status_id == UserStatus::DIRECTOR && $user->status_id == UserStatus::DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::DIRECTOR)) {
-                    $parent->status_id = UserStatus::BRONZE_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Бронзовый Директор";
-                } elseif ($parent->status_id == UserStatus::BRONZE_DIRECTOR && $user->status_id == UserStatus::BRONZE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_DIRECTOR)) {
-                    $parent->status_id = UserStatus::SLIVER_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Серебряный  Директор";
-                } elseif ($parent->status_id == UserStatus::SLIVER_DIRECTOR && $user->status_id == UserStatus::SLIVER_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SLIVER_DIRECTOR)) {
-                    $parent->status_id = UserStatus::GOLD_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Золотой Директор";
-                } elseif ($parent->status_id == UserStatus::GOLD_DIRECTOR && $user->status_id == UserStatus::GOLD_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_DIRECTOR)) {
-                    $parent->status_id = UserStatus::BRILLIANT_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
-                }
-
-                if ($willUpdate = true) {
-                    $operation->author_id = null;
-                    $operation->recipient_id = $parent->user_id;
-                    $operation->money = null;
-                    $operation->operation_id = 1;
-                    $operation->operation_type_id = 10;
-                    $parent->save();
-                    $operation->save();
-                }
-            }
         }
     }
 
