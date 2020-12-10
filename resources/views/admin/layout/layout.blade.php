@@ -59,11 +59,11 @@
                             <i class="fa fa-sign-out"></i>
                         </a>
                     </li>
-                    @if(Auth::user()->role_id == 1)
-                        <li>
-                            <a href="#" data-toggle="control-sidebar" title="Настройки"><i class="fa fa-gears"></i></a>
-                        </li>
-                    @endif
+{{--                    @if(Auth::user()->role_id == 1)--}}
+{{--                        <li>--}}
+{{--                            <a href="#" data-toggle="control-sidebar" title="Настройки"><i class="fa fa-gears"></i></a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
                 </ul>
             </div>
         </nav>
