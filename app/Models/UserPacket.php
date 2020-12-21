@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Http\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
