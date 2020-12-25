@@ -19,10 +19,6 @@ class FixAndChangeMoneyPvGv extends Seeder
         $userSeven->user_money = $userSeven->user_money + 27.4;
         $userSeven->save();
 
-        $userSeven = \App\Models\Users::where('user_id', '=', '4')->first();
-        $userSeven->user_money = $userSeven->user_money + 27.4;
-        $userSeven->save();
-
         $userSeven = \App\Models\Users::where('user_id', '=', '9')->first();
         $userSeven->user_money = $userSeven->user_money + 16.6;
         $userSeven->save();
