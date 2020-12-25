@@ -188,8 +188,15 @@ class PacketController extends Controller
         }
 
         $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
+        $count = UserPacket::where('user_id', Auth::user()->user_id)->whereIn('packet_id',  [1, 2, 3, 4])->count();
+
         if ($is_check > 0) {
             $result['message'] = 'Вы уже отправили запрос на этот пакет';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+        if($request->packet_id == 5 && $count == 0 ){
+            $result['message'] = 'Вы не можете купить этот пакет, так как вы не приобрели другой пакет';
             $result['status'] = false;
             return response()->json($result);
         }
@@ -246,6 +253,7 @@ class PacketController extends Controller
                     return response()->json($result);
                 }
 
+
                 $packet_old_price = UserPacket::beforePurchaseSum(Auth::user()->user_id);
 
             }
@@ -257,6 +265,7 @@ class PacketController extends Controller
 //            $dollar_price = $total_packet_price_in_pv * (Currency::PVtoKzt / Currency::DollarToKzt);
 
             $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
+
             if ($is_check > 0) {
                 $result['message'] = 'Вы уже отправили запрос на этот пакет';
                 $result['status'] = false;
@@ -541,7 +550,10 @@ class PacketController extends Controller
                             return $item->packet_id;
                         }
                     });
-
+                    $inviterPacketId = collect($inviterPacketId);
+                    $inviterPacketId = $inviterPacketId->filter(function ($value, $key) {
+                        return $value != Packet::LUX;
+                    });
                     $inviterPacketId = max($inviterPacketId->all());
                     $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
                     if ($inviterPacketId) {
