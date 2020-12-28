@@ -262,7 +262,7 @@ class PacketController extends Controller
             if ($packet->packet_id == Packet::LUX) {
                 $total_packet_price_in_pv = $packet->packet_price;
             }
-//            $dollar_price = $total_packet_price_in_pv * (Currency::PVtoKzt / Currency::DollarToKzt);
+            $dollar_price = $total_packet_price_in_pv * (Currency::PVtoKzt / Currency::DollarToKzt);
 
             $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
 
@@ -300,7 +300,7 @@ class PacketController extends Controller
 
 
             $user = Users::find(Auth::user()->user_id);
-            $rest_mooney = $user->user_money - $total_packet_price_in_pv;
+            $rest_mooney = $user->user_money - $dollar_price;
             $user->user_money = $rest_mooney;
             $user->save();
 
