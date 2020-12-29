@@ -12,20 +12,24 @@ class FixGv extends Seeder
     public function run()
     {
 
-        $userSeven = \App\Models\Users::where('user_id', '=', '4')->first();
-        $userSeven->gv_balance = $userSeven->gv_balance + 640;
+        $userSeven = \App\Models\Users::where('user_id', '=', '317')->first();
+        $userSeven->pv_balance = $userSeven->pv_balance - 20;
         $userSeven->save();
 
-        $userSeven = \App\Models\Users::where('user_id', '=', '7')->first();
-        $userSeven->gv_balance = $userSeven->gv_balance + 140;
+        $userSeven = \App\Models\Users::where('user_id', '=', '19')->first();
+        $userSeven->gv_balance = $userSeven->gv_balance - 20;
         $userSeven->save();
 
-        $userSeven = \App\Models\Users::where('user_id', '=', '9')->first();
-        $userSeven->gv_balance = $userSeven->gv_balance + 100;
+        $userSeven = \App\Models\Users::where('user_id', '=', '198')->first();
+        $userSeven->gv_balance = $userSeven->gv_balance - 40;
         $userSeven->save();
 
-        $userSeven = \App\Models\Users::where('user_id', '=', '5')->first();
-        $userSeven->gv_balance = $userSeven->gv_balance + 140;
+        $userSeven = \App\Models\Users::where('user_id', '=', '11')->first();
+        $userSeven->gv_balance = $userSeven->gv_balance - 40;
+        $userSeven->save();
+
+        $userSeven = \App\Models\Users::where('user_id', '=', '419')->first();
+        $userSeven->gv_balance = $userSeven->gv_balance - 40;
         $userSeven->save();
     }
 }
