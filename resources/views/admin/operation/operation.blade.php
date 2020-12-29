@@ -94,7 +94,7 @@ use \App\Models\Currency;
                                                         {{ $val->money }} доля
                                                     @elseif($val->operation_type_id == 11)
                                                         @if(isset($val->gv_balance))
-                                                            {{$val->gv_balance}} gv  pv (0 тг)
+                                                            {{$val->gv_balance}} gv  (0 тг)
                                                         @endif
                                                     @elseif($val->operation_type_id  == 40)
                                                         @if(isset($val->pv_balance))

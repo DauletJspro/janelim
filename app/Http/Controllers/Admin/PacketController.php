@@ -188,14 +188,14 @@ class PacketController extends Controller
         }
 
         $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
-        $count = UserPacket::where('user_id', Auth::user()->user_id)->whereIn('packet_id',  [1, 2, 3, 4])->count();
+        $count = UserPacket::where('user_id', Auth::user()->user_id)->whereIn('packet_id', [1, 2, 3, 4])->count();
 
         if ($is_check > 0) {
             $result['message'] = 'Вы уже отправили запрос на этот пакет';
             $result['status'] = false;
             return response()->json($result);
         }
-        if($request->packet_id == 5 && $count == 0 ){
+        if ($request->packet_id == 5 && $count == 0) {
             $result['message'] = 'Вы не можете купить этот пакет, так как вы не приобрели другой пакет';
             $result['status'] = false;
             return response()->json($result);
@@ -582,7 +582,7 @@ class PacketController extends Controller
                 }
 
                 $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-                if (!$inviter || $packet->packet_available_level < $inviter_order) {
+                if (!$inviter || $inviter_order >= $packet->packet_available_level) {
                     break;
                 }
                 $inviter_order++;
