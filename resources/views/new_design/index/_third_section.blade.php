@@ -22,7 +22,7 @@
                         <!-- txt start here -->
                         <div class="txt">
                             <strong class="title">{{ $packet->packet_name_ru }}</strong>
-                            <span class="price"> {{ $packet->packet_price }} тг</span>
+                            <span class="price"> {{ $packet->packet_price * 600 }} тг</span>
                             <p>{{ $packet->packet_desc_ru }}</p>
                             <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
                         </div>
