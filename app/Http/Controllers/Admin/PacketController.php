@@ -560,7 +560,7 @@ class PacketController extends Controller
                         if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
                             $bonusPercentage = (15 / 100);
                             $bonus = $packetPrice * $bonusPercentage;
-                        } elseif ($this->hasNeedPackets($packet, $inviterPacketId, $inviter_order)) {
+                        } elseif ($inviterPacketId >= $packet->packet_id) {
                             $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
                             $bonus = $packetPrice * $bonusPercentage;
                         }
