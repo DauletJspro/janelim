@@ -530,6 +530,7 @@ class PacketController extends Controller
         }
 
         $this->activatePackage($userPacket);
+        $old_packet_price = UserPacket::beforePurchaseSumWithPacketId($userPacket->user_id, $userPacket->packet_id);
 
         if ($packet->packet_id == Packet::LUX) {
             app(LuxPacketController::class)->implement_bonuses($userPacketId);
@@ -537,6 +538,7 @@ class PacketController extends Controller
             while ($inviter && in_array($packet->packet_id, Packet::actualPacket())) {
                 $bonus = 0;
                 $packetPrice = $userPacket->packet_price;
+                $packetPrice = $packetPrice - $old_packet_price;
                 $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
                 $inviterCount = (count($inviterPacketId));
 
@@ -590,15 +592,15 @@ class PacketController extends Controller
 
 
             // send pv
-            $user->pv_balance = $user->pv_balance + $packet->packet_price;
+            $user->pv_balance = $user->pv_balance + $packetPrice;
             $operation = new UserOperation();
             $operation->author_id = $user->user_id;
             $operation->recipient_id = $user->user_id;
             $operation->money = 0;
-            $operation->pv_balance = $packet->packet_price;
+            $operation->pv_balance = $packetPrice;
             $operation->operation_id = 1;
             $operation->operation_type_id = 40;
-            $operation->operation_comment = 'Персональный объем от. "' . $packet->packet_name_ru . ' в размере. ' . $packet->packet_price;
+            $operation->operation_comment = 'Персональный объем от. "' . $packet->packet_name_ru . ' в размере. ' . $packetPrice;
             $operation->save();
 
 
@@ -610,11 +612,11 @@ class PacketController extends Controller
                 $operation->money = 0;
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 11;
-                $operation->operation_comment = 'Групповой объем от. "' . $packet->packet_name_ru . ' в размере. ' . $packet->packet_price;
-                $operation->gv_balance = $packet->packet_price;
+                $operation->operation_comment = 'Групповой объем от. "' . $packet->packet_name_ru . ' в размере. ' .$packetPrice ;
+                $operation->gv_balance =$packetPrice;
                 $operation->save();
 
-                $inviter->gv_balance = $inviter->gv_balance + $packet->packet_price;
+                $inviter->gv_balance = $inviter->gv_balance + $packetPrice;
                 $inviter->save();
 
                 if (in_array($inviter->status_id, [2, 3, 4, 5, 6, 7, 8])) {

@@ -7,9 +7,9 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
         <div class="card-body" style="position:relative;background-color:{{'#' . $packet->packet_css_color}}">
             <h2 class="card-title">{{$packet->packet_name_ru}}</h2>
             @if($packet->packet_id != \App\Models\Packet::LUX)
-            <h3 style="font-weight: bold;">{{$packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)}} pv
+            <h3 style="font-weight: bold;">{{$packet->packet_price - \App\Models\UserPacket::beforePurchaseSumWithPacketId( Auth::user()->user_id, $packet->packet_id)}} pv
                 &emsp;
-                {{($packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet_id)) * $currency}}
+                {{($packet->packet_price - \App\Models\UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $packet->packet_id) )* $currency}}
                 &#8376;</h3>
             @else
                 <h3 style="font-weight: bold;">
