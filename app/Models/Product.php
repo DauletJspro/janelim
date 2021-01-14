@@ -56,10 +56,10 @@ class Product extends Model
         }
         $hasLiked = $hasLiked->first();
 
-        if (count($hasLiked)) {
-            return true;
-        }
-        return false;
+//        if (count(null)) {
+//            return true;
+//        }
+//        return false;
     }
 
 

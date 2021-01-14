@@ -31,12 +31,14 @@
             <span class="title">Follow Us</span>
             <!-- Social Network of the Page -->
             <ul class="list-unstyled social-network">
-              <li><a href="{{ $guide_text->author_twitter_link }}"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="{{ $guide_text->author_twitter_link }}"><i class="fa fa-facebook"></i></a></li>
+              <li><a href=""><i class="fa fa-twitter"></i></a></li>
+              <li><a href=""><i class="fa fa-facebook"></i></a></li>
               {{-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> --}}
               {{-- <li><a href="#"><i class="fa fa-youtube"></i></a></li> --}}
               {{-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> --}}
-              <li><a href="{{ $guide_text->author_twitter_link }}"><i class="fa fa-whatsapp"></i></a></li>
+              <li><a href=""><i class="fa fa-whatsapp"></i></a></li>
+{{--        <li><a href="{{ $guide_text->author_twitter_link }}"><i class="fa fa-whatsapp"></i></a></li>--}}
+
             </ul>
             <!-- Social Network of the Page end -->
           </div>

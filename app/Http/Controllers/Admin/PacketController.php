@@ -558,15 +558,84 @@ class PacketController extends Controller
                     });
                     $inviterPacketId = max($inviterPacketId->all());
                     $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-                    if ($inviterPacketId) {
+
+                    if ($packet->packet_id == 1) {
                         if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
                             $bonusPercentage = (15 / 100);
                             $bonus = $packetPrice * $bonusPercentage;
-                        } elseif ($inviterPacketId >= $packet->packet_id) {
+                        } elseif ($inviter_order <= 4 && $inviter_order > 1) {
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId > $packet->packet_id && $inviter_order <= 8 && $inviter_order > 4){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId == 4 && $inviter_order <= 10 && $inviter_order > 8){
                             $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
                             $bonus = $packetPrice * $bonusPercentage;
                         }
                     }
+                    if ($packet->packet_id == 2) {
+                        if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
+                            $bonusPercentage = (15 / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        } elseif ($inviter_order <= 4 && $inviter_order > 1) {
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId >= $packet->packet_id && $inviter_order <= 8 && $inviter_order > 4){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId == 4 && $inviter_order <= 10 && $inviter_order > 8){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                    }
+                    if ($packet->packet_id == 3) {
+                        if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
+                            $bonusPercentage = (15 / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        } elseif ($inviter_order <= 4 && $inviter_order > 1) {
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }elseif ($inviterPacketId > 1 && $inviter_order <= 6 && $inviter_order > 4){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId >= $packet->packet_id && $inviter_order <= 8 && $inviter_order > 6){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+
+                        elseif ($inviterPacketId == 4 && $inviter_order <= 10 && $inviter_order > 8){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                    }
+                    if ($packet->packet_id == 4) {
+                        if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
+                            $bonusPercentage = (15 / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        } elseif ($inviter_order <= 4 && $inviter_order > 1) {
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }elseif ($inviterPacketId > 1 && $inviter_order <= 6 && $inviter_order > 4){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                        elseif ($inviterPacketId > 2  && $inviter_order <= 8 && $inviter_order > 6){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+
+                        elseif ($inviterPacketId == 4 && $inviter_order <= 10 && $inviter_order > 8){
+                            $bonusPercentage = ($packetPercentage[$inviter_order - 1] / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
+                    }
+
                 }
 
                 if ($bonus) {
