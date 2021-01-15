@@ -15,10 +15,10 @@
                 <div class="packet_card">
                     <!-- mt product start here -->
                     <div class="product-3">
-                        <!-- img start here -->
-                        <div class="img">
-                            <img alt="image description" src="{{ $packet->packet_image }}">
-                        </div>
+{{--                        <!-- img start here -->--}}
+{{--                        <div class="img">--}}
+{{--                            <img alt="image description" src="{{ $packet->packet_image }}">--}}
+{{--                        </div>--}}
                         <!-- txt start here -->
                         <div class="txt">
                             <strong class="title">{{ $packet->packet_name_ru }}</strong>

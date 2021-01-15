@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\URL;
 
 
 $tab = (explode('tab=', URL::current()));
-
+$product = new \App\Models\Product();
+$reviews = new \App\Models\Review();
 ?>
 @extends('new_design.layout.app')
 
@@ -33,7 +34,7 @@ $tab = (explode('tab=', URL::current()));
                                 <li><a href="#"><i
                                                 class="fa fa-heart"></i>{{\App\Models\Product::getLike($product->product_id)}}
                                     </a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i>{{count($reviews)}}</a></li>
+                                <li><a href="#"><i class="fa fa-comments"></i></a></li>
                             </ul>
                             <!-- Comment List of the Page end -->
                             <!-- Product Slider of the Page -->
@@ -75,7 +76,7 @@ $tab = (explode('tab=', URL::current()));
                                         @endif
                                     @endfor
                                 </ul>
-                                <span class="total-price">Отзывы ({{count($reviews)}})</span>
+                                <span class="total-price">Отзывы </span>
                             </div>
                             <!-- Rank Rating of the Page end -->
                             <div id="reload-heart">
@@ -130,8 +131,7 @@ $tab = (explode('tab=', URL::current()));
                         <ul class="mt-tabs text-center text-uppercase">
                             <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}">Описание</a></li>
                             <li><a href="#tab2">Информация</a></li>
-                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы({{count($reviews)}}
-                                    )</a>
+                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -151,20 +151,19 @@ $tab = (explode('tab=', URL::current()));
                                         <div class="mt-box">
                                             <div class="mt-hold">
                                                 <ul class="mt-star">
-                                                    @for($i = 0; $i <= 5; $i++)
-                                                        @if($i < $review->rating)
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        @elseif($i > $review->rating)
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        @endif
-                                                    @endfor
+{{--                                                    @for($i = 0; $i <= 5; $i++)--}}
+{{--                                                        @if($i < $review->rating)--}}
+{{--                                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                                        @elseif--}}
+{{--                                                            <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                        @endif--}}
+{{--                                                    @endfor--}}
                                                 </ul>
-                                                <span class="name">{{$review->user_name}}</span>
-                                                <?php $time = date('H:m d.m.Y', strtotime($review->created_at)) ?>
-                                                <time datetime="2016-01-01">{{$time}}</time>
+                                                <span class="name"></span>
+                                                <time datetime="2016-01-01"></time>
                                             </div>
                                             <p style="white-space: pre-line;">
-                                                {{$review->review_text}}
+
                                             </p>
                                         </div>
                                     @endforeach
@@ -249,7 +248,7 @@ $tab = (explode('tab=', URL::current()));
                                                 <div class="b2">
                                                     <a href="{{route('product.detail', ['id' => $product->product_id])}}">
                                                         <div style="
-                                                                background-image: url('{{$product->product_image}}');
+                                                                /*background-image: gre;*/
                                                                 background-position: center;
                                                                 background-repeat: no-repeat;
                                                                 background-size: cover;
