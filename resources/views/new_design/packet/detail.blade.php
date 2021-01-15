@@ -241,67 +241,67 @@ $reviews = new \App\Models\Review();
                         <h2>ПОХОЖАЯ ПРДУКЦИЯ</h2>
                         <div class="row">
                             <div class="col-xs-12">
-                                @foreach($relatedProducts as $product)
-                                    <div class="mt-product1 mt-paddingbottom20">
-                                        <div class="box">
-                                            <div class="b1">
-                                                <div class="b2">
-                                                    <a href="{{route('product.detail', ['id' => $product->product_id])}}">
-                                                        <div style="
-                                                                /*background-image: gre;*/
-                                                                background-position: center;
-                                                                background-repeat: no-repeat;
-                                                                background-size: cover;
-                                                                width: 215px;
-                                                                height: 215px;
-                                                                ">
+{{--                                @foreach($relatedProducts as $product)--}}
+{{--                                    <div class="mt-product1 mt-paddingbottom20">--}}
+{{--                                        <div class="box">--}}
+{{--                                            <div class="b1">--}}
+{{--                                                <div class="b2">--}}
+{{--                                                    <a href="{{route('product.detail', ['id' => $product->product_id])}}">--}}
+{{--                                                        <div style="--}}
+{{--                                                                /*background-image: gre;*/--}}
+{{--                                                                background-position: center;--}}
+{{--                                                                background-repeat: no-repeat;--}}
+{{--                                                                background-size: cover;--}}
+{{--                                                                width: 215px;--}}
+{{--                                                                height: 215px;--}}
+{{--                                                                ">--}}
 
-                                                        </div>
-                                                    </a>
-                                                    <span class="caption">
+{{--                                                        </div>--}}
+{{--                                                    </a>--}}
+{{--                                                    <span class="caption">--}}
 {{--															<span class="new">NEW</span>--}}
-														</span>
-                                                    <ul class="mt-stars">
-                                                        @for($i = 0; $i<5;$i++)
-                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
-                                                                <li><i class="fa fa-star"></i></li>
-                                                            @else
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            @endif
-                                                        @endfor
-                                                    </ul>
-                                                    <ul class="links">
-                                                        <li>
-                                                            <a style="cursor: pointer;"
-                                                               data-item-id="{{$product->product_id}}"
-                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                               data-method="add"
-                                                               onclick="addItemToBasket(this)">
-                                                                <i class="icon-handbag"></i><span>Добавить</span>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="txt">
-                                            <strong class="title">
-                                                <a href="{{route('product.detail', ['id' => $product->product_id])}}">
-                                                    {{$product->product_name_ru}}
-                                                </a>
-                                            </strong>
-                                            <span class="price"><i class="fa fa-dollar"></i>
-                                                <span>
-                                                    {{$product->product_price}} &nbsp;
-                                                    ({{$product->product_price * \App\Models\Currency::usdToKzt()}} тг)
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                @endforeach
+{{--														</span>--}}
+{{--                                                    <ul class="mt-stars">--}}
+{{--                                                        @for($i = 0; $i<5;$i++)--}}
+{{--                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                            @else--}}
+{{--                                                                <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                            @endif--}}
+{{--                                                        @endfor--}}
+{{--                                                    </ul>--}}
+{{--                                                    <ul class="links">--}}
+{{--                                                        <li>--}}
+{{--                                                            <a style="cursor: pointer;"--}}
+{{--                                                               data-item-id="{{$product->product_id}}"--}}
+{{--                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                               data-method="add"--}}
+{{--                                                               onclick="addItemToBasket(this)">--}}
+{{--                                                                <i class="icon-handbag"></i><span>Добавить</span>--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="txt">--}}
+{{--                                            <strong class="title">--}}
+{{--                                                <a href="{{route('product.detail', ['id' => $product->product_id])}}">--}}
+{{--                                                    {{$product->product_name_ru}}--}}
+{{--                                                </a>--}}
+{{--                                            </strong>--}}
+{{--                                            <span class="price"><i class="fa fa-dollar"></i>--}}
+{{--                                                <span>--}}
+{{--                                                    {{$product->product_price}} &nbsp;--}}
+{{--                                                    ({{$product->product_price * \App\Models\Currency::usdToKzt()}} тг)--}}
+{{--                                                </span>--}}
+{{--                                            </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                     </div>
