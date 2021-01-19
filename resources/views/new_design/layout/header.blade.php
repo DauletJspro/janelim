@@ -15,14 +15,14 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
 ?>
 <!-- mt header style7 start here -->
-<header id="mt-header" class="style7">
+<header id="mt-header" class="style7" style="background: green;">
     <!-- mt-top-bar start here -->
     <div class="mt-top-bar">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    <span class="tel active"> <i class="fa fa-phone" aria-hidden="true"></i> +1 (555) 333 22 11</span>
-                    <a class="tel" href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> info@schon.chairs</a>
+                    <span class="tel active"> <i class="fa fa-phone" aria-hidden="true"></i> +7 (701) 915 05 11</span>
+                    <a class="tel" href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> info@janelim.kz</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <!-- mt-top-list start here -->
