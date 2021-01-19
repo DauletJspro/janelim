@@ -90,23 +90,16 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">PRODUCTS</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Product Grid View</a></li>
-                                                            <li><a href="#">Product List View</a></li>
-                                                            <li><a href="#">Product Detail</a></li>
-                                                        </ul>
-                                                    </div>
+                                                        <strong class="title"><a href="#" class="mt-subopener">Продукты</a></strong>
+                                                        <div class="sub-drop">
+                                                            <ul>
+                                                                <li><a href="/product/2">JAN QUATY</a></li>
+                                                                <li><a href="/product/3">JAN TAZALYGY</a></li>
+                                                                <li><a href="/product/4">JAN TYNYSHTYGY</a></li>
+                                                            </ul>
+                                                        </div>
                                                 </div>
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">404 Pages</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">404 Page</a></li>
-                                                            <li><a href="#">404 Page2</a></li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->
@@ -114,30 +107,21 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">About US</a></strong>
+                                                    <strong class="title"><a href="#" class="mt-subopener">Пакеты</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="#">About</a></li>
+                                                            <li><a href="/packet/1">SMALL</a></li>
+                                                            <li><a href="/packet/2">MEDIUM</a></li>
+                                                            <li><a href="/packet/3">LARGE</a></li>
+                                                            <li><a href="/packet/4">VIP</a></li>
+                                                            <li><a href="/packet/5">LUX</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Contact US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Contact</a></li>
-                                                            <li><a href="#">Contact 2</a></li>
-                                                        </ul>
-                                                    </div>
+
                                                 </div>
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Coming Soon</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Coming Soon</a></li>
-                                                            <li><a href="#">Coming Soon2</a></li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->
@@ -145,22 +129,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">KITCHEN FURNITURE</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Kitchen Taps</a></li>
-                                                            <li><a href="#">Breakfast time</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                            <li><a href="#">Napskins</a></li>
-                                                            <li><a href="#">Oven Gloves</a></li>
-                                                            <li><a href="#">Placemats</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->
@@ -168,7 +136,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3 promo">
                                                 <div class="mt-promobox">
-                                                    <a href="#"><img src="http://placehold.it/295x320" alt="promo banner" class="img-responsive"></a>
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->
