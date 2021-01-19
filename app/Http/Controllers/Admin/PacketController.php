@@ -511,7 +511,7 @@ class PacketController extends Controller
     {
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
-        $actualStatuses = [UserStatus::CLIENT, UserStatus::CONSULTANT, UserStatus::MANAGER, UserStatus::DIRECTOR];
+        $actualStatuses = [UserStatus::CLIENT1, UserStatus::CLIENT2 , UserStatus::CLIENT3, UserStatus::CLIENT4, UserStatus::CONSULTANT, UserStatus::MANAGER, UserStatus::DIRECTOR, UserStatus::BRONZE_DIRECTOR, UserStatus::SLIVER_DIRECTOR, UserStatus::GOLD_DIRECTOR, UserStatus::BRILLIANT_DIRECTOR];
 
         if (!$userPacket) {
             $result['message'] = 'Ошибка';
@@ -687,10 +687,8 @@ class PacketController extends Controller
 
                 $inviter->gv_balance = $inviter->gv_balance + $packetPrice;
                 $inviter->save();
+                $this->getPrizeUser($inviter);
 
-                if (in_array($inviter->status_id, [2, 3, 4, 5, 6, 7, 8])) {
-                    app(PremiumBonusController::class)->run($inviter->user_id);
-                }
 
                 $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
                 if (!$inviter) {
@@ -700,6 +698,7 @@ class PacketController extends Controller
         }
 
         $this->qualificationUp($packet, $user);
+        $this->getPrizeUser($user);
         $this->implementPacketThings($packet, $user, $userPacket);
 
     }
@@ -728,8 +727,7 @@ class PacketController extends Controller
         $userPacket->save();
     }
 
-    private
-    function implementPacketThings($packet, $user, $userPacket)
+    private function implementPacketThings($packet, $user, $userPacket)
     {
         $company_money = $userPacket->packet_price - $this->sentMoney;
         if ($packet->packet_id == Packet::LUX) {
@@ -749,8 +747,7 @@ class PacketController extends Controller
         $company->save();
     }
 
-    private
-    function qualificationUp($packet, $user)
+    private function qualificationUp($packet, $user)
     {
         $actualPackets = [Packet::SMALL, Packet::MEDIUM, Packet::LARGE, Packet::VIP];
         if (in_array($packet->packet_id, $actualPackets)) {
@@ -762,14 +759,14 @@ class PacketController extends Controller
             $operation->operation_id = 1;
             $operation->operation_type_id = 10;
 
-            if ($packet->packet_status_id == UserStatus::CLIENT)
-                $operation->operation_comment = 'Ваш статус Клиент';
-            elseif ($packet->packet_status_id == UserStatus::CONSULTANT)
-                $operation->operation_comment = 'Ваш статус Консультант';
-            elseif ($packet->packet_status_id == UserStatus::MANAGER)
-                $operation->operation_comment = 'Ваш статус Манаджер';
-            elseif ($packet->packet_status_id == UserStatus::DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Директор';
+            if ($packet->packet_status_id == UserStatus::CLIENT1)
+                $operation->operation_comment = 'Ваш статус Клиент 1';
+            elseif ($packet->packet_status_id == UserStatus::CLIENT2)
+                $operation->operation_comment = 'Ваш статус Клиент 2';
+            elseif ($packet->packet_status_id == UserStatus::CLIENT3)
+                $operation->operation_comment = 'Ваш статус Клиент 3';
+            elseif ($packet->packet_status_id == UserStatus::CLIENT4)
+                $operation->operation_comment = 'Ваш статус Клиент 4';
 
 
             $operation->save();
@@ -778,8 +775,75 @@ class PacketController extends Controller
         }
     }
 
-    public
-    function hasNeedPackets($packet, $inviterPacketId, $order)
+    public  function getPrizeUser($user){
+        $premia = 0;
+        if ($user) {
+            $operation = new UserOperation();
+            if  ($user->pv_balance >= 60 && $user->gv_balance >= 3000 && Users::isEnoughGv($user->user_id, 1000) && $user->status_id < UserStatus::CONSULTANT){
+                $premia = 300;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::CONSULTANT;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Консультант";
+                $willUpdate = true;
+            }
+            if ($user->pv_balance >= 120 && $user->gv_balance >= 9000 && Users::isEnoughGv($user->user_id, 3000) && $user->status_id < UserStatus::MANAGER){
+                $premia = 900;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::MANAGER;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Менеджер";
+                $willUpdate = true;
+            };
+            if ($user->pv_balance >= 240 && $user->gv_balance >= 27000 && Users::isEnoughGv($user->user_id, 9000) && $user->status_id < UserStatus::DIRECTOR){
+                $premia = 2000;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::DIRECTOR;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Директор";
+                $willUpdate = true;
+            };
+            if ($user->pv_balance >= 240 && $user->gv_balance >= 81000 && Users::isEnoughGv($user->user_id, 27000) && $user->status_id < UserStatus::BRONZE_DIRECTOR){
+                $premia = 5000;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::BRONZE_DIRECTOR;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Бронзовый директор";
+                $willUpdate = true;
+            };
+            if ($user->pv_balance >= 240 && $user->gv_balance >= 243000 && Users::isEnoughGv($user->user_id, 81000) && $user->status_id < UserStatus::SLIVER_DIRECTOR){
+                $premia = 13000;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::SLIVER_DIRECTOR;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Серебряный директор ";
+                $willUpdate = true;
+            };
+            if ($user->pv_balance >= 240 && $user->gv_balance >= 729000 && Users::isEnoughGv($user->user_id, 243000) && $user->status_id < UserStatus::GOLD_DIRECTOR){
+                $premia = 40000;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::GOLD_DIRECTOR;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Золотой директор";
+                $willUpdate = true;
+            };
+            if ($user->pv_balance >= 240 && $user->gv_balance >= 2187000 && Users::isEnoughGv($user->user_id, 729000) && $user->status_id < UserStatus::BRILLIANT_DIRECTOR){
+                $premia = 80000;
+                $rest = $user->user_money + $premia;
+                $user->status_id = UserStatus::BRILLIANT_DIRECTOR;
+                $operation->operation_comment = "Вы получили премию в размере $premia и статус Бриллиантовый директор";
+                $willUpdate = true;
+            };
+
+            if ($willUpdate = true && $premia) {
+                $operation->author_id = null;
+                $operation->recipient_id = $user->user_id;
+                $operation->money = $premia;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 10;
+                $user->user_money = $rest;
+                $user->save();
+                $operation->save();
+            }
+    }
+    }
+
+
+    public function hasNeedPackets($packet, $inviterPacketId, $order)
     {
         $actualPackets = [Packet::SMALL, Packet::MEDIUM, Packet::LARGE, Packet::VIP];
         $boolean = false;

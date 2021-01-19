@@ -52,6 +52,22 @@ class Users extends Model implements AuthenticatableContract
         }
         return false;
     }
+    public static function isEnoughGv($user_id, $enoughGV){
+        $followersGv = [];
+        $followers = Users::where(['recommend_user_id' => $user_id])->get();
+
+        foreach ($followers as $follower){
+            if($follower->gv_balance + $follower->pv_balance >= $enoughGV){
+                array_push($followersGv, $follower->gv_balance);
+            }
+        }
+        $followersGv = array_filter($followersGv);
+        if (count($followersGv) >= 3 ){
+            return true;
+        }
+        return false;
+    }
+
 
     public static function user_has_packet($user_id, $packet_id)
     {
@@ -65,4 +81,5 @@ class Users extends Model implements AuthenticatableContract
         }
         return false;
     }
+
 }
