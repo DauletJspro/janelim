@@ -8,28 +8,28 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Ақпарат</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">Watches</a></li>
-                            <li><a href="#">Glasses</a></li>
-                            <li><a href="#">Bags</a></li>										
+                        <ul class="list-unstyled f-widget-nav" >
+                            <li><a href="#" style="color: whitesmoke">Watches</a></li>
+                            <li><a href="#" style="color: whitesmoke">Glasses</a></li>
+                            <li><a href="#" style="color: whitesmoke">Bags</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Компанияның мүмкіндіктері</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#"> Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>										
+                            <li><a href="#" style="color: whitesmoke">About Us</a></li>
+                            <li><a href="#" style="color: whitesmoke">Contact Us</a></li>
+                            <li><a href="#" style="color: whitesmoke"> Terms &amp; Conditions</a></li>
+                            <li><a href="#" style="color: whitesmoke">Privacy Policy</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Жеке кабинет</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#" style="color: whitesmoke">My Account</a></li>
+                            <li><a href="#" style="color: whitesmoke">Order Tracking</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                 </nav>
