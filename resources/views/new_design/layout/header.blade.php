@@ -148,7 +148,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 <span class="mt-mdropover"></span>
                             </li>
                             <li>
-                                <a class="" href="#">Мүмкіндіктер</a>
+                                <a class="" href="/opportunity">Мүмкіндіктер</a>
                             </li>
                             <li>
                                 <a class="" href="#">Байланыс</a>
