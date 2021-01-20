@@ -93,6 +93,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                                         <strong class="title"><a href="#" class="mt-subopener">Продукты</a></strong>
                                                         <div class="sub-drop">
                                                             <ul>
+                                                                <li><a href="/about-product">Өнімдер туралы</a></li>
                                                                 <li><a href="/product/2">JAN QUATY</a></li>
                                                                 <li><a href="/product/3">JAN TAZALYGY</a></li>
                                                                 <li><a href="/product/4">JAN TYNYSHTYGY</a></li>

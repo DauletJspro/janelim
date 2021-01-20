@@ -86,6 +86,10 @@ class IndexController extends Controller
         return view('new_design.opportunity.index', ['url' => $url]);
     }
 
+    public function aboutProduct(){
+        return view('new_design.product.index');
+    }
+
 
     public function showFile($url)
     {

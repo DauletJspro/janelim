@@ -298,6 +298,7 @@ Route::group([
     Route::get('/', 'IndexController@index');
     Route::get('about-us', 'AboutController@showCompanyGuide');
     Route::get('/opportunity', 'IndexController@opportunity');
+    Route::get('/about-product', 'IndexController@aboutProduct');
     Route::get('gallery', 'IndexController@gallery')->name('gallery.show');
     Route::get('gallery-detail/{id}', 'IndexController@galleryDetail')->name('gallery-detail.show');
     Route::get('city', 'IndexController@getCityListByCountry');
