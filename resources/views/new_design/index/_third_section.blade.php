@@ -23,28 +23,7 @@
                         <div class="txt">
                             <strong class="title">{{ $packet->packet_name_ru }}</strong>
                             <span class="price"> {{ $packet->packet_price * 600 }} тг</span>
-                            <p>{{ $packet->packet_desc_ru }}</p>
-                            <a href="{{ route('packet.detail',$packet->packet_id, ['id' => $packet->packet_id]) }}">Толығырақ</a>
                         </div>
-                        <!-- links start here -->
-                        <ul class="links">
-                            <li><a href="#"
-                                data-item-id="{{$packet->packet_id}}"
-                                data-method="add"
-                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                data-route="{{route('basket.isAjax')}}"
-                                onclick="addItemToBasket(this)"    
-                            ><i class="icon-handbag"></i></a></li>
-                            <li><a href="#"
-                                data-item-id="{{$packet->packet_id}}"
-                                data-method="add"
-                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                data-session-id="{{ Session::getId()}}"
-                                data-route="{{route('favorite.isAjax')}}"
-                                onclick="addItemToFavorites(this)"
-                            ><i class="icomoon icon-heart-empty"></i></a></li>
-                            <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
-                        </ul>
                     </div><!-- mt product 3 end here -->
                 </div><!-- packet_card end here -->
             @endforeach
