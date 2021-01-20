@@ -12,7 +12,7 @@ class ChangeImgPacket extends Seeder
      */
     public function run()
     {
-        DB::table('packet')->where('packet_id', '=', 3)->update([
+        DB::table('packet')->where('packet_id', '=', 2)->update([
             'packet_image' => '/media/Medium-last.jpeg'
         ]);
 
