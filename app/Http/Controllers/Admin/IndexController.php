@@ -39,25 +39,25 @@ class IndexController extends Controller
 
 
         $pvProfitToday = $userOperation
-            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->where( 'operation_id', '=',  1)
             ->whereIn('operation_type_id', [1, 20])
             ->where(['recipient_id' => Auth::user()->user_id])
             ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
         $pvProfitLastWeek = $userOperation
-            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->where( 'operation_id', '=',  1)
             ->whereIn('operation_type_id', [1, 20])
             ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->where(['recipient_id' => Auth::user()->user_id])
-            ->sum('pv_balance');
+            ->sum('money');
 
         $pvProfitLastMonth = $userOperation
-            ->where(['operation_id' => 1, 'operation_type_id' => 1])
+            ->where( 'operation_id', '=',  1)
             ->whereIn('operation_type_id', [1, 20])
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->where(['recipient_id' => Auth::user()->user_id])
-            ->sum('pv_balance');
+            ->sum('money');
 
         //GV
 

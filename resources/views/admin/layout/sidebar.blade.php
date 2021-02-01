@@ -104,20 +104,6 @@
     </li>
 
     <li class="treeview">
-        <a href="/admin/operation">
-            <i class="fa fa-list-ul"></i>
-            <span>Счет</span>
-        </a>
-    </li>
-
-    <li class="treeview">
-        <a href="/admin/structure">
-            <i class="fa fa-sitemap"></i>
-            <span>Структура</span>
-        </a>
-    </li>
-
-    <li class="treeview">
         <a href="/admin/online"  style="pointer-events: none;">
             <i class="fa fa-shopping-cart"></i>
             <span>Интернет магазин</span>
@@ -283,24 +269,12 @@
             <span>Структура</span>
         </a>
     </li>
-    <li class="treeview">
-        <a href="/admin/shop">
-            <i class="fa fa-shopping-cart"></i>
-            <span>Бизнес пакеты </span>
-        </a>
-    </li>
 {{--    <li class="treeview">--}}
 {{--        <a href="/admin/online">--}}
 {{--            <i class="fa fa-shopping-cart"></i>--}}
 {{--            <span>Интернет магазин</span>--}}
 {{--        </a>--}}
 {{--    </li>--}}
-    <li class="treeview">
-        <a href="/admin/presentation">
-            <i class="fa fa-shopping-cart"></i>
-            <span>Презентация</span>
-        </a>
-    </li>
     <li class="treeview">
         <a href="/admin/request/send">
             <i class="fa fa-money"></i>
