@@ -19,15 +19,14 @@ $userPacket = \App\Models\UserPacket::where(['user_id' => \Illuminate\Support\Fa
             <div class="card  col-sm-6 col-lg-3 col-xs-12 col-md-6" style="margin-top: 20px;">
                 <div class="card-body text-center" style="position:relative;background-color:{{'#' . $packet->packet->packet_css_color}}">
                     <h2 class="card-title">{{$packet->packet->packet_name_ru}}</h2>
-                    @if(!$packet->packet_id == 5)
-                    <h3 style="font-weight: bold;">{{$packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)}} pv
-                        &emsp;
-                        {{($packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)) * $currency}}
-                        &#8376;</h3>
-                        @else
-                        <h3 style="font-weight: bold;">{{$packet->packet->packet_price}} pv
-                            &emsp;
+                    @if($packet->packet_id == 5)
+                        <h3 style="font-weight: bold;">
                             {{$packet->packet->packet_price * $currency}}
+                            &#8376;</h3>
+                        @else
+                        <h3 style="font-weight: bold;">{{$packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)}} pv
+                            &emsp;
+                            {{($packet->packet->packet_price - \App\Models\UserPacket::userHasPacketsPrice($packet->packet->packet_id)) * $currency}}
                             &#8376;</h3>
                     @endif
 
